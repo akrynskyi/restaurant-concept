@@ -1,0 +1,50 @@
+/* Fonts:
+   ========================================================================== */
+
+@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900&display=swap");
+
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat Hairline"), local("Montserrat-Hairline"),
+    url("/assets/fonts/montserat/montserrathairline.woff2") format("woff2"),
+    url("/assets/fonts/montserat/montserrathairline.woff") format("woff"),
+    url("/assets/fonts/montserat/montserrathairline.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat Light"), local("Montserrat-Light"),
+    url("/assets/fonts/montserat/montserratlight.woff2") format("woff2"),
+    url("/assets/fonts/montserat/montserratlight.woff") format("woff"),
+    url("/assets/fonts/montserat/montserratlight.ttf") format("truetype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"), local("Montserrat-Regular"),
+    url("/assets/fonts/montserat/montserrat.woff2") format("woff2"),
+    url("/assets/fonts/montserat/montserrat.woff") format("woff"),
+    url("/assets/fonts/montserat/montserrat.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat Bold"), local("Montserrat-Bold"),
+    url("/assets/fonts/montserat/montserratbold.woff2") format("woff2"),
+    url("/assets/fonts/montserat/montserratbold.woff") format("woff"),
+    url("/assets/fonts/montserat/montserratbold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat Black"), local("Montserrat-Black"),
+    url("/assets/fonts/montserat/montserratblack.woff2") format("woff2"),
+    url("/assets/fonts/montserat/montserratblack.woff") format("woff"),
+    url("/assets/fonts/montserat/montserratblack.ttf") format("truetype");
+  font-weight: 900;
+  font-style: normal;
+}

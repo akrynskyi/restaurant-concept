@@ -1,0 +1,67 @@
+/* Mixins:
+   ========================================================================== */
+
+// px to rem
+@function rem($pixels, $context: $mainFontSize) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+  @return $pixels / $context * 1rem;
+}
+
+// size to one line
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+// placeholder helper
+@mixin placeholder {
+  ::-webkit-input-placeholder {
+    @content;
+  }
+  :-moz-placeholder {
+    @content;
+  }
+  ::-moz-placeholder {
+    @content;
+  }
+  :-ms-input-placeholder {
+    @content;
+  }
+}
+
+// media
+// max-width
+@mixin desktop {
+  @media only screen and (max-width: #{$smDesktopWidth}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media only screen and (max-width: #{$tableWidth}) {
+    @content;
+  }
+}
+
+@mixin smTablet {
+  @media only screen and (max-width: #{$smTableWidth}) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media only screen and (max-width: #{$phoneWidth}) {
+    @content;
+  }
+}
+
+@mixin smMobile {
+  @media only screen and (max-width: #{$smPhoneWidth}) {
+    @content;
+  }
+}

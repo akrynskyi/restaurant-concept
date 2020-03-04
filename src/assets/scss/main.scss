@@ -1,0 +1,11 @@
+@import "utils/libs";
+@import "utils/variables";
+@import "utils/mixins";
+@import "utils/fonts";
+@import "utils/reset";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
