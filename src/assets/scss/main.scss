@@ -4,8 +4,27 @@
 @import "utils/fonts";
 @import "utils/reset";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@import "./components/header.scss";
+@import "./components/buttons.scss";
+
+// common styling
+body {
+  font-family: $mainFontExtra;
+  font-size: $mainFontSize;
+}
+
+.section-inner {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.items-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.c-default {
+  color: $default-color;
 }
