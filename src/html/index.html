@@ -7,13 +7,42 @@
     <title>Home</title>
   </head>
   <body>
+    <!-- SIGN IN MODAL -->
     <div class="overlay overlay-items-centered">
-      <form class="form">
-        <div class="form__header"></div>
-        <div class="form__body"></div>
-        <div class="form__footer"></div>
-      </form>
+      <div class="modal">
+        <div class="modal__header">
+          <h2 class="modal__header-title">
+            Login
+          </h2>
+          <div class="modal__header-social">
+            <span>Log with</span>
+          </div>
+        </div>
+        <div class="modal__body">
+          <!-- FORM -->
+          <form class="form form-auth">
+            <div class="form__item">
+              <input type="text" class="input-field" placeholder="Username" />
+              <!-- <span data-placeholder="Username"></span> -->
+            </div>
+            <div class="form__item">
+              <input type="password" class="input-field" placeholder="Password"/>
+              <!-- <span data-placeholder="Password"></span> -->
+            </div>
+            <div class="form__item">
+              <button class="btn">Login</button>
+            </div>
+          </form>
+          <!-- FORM -->
+        </div>
+        <div class="modal__footer">
+          <h3 class="modal__footer-text">
+            Dont'n have account? <a href="#">Sign up</a>
+          </h3>
+        </div>
+      </div>
     </div>
+    <!-- SIGN IN MODAL -->
     <header class="header">
       <div class="section-inner">
         <div class="items-wrapper header-items-wrapper">

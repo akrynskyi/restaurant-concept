@@ -7,6 +7,7 @@
 @import "./components/header.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
+@import "./components/modals.scss";
 
 // common styling
 body {
@@ -28,4 +29,17 @@ body {
 
 .c-default {
   color: $default-color;
+}
+
+.input-field {
+  width: 100%;
+  font-size: 14px;
+  color: $neutral-primary;
+  // border: none;
+  // width: 100%;
+  // outline: none;
+  background: none;
+  // padding: 0 5px;
+  height: 40px;
+  border-bottom: 2px solid $neutral-secondary;
 }
