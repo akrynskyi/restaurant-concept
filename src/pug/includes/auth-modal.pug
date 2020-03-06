@@ -1,0 +1,25 @@
+mixin auth-modal
+    // SIGN IN MODAL
+    .overlay.overlay-items-centered
+        .modal
+            .modal__header
+                h2.modal__header-title
+                    | Login
+                .modal__header-social
+                    span Log with
+            .modal__body
+                // FORM
+                form.form.form-auth
+                    .form__item
+                        input.input-field(type='text', placeholder='Username')
+                        // <span data-placeholder="Username"></span>
+                    .form__item
+                        input.input-field(type='password', placeholder='Password')
+                        // <span data-placeholder="Password"></span>
+                    .form__item
+                        button.btn Login
+                // FORM
+            .modal__footer
+                h3.modal__footer-text
+                    | Dont'n have account?
+                    a(href='#') Sign up

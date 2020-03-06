@@ -1,0 +1,34 @@
+mixin header
+    // HEADER
+    header.header
+        .section-inner
+            .items-wrapper.header-items-wrapper
+                ul.nav
+                    li
+                        a.nav__item(href='./index.html')
+                            | Home
+                            span.link-spacer
+                                | Home
+                    li
+                        a.nav__item(href='./products.html')
+                            | Products
+                            span.link-spacer
+                                | Products
+                    li
+                        a.nav__item(href='./about.html')
+                            | About
+                            span.link-spacer
+                                | About
+                .logo
+                    a.logo__text.c-default(href='./index.html')
+                        | Restaurant
+                        br
+                        | concept
+                    //
+                      <div class="logo__subtext">
+                      </div>
+                .auth
+                    button#signInBtn.btn.btn--secondary
+                        | Sign in
+                    button.btn.btn--primary.btn--ml
+                        | Create account
