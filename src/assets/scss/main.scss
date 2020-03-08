@@ -74,6 +74,15 @@ body {
   color: $neutral-regular;
 }
 
+.ico-ms {
+  margin-right: 5px;
+}
+
+.ico-wrapper {
+  width: 30px;
+  display: inline-block;
+}
+
 .section {
   height: 100vh;
   background-color: $neutral-placeholder;

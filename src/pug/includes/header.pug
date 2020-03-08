@@ -31,6 +31,28 @@ mixin header
                             | Sign in
                         button.btn.btn--primary.btn--ml
                             | Create account
+                    .bar__user-nav
+                        a#userNavBtn.user-nav__btn(href='#userId')
+                            .user-nav__btn-avatar
+                            .user-nav__btn-name
+                                | test
+                        .dropdown-menu
+                            ul.dropdown-menu__list
+                                li.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-user
+                                    a.dropdown-menu__link(href="#")
+                                        | Profile
+                                li.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-star
+                                    a.dropdown-menu__link(href="#")
+                                        | Reservation
+                                li.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-heart
+                                    a.dropdown-menu__link(href="#")
+                                        | Likes
                     .bar__helpers
                         button#searchBtn.btn-icon
                             i.fas.fa-search

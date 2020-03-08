@@ -67,7 +67,68 @@
 
 .bar {
   display: flex;
+  align-items: center;
+  &__user-nav {
+    margin-left: 15px;
+    .user-nav__btn {
+      display: flex;
+      align-items: center;
+      &::after {
+        content: "";
+        right: 5px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: $neutral-secondary transparent transparent transparent;
+        margin-left: 10px;
+        transition: border-color 0.1s linear;
+      }
+      &:hover::after,
+      &:hover > .user-nav__btn-name {
+        border-color: $border-base transparent transparent transparent;
+        color: $border-base;
+      }
+      &-avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: $border-base;
+      }
+      &-name {
+        font-size: 14px;
+        font-weight: 300;
+        color: $neutral-secondary;
+        margin-left: 10px;
+        transition: color 0.1s linear;
+      }
+    }
+  }
   &__helpers {
-    margin-left: 10px;
+    margin-left: 15px;
+  }
+}
+
+.dropdown-menu {
+  position: fixed;
+  top: 95px;
+  background-color: $grey-dark;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  display: none;
+  &__item {
+    color: $border-base;
+    padding: 10px 15px 10px 10px;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+    &:hover {
+      background-color: $neutral-regular;
+    }
+  }
+  &__link {
+    color: $border-base;
+  }
+  &-open {
+    display: block;
   }
 }

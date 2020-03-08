@@ -1,4 +1,6 @@
 // JS
+import "./js/firebase/firebase-init.js";
+import "./js/firebase/auth.js";
 import "./js/main.js";
 
 // CSS

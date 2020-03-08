@@ -1,7 +1,7 @@
 mixin auth-modal
     // SIGN IN MODAL
-    .overlay.overlay-items-centered
-        .modal
+    #overlayForSignIn.overlay.overlay-items-centered
+        #modalSignIn.modal
             .modal__header
                 h2.modal__header-title
                     | Login
@@ -9,12 +9,12 @@ mixin auth-modal
                     span Log with
             .modal__body
                 // FORM
-                form.form.form-auth
+                form#signInForm.form.form-auth
                     .form__item
-                        input.input-field(type='text', placeholder='Email')
+                        input#signInEmail.input-field(type='text', placeholder='Email')
                         // <span data-placeholder="Username"></span>
                     .form__item
-                        input.input-field(type='password', placeholder='Password')
+                        input#signInPassword.input-field(type='password', placeholder='Password')
                         // <span data-placeholder="Password"></span>
                     .form__item
                         button.btn.btn--hov Continue

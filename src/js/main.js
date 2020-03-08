@@ -1,20 +1,35 @@
-const signInButton = document.getElementById("signInBtn");
 const overlay = document.querySelector(".overlay");
+const searchBar = document.querySelector(".search-bar");
+const dropdownMenu = document.querySelector(".dropdown-menu");
+const signInButton = document.getElementById("signInBtn");
+const searchButton = document.getElementById("searchBtn");
+const userNavButton = document.getElementById("userNavBtn");
+
+class UI {
+  showSignInModal() {
+    overlay.classList.add("overlay-visible");
+  }
+  hideSignInModal() {
+    overlay.classList.remove("overlay-visible");
+  }
+}
+
+const ui = new UI();
+export { ui };
 
 signInButton.addEventListener("click", () => {
-  overlay.classList.add("overlay-visible");
+  ui.showSignInModal();
 });
 
 overlay.addEventListener("click", e => {
-  const item = e.target;
-  if (item.classList.contains("overlay")) {
-    overlay.classList.remove("overlay-visible");
-  }
+  if (e.target !== e.currentTarget) return;
+  ui.hideSignInModal();
 });
-
-const searchButton = document.getElementById("searchBtn");
-const searchBar = document.querySelector(".search-bar");
 
 searchButton.addEventListener("click", () => {
   searchBar.classList.toggle("search-bar-active");
+});
+
+userNavButton.addEventListener("click", () => {
+  dropdownMenu.classList.toggle("dropdown-menu-open");
 });
