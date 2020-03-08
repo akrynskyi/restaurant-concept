@@ -8,6 +8,7 @@
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
 @import "./components/modals.scss";
+@import "./components/search-bar.scss";
 
 // common styling
 body {
@@ -31,6 +32,15 @@ body {
   color: $default-color;
 }
 
+.link-default {
+  color: $action-color;
+  margin-left: 5px;
+  transition: color 0.1s linear;
+  &:hover {
+    color: $neutral-secondary;
+  }
+}
+
 .input-field {
   width: 100%;
   font-size: 14px;
@@ -42,4 +52,31 @@ body {
   // padding: 0 5px;
   height: 40px;
   border-bottom: 2px solid $neutral-secondary;
+}
+
+.input-field-m {
+  width: 100%;
+  font-size: 20px;
+  color: $mainFontColor;
+  background: none;
+  height: 80px;
+  &::placeholder {
+    text-transform: uppercase;
+    color: $neutral-secondary;
+    // font-weight: 300;
+    letter-spacing: $customLetterSpacing;
+  }
+}
+
+.ico-m {
+  margin-right: 25px;
+  font-size: 20px;
+  color: $neutral-regular;
+}
+
+.section {
+  height: 100vh;
+  background-color: $neutral-placeholder;
+  display: flex;
+  align-items: center;
 }

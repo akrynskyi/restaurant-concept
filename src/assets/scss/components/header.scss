@@ -1,6 +1,13 @@
 .header {
+  position: fixed;
+  z-index: 15;
+  width: 100%;
   background-color: $grey-dark;
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  // &:hover {
+  //   background-color: $grey-dark;
+  //   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  // }
   &-items-wrapper {
     justify-content: space-between;
     padding: 30px 0px;
@@ -55,5 +62,12 @@
     letter-spacing: $customLetterSpacing;
     display: flex;
     text-align: center;
+  }
+}
+
+.bar {
+  display: flex;
+  &__helpers {
+    margin-left: 10px;
   }
 }

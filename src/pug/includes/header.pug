@@ -24,11 +24,15 @@ mixin header
                         | Restaurant
                         br
                         | concept
-                    //
-                      <div class="logo__subtext">
-                      </div>
-                .auth
-                    button#signInBtn.btn.btn--secondary
-                        | Sign in
-                    button.btn.btn--primary.btn--ml
-                        | Create account
+                    //.logo__subtext
+                .bar
+                    .bar__auth
+                        button#signInBtn.btn.btn--secondary
+                            | Sign in
+                        button.btn.btn--primary.btn--ml
+                            | Create account
+                    .bar__helpers
+                        button#searchBtn.btn-icon
+                            i.fas.fa-search
+                        button.btn-icon.btn--ml
+                            i.fas.fa-ellipsis-h

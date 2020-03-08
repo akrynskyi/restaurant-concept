@@ -1,5 +1,6 @@
 include ../includes/header
 include ../includes/auth-modal
+include ../includes/search-bar
 
 block variables
 
@@ -10,9 +11,12 @@ html(lang='en')
         meta(name='viewport', content='width=device-width, initial-scale=1.0')
         meta(http-equiv='X-UA-Compatible', content='ie=edge')
         title #{title}
+        link(rel='stylesheet', href='/assets/fonts/font-awesome/css/all.min.css')
     body
         + auth-modal
 
         + header
+
+        + search-bar
 
         block content
