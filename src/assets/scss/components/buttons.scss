@@ -1,10 +1,11 @@
+// ==== BUTTONS ==== //
 .btn {
   padding: 5px 10px;
   border-radius: 3px;
   font-weight: 300;
   font-size: 14px;
   color: $default-color;
-  background-color: $grey-dark;
+  background-color: $neutral-primary;
   letter-spacing: 0.1em;
   cursor: pointer;
 
@@ -17,8 +18,8 @@
     transition: all 0.1s linear;
     &:hover {
       background-color: transparent;
-      border: 1px solid $grey-dark;
-      color: $grey-dark;
+      border: 1px solid $neutral-primary;
+      color: $neutral-primary;
     }
   }
 
@@ -42,6 +43,7 @@
   }
 }
 
+// ==== BUTTON WITH ICON ==== //
 .btn-icon {
   padding: 5px;
   font-size: 16px;

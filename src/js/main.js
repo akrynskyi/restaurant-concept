@@ -1,3 +1,4 @@
+// ---- DOM ELEMENTS ---- //
 const overlay = document.querySelector(".overlay");
 const searchBar = document.querySelector(".search-bar");
 const dropdownMenu = document.querySelector(".dropdown-menu");
@@ -14,8 +15,7 @@ class UI {
   }
 }
 
-const ui = new UI();
-export { ui };
+export const ui = new UI();
 
 signInButton.addEventListener("click", () => {
   ui.showSignInModal();

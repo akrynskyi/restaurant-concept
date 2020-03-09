@@ -1,3 +1,4 @@
+// ==== SEARCH BAR ==== //
 .search-bar {
   position: fixed;
   width: 100%;
@@ -9,16 +10,18 @@
   background-color: $default-color;
   pointer-events: none;
   transition: opacity 0.1s ease-in-out, transform 0.2s ease-in-out;
-  &-active {
-    transform: translateY(100%);
-    opacity: 1;
-    pointer-events: all;
-  }
+
   &__item {
     display: flex;
     align-items: center;
     &:first-child {
       flex-grow: 1;
     }
+  }
+
+  &-active {
+    transform: translateY(100%);
+    opacity: 1;
+    pointer-events: all;
   }
 }

@@ -1,17 +1,13 @@
-/* Vars:
-   ========================================================================== */
+// ======== VARIABLES ======== //
 
-// Font
-$mainFont: "Montserrat", Helvetica, Arial, sans-serif;
-$mainFontExtra: "Poppins", sans-serif;
-
-// Size
-$mainFontColor: #101010;
+// ---- FONT ----
+$main-font: "Poppins", sans-serif;
 $mainFontSize: 18px;
 $mainFontWeight: 400;
 $mainLineHeight: 1.4;
 $customLetterSpacing: 0.2em;
 
+// ---- BREAKPOINTS ----
 $desktopWidth: 1280px;
 $smDesktopWidth: 1024px;
 $tableWidth: 768px;
@@ -19,19 +15,21 @@ $smTableWidth: 640px;
 $phoneWidth: 480px;
 $smPhoneWidth: 320px;
 
-// Main color
-$dark-color: #000000;
-$grey-dark: #333333;
+// ---- COLORS ----
+$main-color: #101010;
+$deep-color: #000000;
 $default-color: #ffffff;
+$light-color: #999999;
+
 $primary-color: #444ce0;
 $success-color: #26de81;
 $danger-color: #fc5c65;
 $warning-color: #fed330;
-$light-color: #999999;
 $purple-color: #8854d0;
 $action-color: #f50;
 
 // Neutral Color
+$neutral-main: #333333;
 $neutral-primary: #303133;
 $neutral-regular: #606266;
 $neutral-secondary: #909399;

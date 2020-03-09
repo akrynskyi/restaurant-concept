@@ -1,0 +1,29 @@
+mixin signin
+    // SIGN IN MODAL
+    #overlayForSignIn.overlay.overlay-items-centered
+        #modalSignIn.modal
+            .modal__header
+                h2.modal__header-title Login
+                .modal__header-social
+                    span Log with
+            .modal__body
+                //- FORM
+                form#signInForm.form.form-auth
+                    .form__item
+                        input#signInEmail.input-field(
+                            type='email', 
+                            placeholder='Email',
+                            required
+                        )
+                    .form__item
+                        input#signInPassword.input-field(
+                            type='password', 
+                            placeholder='Password',
+                            required
+                        )
+                    .form__item
+                        button.btn.btn--hov Continue
+                //- FORM
+            .modal__footer
+                h3.modal__footer-text Don't have account?
+                    a.link-default(href='#') Sign up

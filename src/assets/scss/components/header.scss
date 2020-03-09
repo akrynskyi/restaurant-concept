@@ -1,13 +1,10 @@
+// ==== MAIN HEADER STYLES ==== //
 .header {
   position: fixed;
   z-index: 15;
   width: 100%;
-  background-color: $grey-dark;
+  background-color: $neutral-primary;
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-  // &:hover {
-  //   background-color: $grey-dark;
-  //   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-  // }
   &-items-wrapper {
     justify-content: space-between;
     padding: 30px 0px;
@@ -15,6 +12,7 @@
   }
 }
 
+// ==== NAVIGATION ==== //
 .nav {
   display: flex;
   &__item {
@@ -51,6 +49,7 @@
   }
 }
 
+// ==== LOGO ==== //
 .logo {
   position: absolute;
   left: 50%;
@@ -58,13 +57,13 @@
   &__text {
     text-transform: uppercase;
     font-weight: 700;
-    // font-size: 28px;
     letter-spacing: $customLetterSpacing;
     display: flex;
     text-align: center;
   }
 }
 
+// ==== USER BAR ==== //
 .bar {
   display: flex;
   align-items: center;
@@ -109,10 +108,11 @@
   }
 }
 
+// ==== DROPDOWN USER MENU ==== //
 .dropdown-menu {
   position: fixed;
   top: 95px;
-  background-color: $grey-dark;
+  background-color: $neutral-primary;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
   display: none;
   &__item {

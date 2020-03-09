@@ -1,5 +1,5 @@
-import { auth } from "./firebase-init.js";
-import { ui } from "../main.js";
+import { auth } from "./firebase";
+import { ui } from "../main";
 
 // SIGN IN
 const signInForm = document.getElementById("signInForm");
