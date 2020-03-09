@@ -1,5 +1,9 @@
+// ==== MAIN HEADER STYLES ==== //
 .header {
-  background-color: $grey-dark;
+  position: fixed;
+  z-index: 15;
+  width: 100%;
+  background-color: $neutral-primary;
   box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
   &-items-wrapper {
     justify-content: space-between;
@@ -8,6 +12,7 @@
   }
 }
 
+// ==== NAVIGATION ==== //
 .nav {
   display: flex;
   &__item {
@@ -44,6 +49,7 @@
   }
 }
 
+// ==== LOGO ==== //
 .logo {
   position: absolute;
   left: 50%;
@@ -51,9 +57,78 @@
   &__text {
     text-transform: uppercase;
     font-weight: 700;
-    // font-size: 28px;
     letter-spacing: $customLetterSpacing;
     display: flex;
     text-align: center;
+  }
+}
+
+// ==== USER BAR ==== //
+.bar {
+  display: flex;
+  align-items: center;
+  &__user-nav {
+    margin-left: 15px;
+    .user-nav__btn {
+      display: flex;
+      align-items: center;
+      &::after {
+        content: "";
+        right: 5px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: $neutral-secondary transparent transparent transparent;
+        margin-left: 10px;
+        transition: border-color 0.1s linear;
+      }
+      &:hover::after,
+      &:hover > .user-nav__btn-name {
+        border-color: $border-base transparent transparent transparent;
+        color: $border-base;
+      }
+      &-avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        background-color: $border-base;
+      }
+      &-name {
+        font-size: 14px;
+        font-weight: 300;
+        color: $neutral-secondary;
+        margin-left: 10px;
+        transition: color 0.1s linear;
+      }
+    }
+  }
+  &__helpers {
+    margin-left: 15px;
+  }
+}
+
+// ==== DROPDOWN USER MENU ==== //
+.dropdown-menu {
+  position: fixed;
+  top: 95px;
+  background-color: $neutral-primary;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  display: none;
+  &__item {
+    color: $border-base;
+    padding: 10px 15px 10px 10px;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+    &:hover {
+      background-color: $neutral-regular;
+    }
+  }
+  &__link {
+    color: $border-base;
+  }
+  &-open {
+    display: block;
   }
 }

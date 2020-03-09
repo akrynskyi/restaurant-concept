@@ -1,14 +1,26 @@
+// ==== BUTTONS ==== //
 .btn {
   padding: 5px 10px;
   border-radius: 3px;
   font-weight: 300;
   font-size: 14px;
   color: $default-color;
+  background-color: $neutral-primary;
   letter-spacing: 0.1em;
   cursor: pointer;
 
   &--ml {
     margin-left: 10px;
+  }
+
+  &--hov {
+    border: 1px solid transparent;
+    transition: all 0.1s linear;
+    &:hover {
+      background-color: transparent;
+      border: 1px solid $neutral-primary;
+      color: $neutral-primary;
+    }
   }
 
   &--primary {
@@ -28,5 +40,22 @@
     &:hover {
       border: 1px solid $border-base;
     }
+  }
+}
+
+// ==== BUTTON WITH ICON ==== //
+.btn-icon {
+  padding: 5px;
+  font-size: 16px;
+  color: $neutral-secondary;
+  background-color: transparent;
+  cursor: pointer;
+  transition: color 0.1s linear;
+  &:hover {
+    color: $border-base;
+  }
+  &--mod {
+    font-size: 20px;
+    color: $neutral-regular;
   }
 }

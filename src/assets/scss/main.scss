@@ -1,15 +1,19 @@
-@import "utils/libs";
+// ==== IMPORTS ==== //
 @import "utils/variables";
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
 
+// ==== COMPONENTS ==== //
 @import "./components/header.scss";
 @import "./components/buttons.scss";
+@import "./components/overlay.scss";
+@import "./components/modals.scss";
+@import "./components/search.scss";
 
-// common styling
+// ==== GLOBAL STYLES ==== //
 body {
-  font-family: $mainFontExtra;
+  font-family: $main-font;
   font-size: $mainFontSize;
 }
 
@@ -25,6 +29,55 @@ body {
   align-items: center;
 }
 
+// ==== LINKS ==== //
+.link-default {
+  color: $action-color;
+  margin-left: 5px;
+  transition: color 0.1s linear;
+  &:hover {
+    color: $neutral-secondary;
+  }
+}
+
 .c-default {
   color: $default-color;
+}
+
+// ==== INPUTS ==== //
+.input-field {
+  width: 100%;
+  font-size: 14px;
+  color: $neutral-primary;
+  background: none;
+  height: 40px;
+  border-bottom: 2px solid $neutral-secondary;
+  &:required {
+    box-shadow: none;
+    // outline: none;
+  }
+}
+
+.input-field-m {
+  width: 100%;
+  font-size: 20px;
+  color: $main-color;
+  background: none;
+  height: 80px;
+  &::placeholder {
+    text-transform: uppercase;
+    color: $neutral-secondary;
+    letter-spacing: $customLetterSpacing;
+  }
+}
+
+// ==== ICONS ==== //
+.ico-wrapper {
+  width: 30px;
+  display: inline-block;
+}
+
+.ico-m {
+  margin-right: 25px;
+  font-size: 20px;
+  color: $neutral-regular;
 }

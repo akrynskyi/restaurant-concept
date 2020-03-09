@@ -1,0 +1,60 @@
+mixin header
+    // HEADER
+    header.header
+        .section-inner
+            .items-wrapper.header-items-wrapper
+                ul.nav
+                    li
+                        a.nav__item(href='./index.html')
+                            | Home
+                            span.link-spacer
+                                | Home
+                    li
+                        a.nav__item(href='./products.html')
+                            | Products
+                            span.link-spacer
+                                | Products
+                    li
+                        a.nav__item(href='./about.html')
+                            | About
+                            span.link-spacer
+                                | About
+                .logo
+                    a.logo__text.c-default(href='./index.html')
+                        | Restaurant
+                        br
+                        | concept
+                    //.logo__subtext
+                .bar
+                    .bar__auth
+                        button#signInBtn.btn.btn--secondary
+                            | Sign in
+                        button.btn.btn--primary.btn--ml
+                            | Create account
+                    .bar__user-nav
+                        a#userNavBtn.user-nav__btn(href='#userId')
+                            .user-nav__btn-avatar
+                            .user-nav__btn-name
+                                | test
+                        .dropdown-menu
+                            ul.dropdown-menu__list
+                                li.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-user
+                                    a.dropdown-menu__link(href="#")
+                                        | Profile
+                                li.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-star
+                                    a.dropdown-menu__link(href="#")
+                                        | Reservation
+                                li.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-heart
+                                    a.dropdown-menu__link(href="#")
+                                        | Likes
+                    .bar__helpers
+                        button#searchBtn.btn-icon
+                            i.fas.fa-search
+                        button.btn-icon.btn--ml
+                            i.fas.fa-ellipsis-h

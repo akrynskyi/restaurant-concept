@@ -1,8 +1,7 @@
-// JS
-import "./js/main.js";
-
-// CSS
-// import "./assets/css/main.css";
-
 // SCSS
 import "./assets/scss/main.scss";
+
+// JS
+import "./js/firebase/firebase";
+import "./js/firebase/authentication";
+import "./js/main";
