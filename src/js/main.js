@@ -32,4 +32,5 @@ searchButton.addEventListener("click", () => {
 
 userNavButton.addEventListener("click", () => {
   dropdownMenu.classList.toggle("dropdown-menu-open");
+  userNavButton.classList.toggle("user-nav__btn-active");
 });

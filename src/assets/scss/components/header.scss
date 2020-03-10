@@ -81,7 +81,12 @@
         border-width: 5px 5px 0 5px;
         border-color: $neutral-secondary transparent transparent transparent;
         margin-left: 10px;
-        transition: border-color 0.1s linear;
+        transition: transform 0.2s ease, border-color 0.1s linear;
+      }
+      &-active {
+        &::after {
+          transform: rotate(180deg);
+        }
       }
       &:hover::after,
       &:hover > .user-nav__btn-name {
