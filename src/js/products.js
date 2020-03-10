@@ -1,1 +1,3 @@
-console.log("products");
+export const products = () => {
+    console.log("products");
+}

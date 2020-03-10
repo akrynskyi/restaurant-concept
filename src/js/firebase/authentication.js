@@ -1,5 +1,5 @@
 import { auth } from "./firebase";
-import { ui } from "../main";
+import { ui } from "../components/ui_class";
 
 // SIGN IN
 const signInForm = document.getElementById("signInForm");
@@ -14,7 +14,7 @@ signInForm.addEventListener("submit", e => {
   // sign up test
   auth.createUserWithEmailAndPassword(email, password).then(data => {
     console.log(data);
-    ui.hideSignInModal();
+    ui.hideModalDefault();
     signInForm.reset();
   });
 });
