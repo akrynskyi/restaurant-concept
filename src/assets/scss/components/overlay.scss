@@ -9,6 +9,7 @@
   visibility: hidden;
   z-index: 20;
   transition: visibility 0.2s ease-in-out;
+  backdrop-filter: blur(2px);
 
   &-items-centered {
     display: flex;

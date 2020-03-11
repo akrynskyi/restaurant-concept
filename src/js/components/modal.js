@@ -1,7 +1,9 @@
-import { ui } from "./ui_class"
+import { ui } from './ui_class';
 
 export const modal = () => {
-    const signInButton = document.getElementById("signInBtn");
-    ui.showModal(signInButton);
-    ui.hideModalOnClick();
-}
+	// ---- DOM ELEMENTS ----
+	const signInButton = document.getElementById('signInBtn');
+
+	ui.showModal(signInButton);
+	ui.hideModalOnClick();
+};

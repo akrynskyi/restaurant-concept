@@ -1,29 +1,28 @@
-import { auth } from "./firebase";
-import { ui } from "../components/ui_class";
+import { auth } from './firebase';
+import { ui } from '../components/ui_class';
 
-// SIGN IN
-const signInForm = document.getElementById("signInForm");
-const emailDOM = signInForm["signInEmail"];
-const passwordDOM = signInForm["signInPassword"];
+const signInForm = document.getElementById('signInForm');
+const emailDOM = signInForm.signInEmail;
+const passwordDOM = signInForm.signInPassword;
+const loader = document.getElementById('loader');
 
-const spinner = document.getElementById("loader");
+signInForm.addEventListener('submit', (e) => {
+	const email = emailDOM.value;
+	const password = passwordDOM.value;
+	e.preventDefault();
+	loader.classList.add('loader-active');
+	// ---- SIGN IN ----
+	auth
+		.createUserWithEmailAndPassword(email, password)
+		.then((data) => {
+			console.log(data);
 
-signInForm.addEventListener("submit", e => {
-  e.preventDefault();
-  const email = emailDOM.value;
-  const password = passwordDOM.value;
-  spinner.classList.add("loader-container-active");
-
-  // sign up test
-  auth.createUserWithEmailAndPassword(email, password)
-      .then(data => {
-          console.log(data);
-          spinner.classList.remove("loader-container-active");
-          ui.hideModalDefault();
-          signInForm.reset();
-  }).catch(error => {
-    console.error(error)
-  });
+			loader.classList.remove('loader-active');
+			ui.hideModalDefault();
+			signInForm.reset();
+		})
+		.catch((error) => {
+			loader.classList.remove('loader-active');
+			console.error(error);
+		});
 });
-
-console.log("Auth.js");

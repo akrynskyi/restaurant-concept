@@ -5,8 +5,8 @@ const CopyWebpackPlugin = require("copy-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 const PATHS = {
-  src: path.join(__dirname, "./src"),
-  dist: path.join(__dirname, "./dist"),
+  src: path.join(__dirname, "../src"),
+  dist: path.join(__dirname, "../dist"),
   assets: "assets/"
 };
 
@@ -44,7 +44,7 @@ module.exports = {
       {
         // JavaScript
         test: /\.js$/,
-        loader: "babel-loader",
+        use: ["babel-loader", "eslint-loader"],
         exclude: "/node_modules/"
       },
       {
@@ -131,7 +131,7 @@ module.exports = {
         new HtmlWebpackPlugin({
           template: `${PAGES_DIR}/${page}`, //.pug
           // filename: `./${page}` //.html
-          filename: `./${page.replace(/\.pug/,'.html')}`
+          filename: `./${page.replace(/\.pug/, ".html")}`
         })
     )
   ]

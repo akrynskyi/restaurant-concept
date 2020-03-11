@@ -4,8 +4,10 @@
   "description": "Future vision of how must look like the restaurant application...",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config webpack.dev.conf.js",
-    "build": "webpack --config webpack.build.conf.js"
+    "dev": "webpack-dev-server --open --config ./config/webpack.dev.conf.js",
+    "build": "webpack --config ./config/webpack.build.conf.js",
+    "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix"
   },
   "browserslist": [
     "> 1%",
@@ -18,11 +20,19 @@
     "@babel/plugin-transform-runtime": "^7.8.3",
     "@babel/preset-env": "^7.7.7",
     "autoprefixer": "^9.7.3",
+    "babel-eslint": "^10.1.0",
     "babel-loader": "^8.0.6",
     "copy-webpack-plugin": "^5.1.1",
     "css-loader": "^3.4.0",
     "css-mqpacker": "^7.0.0",
     "cssnano": "^4.1.10",
+    "eslint": "^6.1.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-loader": "^3.0.3",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.9.0",
