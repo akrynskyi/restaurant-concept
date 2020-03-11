@@ -7,7 +7,18 @@
     "dev": "webpack-dev-server --open --config ./config/webpack.dev.conf.js",
     "build": "webpack --config ./config/webpack.build.conf.js",
     "lint": "eslint ./src",
-    "lint:fix": "eslint ./src --fix"
+    "lint:fix": "eslint ./src --fix --color"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "npm run lint:fix",
+      "git add"
+    ]
   },
   "browserslist": [
     "> 1%",
@@ -35,6 +46,8 @@
     "eslint-plugin-react-hooks": "^1.7.0",
     "file-loader": "^5.0.2",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.0.8",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
     "path": "^0.12.7",

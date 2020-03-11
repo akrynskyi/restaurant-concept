@@ -7,10 +7,12 @@
   "parser": "babel-eslint",
   "extends": ["airbnb/base"],
   "rules": {
-    // "max-len": [{ "ignoreUrls": true }],
-    "indent": [2, "tab"],
-    "no-tabs": 0,
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": 0,
     "linebreak-style": 0,
-    "no-console": "off"
+    "no-console": "off",
+    "no-undef": 0,
+    "indent": [1, "tab"],
+    "no-tabs": 0
   }
 }
