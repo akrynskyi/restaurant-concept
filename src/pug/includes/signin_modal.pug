@@ -1,14 +1,18 @@
 mixin signin
     // SIGN IN MODAL
-    #overlayForSignIn.overlay.overlay-items-centered
+    #overlayForSignIn.overlay
         #modalSignIn.modal
             #loader.loader
                     .ball-clip-rotate
                         div
             .modal__header
                 h2.modal__header-title Login
-                .modal__header-social
-                    span Log with
+                .login-with
+                    span.login-with__text Login with
+                    a.login-with__link(href="#")
+                        i.fab.fa-google
+                    a.login-with__link(href="#")
+                        i.fab.fa-facebook
             .modal__body
                 //- FORM
                 form#signInForm.form.form-auth

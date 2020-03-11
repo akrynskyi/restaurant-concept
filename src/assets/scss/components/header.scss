@@ -67,8 +67,15 @@
 .bar {
   display: flex;
   align-items: center;
+  &__auth {
+    display: block;
+    &-hide {
+      display: none;
+    }
+  }
   &__user-nav {
     margin-left: 15px;
+    display: none;
     .user-nav__btn {
       display: flex;
       align-items: center;
@@ -107,6 +114,9 @@
         transition: color 0.1s linear;
       }
     }
+    &-visible {
+      display: block;
+    }
   }
   &__helpers {
     margin-left: 15px;
@@ -126,6 +136,9 @@
     font-size: 14px;
     font-weight: 300;
     cursor: pointer;
+    &:last-child {
+      border-top: 1px solid $neutral-regular;
+    }
     &:hover {
       background-color: $neutral-regular;
     }

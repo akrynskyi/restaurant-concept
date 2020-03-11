@@ -1,6 +1,9 @@
 // ==== MODAL ==== //
 .modal {
-  position: relative;
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 400px;
   height: 550px;
   background-color: $default-color;
@@ -8,23 +11,25 @@
   flex-direction: column;
   align-items: center;
   padding: 0px 25px;
+  opacity: 0;
+  transition: all 0.3s linear;
+  &-open {
+    top: 50%;
+    opacity: 1;
+  }
   &__header {
     width: 100%;
     margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     &-title {
       text-transform: uppercase;
       letter-spacing: $customLetterSpacing;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 500;
       color: $neutral-primary;
-    }
-    &-social {
-      span {
-        color: $neutral-secondary;
-        font-size: 14px;
-        font-weight: 400;
-      }
     }
   }
   &__body {

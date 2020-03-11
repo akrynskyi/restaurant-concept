@@ -11,6 +11,10 @@
 @import "./components/modals.scss";
 @import "./components/search.scss";
 @import "./components/loader.scss";
+@import "./components/login.scss";
+
+// ==== PAGES ==== //
+@import "./components/home.scss";
 
 // ==== GLOBAL STYLES ==== //
 body {
@@ -54,7 +58,6 @@ body {
   border-bottom: 2px solid $neutral-secondary;
   &:required {
     box-shadow: none;
-    // outline: none;
   }
 }
 

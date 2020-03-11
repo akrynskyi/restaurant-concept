@@ -20,6 +20,8 @@ signInForm.addEventListener('submit', (e) => {
 			loader.classList.remove('loader-active');
 			ui.hideModalDefault();
 			signInForm.reset();
+			ui.showUserNav();
+			ui.hideAuth();
 		})
 		.catch((error) => {
 			loader.classList.remove('loader-active');
