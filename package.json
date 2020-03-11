@@ -4,8 +4,8 @@
   "description": "Future vision of how must look like the restaurant application...",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --open --config ./config/webpack.dev.conf.js",
-    "build": "webpack --config ./config/webpack.build.conf.js",
+    "dev": "webpack-dev-server --open --config ./config/webpack.dev.js",
+    "build": "webpack --config ./config/webpack.prod.js",
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix --color"
   },
@@ -15,7 +15,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [
+    "./src/*.js": [
       "npm run lint:fix",
       "git add"
     ]

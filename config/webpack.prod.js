@@ -1,7 +1,7 @@
-// --mode production
+// ---- MODE PRODUCTION
 const merge = require("webpack-merge");
-const baseWebpackConfig = require("./webpack.config");
-const buildWebpackConfig = merge(baseWebpackConfig, {
+const commonWebpackConfig = require("./webpack.common");
+const buildWebpackConfig = merge(commonWebpackConfig, {
   mode: "production",
   plugins: []
 });

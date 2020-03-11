@@ -1,12 +1,12 @@
-// --mode development
+// ---- MODE DEVELOPMENT
 const webpack = require("webpack");
 const merge = require("webpack-merge");
-const baseWebpackConfig = require("./webpack.config");
-const devWebpackConfig = merge(baseWebpackConfig, {
+const commonWebpackConfig = require("./webpack.common");
+const devWebpackConfig = merge(commonWebpackConfig, {
   mode: "development",
   devtool: "#@cheap-module-eval-source-map",
   devServer: {
-    contentBase: baseWebpackConfig.externals.paths.dist,
+    contentBase: commonWebpackConfig.externals.paths.dist,
     port: 8081,
     overlay: {
       warnings: false,
