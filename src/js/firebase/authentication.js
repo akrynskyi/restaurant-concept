@@ -4,41 +4,63 @@ import { ui } from '../components/ui_class';
 const signInForm = document.getElementById('signInForm');
 const emailDOM = signInForm.signInEmail;
 const passwordDOM = signInForm.signInPassword;
-const loader = document.getElementById('loader');
 const signOutBtn = document.getElementById('signOutBtn');
+const googleBtn = document.getElementById('googleBtn');
 
-// ---- SIGN IN ----
+// ---- SIGN IN WITH EMAIL & PASSWORD
 signInForm.addEventListener('submit', (e) => {
 	const email = emailDOM.value;
 	const password = passwordDOM.value;
 	e.preventDefault();
-	loader.classList.add('loader-active');
-
+	ui.loaderToggle();
 	auth
 		.createUserWithEmailAndPassword(email, password)
 		.then((data) => {
 			console.log(data);
-
-			loader.classList.remove('loader-active');
+			ui.loaderToggle();
 			ui.hideModalDefault();
+			ui.userNavToggle();
+			ui.authToggle();
 			signInForm.reset();
-			ui.showUserNav();
-			ui.hideAuth();
 		})
 		.catch((error) => {
-			loader.classList.remove('loader-active');
+			ui.loaderToggle();
 			console.error(error);
 		});
 });
 
-// ---- SIGN OUT ----
+// ---- SIGN IN WITH GOOGLE ACCOUNT
+const provider = new firebase.auth.GoogleAuthProvider();
+googleBtn.addEventListener('click', () => {
+	ui.loaderToggle();
+	firebase
+		.auth()
+		.signInWithPopup(provider)
+		.then((result) => {
+			const { profile: user } = result.additionalUserInfo;
+			const { given_name: name, picture } = user;
+			console.log(user);
+			ui.loaderToggle();
+			ui.hideModalDefault();
+			ui.userNavToggle();
+			ui.authToggle();
+			ui.displayName(name);
+			ui.dispalyUserPhoto(picture);
+		})
+		.catch((error) => {
+			console.log(error);
+			ui.loaderToggle();
+		});
+});
+
+// ---- SIGN OUT
 signOutBtn.addEventListener('click', (e) => {
 	e.preventDefault();
 	auth
 		.signOut()
 		.then(() => {
 			console.log('sign out');
-			ui.showUserNav();
-			ui.hideAuth();
+			ui.userNavToggle();
+			ui.authToggle();
 		});
 });

@@ -2,6 +2,7 @@ const overlay = document.querySelector('.overlay');
 const modalSignIn = document.getElementById('modalSignIn');
 
 class UI {
+	// MODAL
 	showModal(element) {
 		element.addEventListener('click', () => {
 			overlay.classList.add('overlay-visible');
@@ -21,23 +22,33 @@ class UI {
 		});
 	}
 
-	// ---- USER NAV ----
-	showUserNav() {
-		const userNav = document.querySelector('.bar__user-nav');
-		if (userNav.classList.contains('bar__user-nav-visible')) {
-			userNav.classList.remove('bar__user-nav-visible');
-		} else {
-			userNav.classList.add('bar__user-nav-visible');
-		}
+	// LOADER
+	loaderToggle() {
+		const loader = document.getElementById('loader');
+		loader.classList.toggle('loader-active');
 	}
 
-	hideAuth() {
+	// USER NAV
+	userNavToggle() {
+		const userNav = document.querySelector('.bar__user-nav');
+		userNav.classList.toggle('bar__user-nav-visible');
+	}
+
+	// AUTH BLOCK
+	authToggle() {
 		const authBlock = document.querySelector('.bar__auth');
-		if (authBlock.classList.contains('bar__auth-hide')) {
-			authBlock.classList.remove('bar__auth-hide');
-		} else {
-			authBlock.classList.add('bar__auth-hide');
-		}
+		authBlock.classList.toggle('bar__auth-hide');
+	}
+
+	displayName(name) {
+		const userNameDOM = document.getElementById('userName');
+		// const nameSplit = name.split(' ', 1);
+		userNameDOM.innerText = `${name}`;
+	}
+
+	dispalyUserPhoto(picture) {
+		const userPictureDOM = document.getElementById('userPicture');
+		userPictureDOM.src = `${picture}`;
 	}
 }
 
