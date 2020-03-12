@@ -21,10 +21,8 @@ mixin header
                                 | About
                 .logo
                     a.logo__text.c-default(href='./index.html')
-                        | Restaurant
-                        br
-                        | concept
-                    //.logo__subtext
+                        .logo__text-line Restaurant
+                        .logo__text-line concept
                 .bar
                     .bar__auth
                         button#signInBtn.btn.btn--secondary
@@ -53,7 +51,7 @@ mixin header
                                         i.fas.fa-heart
                                     a.dropdown-menu__link(href="#")
                                         | Likes
-                                li.dropdown-menu__item
+                                li#signOutBtn.dropdown-menu__item
                                     span.ico-wrapper
                                         i.fas.fa-sign-out-alt
                                     a.dropdown-menu__link(href="#")

@@ -1,9 +1,9 @@
 // ==== MODAL ==== //
 .modal {
   position: fixed;
-  top: 40%;
+  top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -30%);
   width: 400px;
   height: 550px;
   background-color: $default-color;
@@ -12,10 +12,11 @@
   align-items: center;
   padding: 0px 25px;
   opacity: 0;
-  transition: all 0.3s linear;
+  transition: all 0.3s ease;
   &-open {
-    top: 50%;
+    //top: 50%;
     opacity: 1;
+    transform: translate(-50%, -50%);
   }
   &__header {
     width: 100%;

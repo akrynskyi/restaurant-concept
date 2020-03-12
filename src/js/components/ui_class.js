@@ -33,7 +33,11 @@ class UI {
 
 	hideAuth() {
 		const authBlock = document.querySelector('.bar__auth');
-		authBlock.classList.add('bar__auth-hide');
+		if (authBlock.classList.contains('bar__auth-hide')) {
+			authBlock.classList.remove('bar__auth-hide');
+		} else {
+			authBlock.classList.add('bar__auth-hide');
+		}
 	}
 }
 
