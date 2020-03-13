@@ -3,8 +3,8 @@ mixin signin
     #overlayForSignIn.overlay
         #modalSignIn.modal
             #loader.loader
-                    .ball-clip-rotate
-                        div
+                .ball-clip-rotate
+                    div
             .modal__header
                 h2.modal__header-title Login
                 .login-with
@@ -18,13 +18,15 @@ mixin signin
                 form#signInForm.form.form-auth
                     .form__item
                         input#signInEmail.input-field(
-                            type='email', 
+                            type='email',
+                            name='email',
                             placeholder='Email',
                             required
                         )
                     .form__item
                         input#signInPassword.input-field(
-                            type='password', 
+                            type='password',
+                            name='password',
                             placeholder='Password',
                             required
                         )
