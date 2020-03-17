@@ -4,6 +4,7 @@ import './assets/scss/main.scss';
 // JS
 import { header } from './js/components/header';
 import { modal } from './js/components/modal';
+import { hero } from './js/components/hero';
 
 import { home } from './js/home';
 import { products } from './js/products';
@@ -14,6 +15,7 @@ import './js/firebase/authentication';
 
 header();
 modal();
+hero();
 
 const docTitle = document.title;
 

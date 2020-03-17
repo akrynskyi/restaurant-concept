@@ -3,12 +3,21 @@
   position: fixed;
   z-index: 15;
   width: 100%;
-  background-color: $neutral-primary;
-  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  // background-color: $neutral-primary;
+  // box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  transition: all .2s linear;
+  &:hover {
+    background-color: $neutral-primary;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  }
   &-items-wrapper {
     justify-content: space-between;
     padding: 30px 0px;
     position: relative;
+  }
+  &-scrolled {
+    background-color: $neutral-primary;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
   }
 }
 

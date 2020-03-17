@@ -23,6 +23,13 @@
     }
   }
 
+  &--mod {
+    // text-transform: uppercase;
+    color: $neutral-primary;
+    font-size: 18px;
+    padding: 7px 45px;
+  }
+
   &--primary {
     background-color: $action-color;
     border: 1px solid transparent;
@@ -57,5 +64,9 @@
   &--mod {
     font-size: 20px;
     color: $neutral-regular;
+  }
+  &--col {
+      font-size: 20px;
+      color: $main-color;
   }
 }

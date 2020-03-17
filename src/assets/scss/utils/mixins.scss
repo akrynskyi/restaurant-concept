@@ -64,3 +64,8 @@
     @content;
   }
 }
+
+// gradients
+@mixin betweenTheCloudsGradient {
+  background: linear-gradient(40deg, #73C8A9, #373B44);
+}

@@ -1,4 +1,5 @@
 .footer {
+  // @include betweenTheCloudsGradient;
   padding: 20px 0px;
   &-items-wrapper {
     justify-content: space-between;
@@ -9,7 +10,7 @@
     text-transform: uppercase;
     letter-spacing: $customLetterSpacing;
     &:hover {
-      color: $neutral-secondary;
+      color: $default-color;
     }
   }
 }
@@ -25,7 +26,7 @@
       color: $main-color;
       transition: color .1s linear;
       &:hover {
-        color: $neutral-secondary;
+        color: $default-color;
       }
     }
   }
