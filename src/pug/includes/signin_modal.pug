@@ -2,7 +2,7 @@ mixin signin
     // SIGN IN MODAL
     #overlayForSignIn.overlay
         #modalSignIn.modal
-            #loader.loader
+            #loaderSignIn.loader
                 .ball-clip-rotate
                     div
             .modal__header
@@ -31,8 +31,8 @@ mixin signin
                             required
                         )
                     .form__item
-                        button.btn.btn--hov Continue
+                        button.btn.btn--hov.btn--large Continue
                 //- FORM
             .modal__footer
                 h3.modal__footer-text Don't have account?
-                    a.link-default(href='#') Sign up
+                    a#signUpLink.link-default(href='#') Sign up

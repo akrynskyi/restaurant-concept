@@ -1,30 +1,33 @@
-const overlay = document.querySelector('.overlay');
-const modalSignIn = document.getElementById('modalSignIn');
-
 class UI {
 	// MODAL
-	showModal(element) {
+	showModal(element, overlay, modal) {
 		element.addEventListener('click', () => {
 			overlay.classList.add('overlay-visible');
-			modalSignIn.classList.add('modal-open');
+			modal.classList.add('modal-open');
 		});
 	}
 
-	hideModalDefault() {
-		overlay.classList.remove('overlay-visible');
-		modalSignIn.classList.remove('modal-open');
+	showModalDefault(overlay, modal) {
+		overlay.classList.add('overlay-visible');
+		modal.classList.add('modal-open');
 	}
 
-	hideModalOnClick() {
+	hideModalDefault(overlay, modal) {
+		overlay.classList.remove('overlay-visible');
+		modal.classList.remove('modal-open');
+	}
+
+	hideModalOnClick(overlay, modal) {
 		overlay.addEventListener('click', (e) => {
 			if (e.target !== e.currentTarget) return;
-			this.hideModalDefault();
+			overlay.classList.remove('overlay-visible');
+			modal.classList.remove('modal-open');
 		});
 	}
 
 	// LOADER
-	loaderToggle() {
-		const loader = document.getElementById('loader');
+	loaderToggle(id) {
+		const loader = document.getElementById(id);
 		loader.classList.toggle('loader-active');
 	}
 
@@ -42,13 +45,24 @@ class UI {
 
 	displayName(name) {
 		const userNameDOM = document.getElementById('userName');
-		// const nameSplit = name.split(' ', 1);
-		userNameDOM.innerText = `${name}`;
+		const nameSplit = name.split(' ', 1);
+		userNameDOM.innerText = `${nameSplit}`;
 	}
 
-	dispalyUserPhoto(picture) {
-		const userPictureDOM = document.getElementById('userPicture');
+	displayLetter(name) {
+		const letterDOM = document.getElementById('letter');
+		const getLetter = name.split('', 1);
+		letterDOM.innerText = getLetter;
+	}
+
+	displayUserPhoto(picture, id) {
+		const userPictureDOM = document.getElementById(id);
 		userPictureDOM.src = `${picture}`;
+	}
+
+	removeUserPhotoDOM(id) {
+		const picture = document.getElementById(id);
+		picture.removeAttribute('src');
 	}
 }
 

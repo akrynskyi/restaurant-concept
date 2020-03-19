@@ -8,6 +8,7 @@
   background-color: $neutral-primary;
   letter-spacing: 0.1em;
   cursor: pointer;
+  font-family: inherit;
 
   &--ml {
     margin-left: 10px;
@@ -28,6 +29,13 @@
     color: $neutral-primary;
     font-size: 18px;
     padding: 7px 45px;
+  }
+
+  &--large {
+    width: 100%;
+    padding: 10px 0px;
+    text-transform: uppercase;
+    letter-spacing: $customLetterSpacing;
   }
 
   &--primary {

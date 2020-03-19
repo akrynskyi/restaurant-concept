@@ -1,0 +1,50 @@
+mixin signup
+    // SIGN UP MODAL
+    #overlayForSignUp.overlay
+        #modalSignUp.modal.modal--mod
+            #loaderSignUp.loader
+                .ball-clip-rotate
+                    div
+            .modal__header.modal__header--mod
+                h2.modal__header-title.modal__header-title--mod Create an account
+            .modal__body
+                //- FORM
+                form#signUpForm.form
+                    .form__item
+                        input#signUpFirstName.input-field(
+                            type='text',
+                            name='first name',
+                            placeholder='First name',
+                        )
+                    .form__item
+                        input#signUpLastName.input-field(
+                            type='text',
+                            name='last name',
+                            placeholder='Last name',
+                        )
+                    .form__item
+                        input#signUpEmail.input-field(
+                            type='email',
+                            name='email',
+                            placeholder='Email',
+                            required
+                        )
+                    .form__item
+                        input#signUpPassword.input-field(
+                            type='password',
+                            name='password',
+                            placeholder='Password',
+                            required
+                        )
+                    .form__item
+                        input#signUpConfirmPassword.input-field(
+                            type='password',
+                            name='password',
+                            placeholder='Confirm password',
+                            required
+                        )
+                    .form__item
+                        button.btn.btn--hov.btn--large Register
+                //- FORM
+            .modal__footer.modal__footer--mod
+                button#signInRedirectBtn.btn.btn--hov.btn--large Sign in

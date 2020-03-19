@@ -27,11 +27,12 @@ mixin header
                     .bar__auth
                         button#signInBtn.btn.btn--secondary
                             | Sign in
-                        button.btn.btn--primary.btn--ml
+                        button#signUpBtn.btn.btn--primary.btn--ml
                             | Create account
                     .bar__user-nav
                         a#userNavBtn.user-nav__btn(href='#userId')
                             .user-nav__btn-avatar
+                                span#letter
                                 img#userPicture.user-photo
                             #userName.user-nav__btn-name
                                 | test

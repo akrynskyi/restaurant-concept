@@ -117,6 +117,10 @@
         border-radius: 50%;
         overflow: hidden;
         background-color: $border-base;
+        color: $main-color;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
       &-name {
         font-size: 14px;
