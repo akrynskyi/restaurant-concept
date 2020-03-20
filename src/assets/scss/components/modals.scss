@@ -13,11 +13,6 @@
   padding: 0px 40px;
   opacity: 0;
   transition: all 0.3s ease;
-  &-open {
-    //top: 50%;
-    opacity: 1;
-    transform: translate(-50%, -50%);
-  }
   &--mod {
     height: auto;
   }
@@ -60,6 +55,10 @@
       text-align: left;
     }
   }
+}
+.modal.active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
 }
 
 // ==== MODAL FORM ==== //

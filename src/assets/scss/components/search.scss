@@ -10,7 +10,6 @@
   background-color: $default-color;
   pointer-events: none;
   transition: opacity 0.1s ease-in-out, transform 0.2s ease-in-out;
-
   &__item {
     display: flex;
     align-items: center;
@@ -18,10 +17,9 @@
       flex-grow: 1;
     }
   }
-
-  &-active {
-    transform: translateY(100%);
-    opacity: 1;
-    pointer-events: all;
-  }
+}
+.search-bar.active {
+  transform: translateY(100%);
+  opacity: 1;
+  pointer-events: all;
 }

@@ -24,17 +24,17 @@ mixin header
                         .logo__text-line Restaurant
                         .logo__text-line concept
                 .bar
-                    .bar__auth
+                    #auth.bar__auth
                         button#signInBtn.btn.btn--secondary
                             | Sign in
                         button#signUpBtn.btn.btn--primary.btn--ml
                             | Create account
-                    .bar__user-nav
-                        a#userNavBtn.user-nav__btn(href='#userId')
-                            .user-nav__btn-avatar
-                                span#letter
+                    #userNav.bar__usernav
+                        a#userNavBtn.bar__usernav-btn(href='#userId')
+                            .bar__usernav-btn-avatar
+                                span#userLetter.user-letter
                                 img#userPicture.user-photo
-                            #userName.user-nav__btn-name
+                            #userName.bar__usernav-btn-name
                                 | test
                         .dropdown-menu
                             ul.dropdown-menu__list

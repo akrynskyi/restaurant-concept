@@ -1,10 +1,9 @@
 // ==== MAIN HEADER STYLES ==== //
+
 .header {
   position: fixed;
   z-index: 15;
   width: 100%;
-  // background-color: $neutral-primary;
-  // box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
   transition: all .2s linear;
   &:hover {
     background-color: $neutral-primary;
@@ -15,13 +14,15 @@
     padding: 30px 0px;
     position: relative;
   }
-  &-scrolled {
-    background-color: $neutral-primary;
-    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
-  }
+}
+
+.header.scrolled {
+  background-color: $neutral-primary;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 // ==== NAVIGATION ==== //
+
 .nav {
   display: flex;
   &__item {
@@ -59,6 +60,7 @@
 }
 
 // ==== LOGO ==== //
+
 .logo {
   position: absolute;
   top: 50%;
@@ -75,19 +77,20 @@
 }
 
 // ==== USER BAR ==== //
+
 .bar {
   display: flex;
   align-items: center;
   &__auth {
     display: block;
-    &-hide {
-      display: none;
-    }
   }
-  &__user-nav {
+  &__auth.hide {
+    display: none;
+  }
+  &__usernav {
     margin-left: 15px;
     display: none;
-    .user-nav__btn {
+    &-btn {
       display: flex;
       align-items: center;
       &::after {
@@ -100,11 +103,6 @@
         border-color: $neutral-secondary transparent transparent transparent;
         margin-left: 10px;
         transition: transform 0.2s ease, border-color 0.1s linear;
-      }
-      &-active {
-        &::after {
-          transform: rotate(180deg);
-        }
       }
       &:hover::after,
       &:hover > .user-nav__btn-name {
@@ -130,9 +128,12 @@
         transition: color 0.1s linear;
       }
     }
-    &-visible {
-      display: block;
+    &-btn.active::after {
+      transform: rotate(180deg);
     }
+  }
+  &__usernav.active {
+    display: block;
   }
   &__helpers {
     margin-left: 15px;
@@ -140,6 +141,7 @@
 }
 
 // ==== DROPDOWN USER MENU ==== //
+
 .dropdown-menu {
   position: fixed;
   top: 95px;
@@ -162,7 +164,8 @@
   &__link {
     color: $border-base;
   }
-  &-open {
-    display: block;
-  }
+}
+
+.dropdown-menu.active {
+  display: block;
 }

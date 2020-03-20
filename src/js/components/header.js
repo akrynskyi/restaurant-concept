@@ -1,3 +1,5 @@
+import { signOut } from '../firebase/authentication';
+
 export const header = () => {
 	// ---- DOM ELEMENTS ----
 	const dropdownMenu = document.querySelector('.dropdown-menu');
@@ -6,36 +8,47 @@ export const header = () => {
 	const hero = document.querySelector('.hero');
 	const userNavButton = document.getElementById('userNavBtn');
 	const searchButton = document.getElementById('searchBtn');
+	const signOutBtn = document.getElementById('signOutBtn');
 
-	// ---- SHOW USER MENU ----
 	userNavButton.addEventListener('click', () => {
-		dropdownMenu.classList.toggle('dropdown-menu-open');
-		userNavButton.classList.toggle('user-nav__btn-active');
-	});
-
-	// ---- ACTIVATE SEARCH BAR ----
-	searchButton.addEventListener('click', () => {
-		searchBar.classList.toggle('search-bar-active');
-		headerNav.classList.toggle('header-scrolled');
-		if (searchBar.classList.contains('search-bar-active')) {
-			headerNav.classList.add('header-scrolled');
+		dropdownMenu.classList.toggle('active');
+		userNavButton.classList.toggle('active');
+		headerNav.classList.toggle('scrolled');
+		if (dropdownMenu.classList.contains('active')) {
+			headerNav.classList.add('scrolled');
 		}
 	});
 
-	// ---- OBSERVER ----
+	searchButton.addEventListener('click', () => {
+		searchBar.classList.toggle('active');
+		headerNav.classList.toggle('scrolled');
+		if (searchBar.classList.contains('active')) {
+			headerNav.classList.add('scrolled');
+		}
+	});
+
+	signOutBtn.addEventListener('click', () => {
+		signOut();
+		dropdownMenu.classList.remove('active');
+		userNavButton.classList.remove('active');
+	});
+
+	// ---- INTERSECTION OBSERVER ----
 	const options = {
 		rootMargin: '-600px 0px 0px 0px',
 	};
 	const heroObserver = new IntersectionObserver(((entries) => {
 		entries.forEach((entry) => {
 			if (!entry.isIntersecting) {
-				headerNav.classList.add('header-scrolled');
-				// searchBar.classList.remove('search-bar-active');
+				headerNav.classList.add('scrolled');
+				dropdownMenu.classList.remove('active');
+				userNavButton.classList.remove('active');
 			} else {
-				if (searchBar.classList.contains('search-bar-active')) return;
-				headerNav.classList.remove('header-scrolled');
+				if (searchBar.classList.contains('active')) return;
+				headerNav.classList.remove('scrolled');
+				dropdownMenu.classList.remove('active');
+				userNavButton.classList.remove('active');
 			}
-			// console.log(entry);
 		});
 	}), options);
 	heroObserver.observe(hero);

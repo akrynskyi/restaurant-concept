@@ -3,8 +3,10 @@ export const hero = () => {
 	const heroBlock = document.getElementById('heroBlock');
 	const chevron = document.getElementById('chevronIcon');
 	const content = document.getElementById('content');
+
+	// ---- SHOW BOOKING FORM ----
 	heroHeader.addEventListener('click', () => {
-		heroBlock.classList.toggle('hero-block-active');
+		heroBlock.classList.toggle('active');
 		content.classList.toggle('shadow');
 		if (chevron.classList.contains('fa-chevron-up')) {
 			chevron.classList.remove('fa-chevron-up');

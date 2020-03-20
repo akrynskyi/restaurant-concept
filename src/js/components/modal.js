@@ -11,8 +11,8 @@ export const modal = () => {
 	const signUpRedirectBtn = document.getElementById('signUpLink');
 	const signInRedirectBtn = document.getElementById('signInRedirectBtn');
 
-	ui.showModal(signInButton, overlayForSignIn, modalSignIn);
-	ui.showModal(signUpButton, overlayForSignUp, modalSignUp);
+	ui.showModalOnClick(signInButton, overlayForSignIn, modalSignIn);
+	ui.showModalOnClick(signUpButton, overlayForSignUp, modalSignUp);
 	ui.hideModalOnClick(overlayForSignIn, modalSignIn);
 	ui.hideModalOnClick(overlayForSignUp, modalSignUp);
 
