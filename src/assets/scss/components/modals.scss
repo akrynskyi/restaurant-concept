@@ -40,12 +40,14 @@
   &__body {
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
   }
   &__footer {
     width: 100%;
-    margin: 50px 0px;
+    margin: 40px 0px 50px 0px;
     text-align: center;
     &-text {
       font-size: 14px;

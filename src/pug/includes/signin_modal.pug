@@ -9,7 +9,7 @@ mixin signin
                 h2.modal__header-title Login
                 .login-with
                     span.login-with__text Login with
-                    a#googleBtn.login-with__link(href="#")
+                    a#googleSignInBtn.login-with__link(href="#")
                         i.fab.fa-google
                     a#facebookBtn.login-with__link(href="#")
                         i.fab.fa-facebook
@@ -33,6 +33,8 @@ mixin signin
                     .form__item
                         button.btn.btn--hov.btn--large Continue
                 //- FORM
+                .modal__body-resetpass
+                    a#resetPassLink.link-default(href='#') Forgot password
             .modal__footer
                 h3.modal__footer-text Don't have account?
-                    a#signUpLink.link-default(href='#') Sign up
+                    a#signUpLink.link-action(href='#') Sign up

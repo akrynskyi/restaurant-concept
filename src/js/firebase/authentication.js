@@ -1,82 +1,123 @@
 import { auth } from './firebase';
 import { ui } from '../components/ui_class';
 
-const overlayForSignIn = document.getElementById('overlayForSignIn');
-const overlayForSignUp = document.getElementById('overlayForSignUp');
-const modalSignIn = document.getElementById('modalSignIn');
-const modalSignUp = document.getElementById('modalSignUp');
-const signInForm = document.getElementById('signInForm');
-const signUpForm = document.getElementById('signUpForm');
-const googleBtn = document.getElementById('googleBtn');
-
 // ---- AUTH STATUS ----
 
 auth
 	.onAuthStateChanged((user) => {
 		if (user) {
 			console.log('sign in');
-			ui.signInUser(user);
 		} else {
 			console.log('sign out');
 			ui.signOutUser();
 		}
 	});
 
+document.addEventListener('DOMContentLoaded', () => {
+	if (localStorage.getItem('user')) {
+		ui.userSignInSetupUI();
+	} else {
+		ui.userSignOutSetupUI();
+	}
+});
+
 // ---- SIGN UP WITH EMAIL & PASSWORD ----
 
-signUpForm.addEventListener('submit', (e) => {
-	const email = signUpForm.signUpEmail.value;
-	const password = signUpForm.signUpPassword.value;
-	e.preventDefault();
+export const signUp = (userdata, elements) => {
+	const {
+		firstname,
+		lastname,
+		email,
+		password,
+	} = userdata;
+	const {
+		overlay,
+		modal,
+		form,
+	} = elements;
 	ui.loaderToggle('loaderSignUp');
 	auth
 		.createUserWithEmailAndPassword(email, password)
-		.then(() => {
+		.finally(() => {
 			ui.loaderToggle('loaderSignUp');
-			ui.resetModal(overlayForSignUp, modalSignUp, signUpForm);
+		})
+		.then((credential) => {
+			const { user } = credential;
+			return user.updateProfile({
+				displayName: `${firstname} ${lastname}`,
+			});
+		})
+		.then(() => {
+			const user = auth.currentUser;
+			ui.setUser(user);
+			ui.userSignInSetupUI();
+		})
+		.then(() => {
+			ui.resetModal(overlay, modal, form);
 		})
 		.catch((error) => {
-			ui.loaderToggle('loaderSignUp');
 			console.error(error);
 		});
-});
+};
 
 // ---- SIGN IN WITH EMAIL & PASSWORD ----
 
-signInForm.addEventListener('submit', (e) => {
-	const email = signInForm.signInEmail.value;
-	const password = signInForm.signInPassword.value;
-	e.preventDefault();
+export const signInWithEmailAndPass = (userdata, elements) => {
+	const {
+		email,
+		password,
+	} = userdata;
+	const {
+		overlay,
+		modal,
+		form,
+	} = elements;
 	ui.loaderToggle('loaderSignIn');
 	auth
 		.signInWithEmailAndPassword(email, password)
-		.then(() => {
+		.finally(() => {
 			ui.loaderToggle('loaderSignIn');
-			ui.resetModal(overlayForSignIn, modalSignIn, signInForm);
+		})
+		.then((credential) => {
+			const { user } = credential;
+			ui.setUser(user);
+			ui.userSignInSetupUI();
+		})
+		.then(() => {
+			ui.resetModal(overlay, modal, form);
 		})
 		.catch((error) => {
-			ui.loaderToggle('loaderSignIn');
 			console.error(error);
 		});
-});
+};
 
 // ---- SIGN IN WITH GOOGLE ACCOUNT ----
 
-const provider = new firebase.auth.GoogleAuthProvider();
-googleBtn.addEventListener('click', () => {
+export const signInWithGoogle = (provider, elements) => {
+	const {
+		overlay,
+		modal,
+		form,
+	} = elements;
 	ui.loaderToggle('loaderSignIn');
 	firebase
 		.auth()
 		.signInWithPopup(provider)
-		.then(() => {
+		.finally(() => {
 			ui.loaderToggle('loaderSignIn');
-			ui.resetModal(overlayForSignIn, modalSignIn, signInForm);
+		})
+		.then((credential) => {
+			const { user } = credential;
+			ui.setUser(user);
+			ui.userSignInSetupUI();
+		})
+		.then(() => {
+			ui.resetModal(overlay, modal, form);
 		})
 		.catch((error) => {
 			console.log(error);
-			ui.loaderToggle('loaderSignIn');
 		});
-});
+};
 
 // ---- SIGN OUT ----
 

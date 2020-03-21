@@ -1,9 +1,24 @@
 export const DOM_ELEMENTS = {
+	// User
+
 	userNav: document.getElementById('userNav'),
 	authBlock: document.getElementById('auth'),
 	userName: document.getElementById('userName'),
 	userletter: document.getElementById('userLetter'),
 	userPicture: document.getElementById('userPicture'),
+
+	// Signup
+
+	overlaySignUp: document.getElementById('overlayForSignUp'),
+	modalSignUp: document.getElementById('modalSignUp'),
+	formSignUp: document.getElementById('signUpForm'),
+
+	// Signin
+
+	overlaySignIn: document.getElementById('overlayForSignIn'),
+	modalSignIn: document.getElementById('modalSignIn'),
+	formSignIn: document.getElementById('signInForm'),
+	googleSignIn: document.getElementById('googleSignInBtn'),
 };
 
 
@@ -53,30 +68,29 @@ class UI {
 
 	// ---- USER LOGIC ----
 
-	userSignInUI() {
+	userSignInSetupUI() {
 		DOM_ELEMENTS.userNav.classList.add('active');
 		DOM_ELEMENTS.authBlock.classList.add('hide');
 		this.displayUserInfo();
 	}
 
-	userSignOutUI() {
+	userSignOutSetupUI() {
 		DOM_ELEMENTS.userNav.classList.remove('active');
 		DOM_ELEMENTS.authBlock.classList.remove('hide');
 		this.removeUserInfo();
 	}
 
-	signInUser(user) {
+	setUser(user) {
 		localStorage.setItem('user', JSON.stringify(user));
-		this.userSignInUI();
-	}
-
-	signOutUser() {
-		localStorage.clear();
-		this.userSignOutUI();
 	}
 
 	getUser() {
 		return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : [];
+	}
+
+	signOutUser() {
+		localStorage.clear();
+		this.userSignOutSetupUI();
 	}
 
 	displayUserInfo() {

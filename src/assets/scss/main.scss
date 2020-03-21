@@ -1,10 +1,12 @@
 // ==== IMPORTS ==== //
+
 @import "utils/variables";
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
 
 // ==== COMPONENTS ==== //
+
 @import "./components/header.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
@@ -16,9 +18,11 @@
 @import "./components/hero.scss";
 
 // ==== PAGES ==== //
+
 @import "./home.scss";
 
 // ==== GLOBAL STYLES ==== //
+
 body {
   font-family: $main-font;
   font-size: $mainFontSize;
@@ -38,7 +42,8 @@ body {
 }
 
 // ==== LINKS ==== //
-.link-default {
+
+.link-action {
   color: $action-color;
   margin-left: 5px;
   transition: color 0.1s linear;
@@ -47,11 +52,17 @@ body {
   }
 }
 
+.link-default {
+  font-size: 12px;
+  color: $main-color;
+}
+
 .c-default {
   color: $default-color;
 }
 
 // ==== INPUTS ==== //
+
 .input-field {
   width: 100%;
   font-size: 14px;
@@ -107,6 +118,7 @@ body {
 }
 
 // ==== ICONS ==== //
+
 .ico-wrapper {
   width: 30px;
   display: inline-block;
