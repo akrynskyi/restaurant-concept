@@ -5,14 +5,27 @@
     "node": true
   },
   "parser": "babel-eslint",
-  "extends": ["airbnb/base"],
+  "extends": [
+    "airbnb/base"
+  ],
   "rules": {
     "import/prefer-default-export": "off",
     "class-methods-use-this": 0,
     "linebreak-style": 0,
     "no-console": "off",
     "no-undef": 0,
-    "indent": [1, "tab"],
-    "no-tabs": 0
+    "indent": [
+      2,
+      "tab"
+    ],
+    "no-tabs": 0,
+    "max-len": [
+      2,
+      {
+        "code": 100,
+        "ignoreComments": true,
+        "ignoreUrls": true
+      }
+    ]
   }
 }

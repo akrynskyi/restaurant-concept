@@ -2,19 +2,25 @@ export const DOM_ELEMENTS = {
 	// User
 
 	userNav: document.getElementById('userNav'),
-	authBlock: document.getElementById('auth'),
+	userNavButton: document.getElementById('userNavBtn'),
+	userNavDropdown: document.querySelector('.dropdown-menu'),
 	userName: document.getElementById('userName'),
 	userletter: document.getElementById('userLetter'),
 	userPicture: document.getElementById('userPicture'),
+	authBlock: document.getElementById('auth'),
 
 	// Signup
 
+	signUpButton: document.getElementById('signUpBtn'),
+	signUpRedirectBtn: document.getElementById('signUpLink'),
 	overlaySignUp: document.getElementById('overlayForSignUp'),
 	modalSignUp: document.getElementById('modalSignUp'),
 	formSignUp: document.getElementById('signUpForm'),
 
 	// Signin
 
+	signInButton: document.getElementById('signInBtn'),
+	signInRedirectBtn: document.getElementById('signInRedirectBtn'),
 	overlaySignIn: document.getElementById('overlayForSignIn'),
 	modalSignIn: document.getElementById('modalSignIn'),
 	formSignIn: document.getElementById('signInForm'),
@@ -66,17 +72,29 @@ class UI {
 		loader.classList.toggle('active');
 	}
 
+	// ---- USER-NAV LOGIC ----
+
+	userDropdownToggle() {
+		DOM_ELEMENTS.userNavButton.classList.toggle('active');
+		DOM_ELEMENTS.userNavDropdown.classList.toggle('active');
+	}
+
+	userDropdownHide() {
+		DOM_ELEMENTS.userNavButton.classList.remove('active');
+		DOM_ELEMENTS.userNavDropdown.classList.remove('active');
+	}
+
 	// ---- USER LOGIC ----
 
 	userSignInSetupUI() {
 		DOM_ELEMENTS.userNav.classList.add('active');
-		DOM_ELEMENTS.authBlock.classList.add('hide');
+		DOM_ELEMENTS.authBlock.classList.remove('active');
 		this.displayUserInfo();
 	}
 
 	userSignOutSetupUI() {
 		DOM_ELEMENTS.userNav.classList.remove('active');
-		DOM_ELEMENTS.authBlock.classList.remove('hide');
+		DOM_ELEMENTS.authBlock.classList.add('active');
 		this.removeUserInfo();
 	}
 

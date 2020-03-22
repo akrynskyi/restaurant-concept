@@ -3,16 +3,10 @@ import { signUp, signInWithEmailAndPass, signInWithGoogle } from '../firebase/au
 import { googleAuthProvider } from '../firebase/firebase';
 
 export const modal = () => {
-	// ---- DOM-ELEMENTS ----
-	const signInButton = document.getElementById('signInBtn');
-	const signUpButton = document.getElementById('signUpBtn');
-	const signUpRedirectBtn = document.getElementById('signUpLink');
-	const signInRedirectBtn = document.getElementById('signInRedirectBtn');
-
 	// ---- SIGN-UP ----
 
 	ui.showModalOnClick(
-		signUpButton,
+		DOM_ELEMENTS.signUpButton,
 		DOM_ELEMENTS.overlaySignUp,
 		DOM_ELEMENTS.modalSignUp,
 	);
@@ -48,7 +42,7 @@ export const modal = () => {
 	// ---- SIGN-IN ----
 
 	ui.showModalOnClick(
-		signInButton,
+		DOM_ELEMENTS.signInButton,
 		DOM_ELEMENTS.overlaySignIn,
 		DOM_ELEMENTS.modalSignIn,
 	);
@@ -90,7 +84,7 @@ export const modal = () => {
 
 	// ---- REDIRECT ----
 
-	signUpRedirectBtn.addEventListener('click', () => {
+	DOM_ELEMENTS.signUpRedirectBtn.addEventListener('click', () => {
 		ui.hideModalDefault(
 			DOM_ELEMENTS.overlaySignIn,
 			DOM_ELEMENTS.modalSignIn,
@@ -101,7 +95,7 @@ export const modal = () => {
 		);
 	});
 
-	signInRedirectBtn.addEventListener('click', () => {
+	DOM_ELEMENTS.signInRedirectBtn.addEventListener('click', () => {
 		ui.hideModalDefault(
 			DOM_ELEMENTS.overlaySignUp,
 			DOM_ELEMENTS.modalSignUp,
