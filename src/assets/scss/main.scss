@@ -53,8 +53,26 @@ body {
 }
 
 .link-default {
+  position: relative;
   font-size: 12px;
+  font-weight: 500;
   color: $main-color;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: $main-color;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .3s ease-in;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
 }
 
 .c-default {

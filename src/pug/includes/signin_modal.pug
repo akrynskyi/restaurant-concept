@@ -15,16 +15,16 @@ mixin signin
                         i.fab.fa-facebook
             .modal__body
                 //- FORM
-                form#signInForm.form.form-auth
+                form#signInForm.form
                     .form__item
-                        input#signInEmail.input-field(
+                        input.input-field(
                             type='email',
                             name='email',
                             placeholder='Email',
                             required
                         )
                     .form__item
-                        input#signInPassword.input-field(
+                        input.input-field(
                             type='password',
                             name='password',
                             placeholder='Password',
@@ -38,3 +38,27 @@ mixin signin
             .modal__footer
                 h3.modal__footer-text Don't have account?
                     a#signUpLink.link-action(href='#') Sign up
+
+        // RESET PASSWORD MODAL
+
+        #modalResetPass.modal.modal--shrinkable
+            #loaderResetPass.loader
+                .ball-clip-rotate
+                    div
+            .modal__header
+                h2.modal__header-title.modal__header-title--mod  Forgot your password?
+            .modal__body
+                //- FORM
+                form#resetPassForm.form
+                    .form__item
+                        input.input-field(
+                            type='email',
+                            name='email',
+                            placeholder='Email',
+                            required
+                        )
+                    .form__item
+                        button.btn.btn--hov.btn--large Continue
+                //- FORM
+            .modal__footer.modal__footer--mod
+                button(data-to-signin='').btn.btn--hov.btn--large Sign in

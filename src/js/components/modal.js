@@ -95,14 +95,20 @@ export const modal = () => {
 		);
 	});
 
-	DOM_ELEMENTS.signInRedirectBtn.addEventListener('click', () => {
-		ui.hideModalDefault(
-			DOM_ELEMENTS.overlaySignUp,
-			DOM_ELEMENTS.modalSignUp,
-		);
-		ui.showModalDefault(
-			DOM_ELEMENTS.overlaySignIn,
-			DOM_ELEMENTS.modalSignIn,
-		);
+	DOM_ELEMENTS.signInRedirectBtns.forEach((btn) => {
+		btn.addEventListener('click', () => {
+			if (DOM_ELEMENTS.modalSignUp.classList.contains('active')) {
+				ui.hideModalDefault(
+					DOM_ELEMENTS.overlaySignUp,
+					DOM_ELEMENTS.modalSignUp,
+				);
+				ui.showModalDefault(
+					DOM_ELEMENTS.overlaySignIn,
+					DOM_ELEMENTS.modalSignIn,
+				);
+			} else {
+				console.log('false');
+			}
+		});
 	});
 };

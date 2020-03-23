@@ -20,7 +20,7 @@ export const DOM_ELEMENTS = {
 	// Signin
 
 	signInButton: document.getElementById('signInBtn'),
-	signInRedirectBtn: document.getElementById('signInRedirectBtn'),
+	signInRedirectBtns: document.querySelectorAll('[data-to-signin]'),
 	overlaySignIn: document.getElementById('overlayForSignIn'),
 	modalSignIn: document.getElementById('modalSignIn'),
 	formSignIn: document.getElementById('signInForm'),
