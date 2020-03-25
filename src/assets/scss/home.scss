@@ -1,0 +1,18 @@
+.home {
+    background-color: #0b0b0b;
+}
+
+.content {
+    &-wrapper {
+        // background: linear-gradient(to right, #73C8A9, #373B44);
+        height: 100vh;
+    }
+}
+
+.section-vh {
+    height: 100vh;
+    background-image: url('/assets/img/backgrounds/background-2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}

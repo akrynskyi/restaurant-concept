@@ -1,52 +1,82 @@
 // ==== MODAL ==== //
+
 .modal {
-  position: relative;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
   width: 400px;
   height: 550px;
   background-color: $default-color;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 25px;
+  padding: 0px 40px;
+  opacity: 0;
+  transition: all 0.3s ease;
+  &--mod {
+    height: auto;
+  }
+  &--shrinkable {
+    transform: scale(0) translate(-50%, -50%);
+    transform-origin: top left;
+  }
   &__header {
     width: 100%;
-    margin-top: 40px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     &-title {
       text-transform: uppercase;
       letter-spacing: $customLetterSpacing;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: 500;
       color: $neutral-primary;
-    }
-    &-social {
-      span {
-        color: $neutral-secondary;
-        font-size: 14px;
-        font-weight: 400;
+      &--mod {
+        font-size: 28px;
       }
+    }
+    &--mod {
+      margin-bottom: 25px;
     }
   }
   &__body {
     flex-grow: 1;
     display: flex;
+    flex-direction: column;
     align-items: center;
+    justify-content: center;
     width: 100%;
   }
   &__footer {
     width: 100%;
-    margin: 40px 0px;
+    margin: 40px 0px 50px 0px;
     text-align: center;
     &-text {
       font-size: 14px;
     }
+    &--mod {
+      margin: 0px 0px 50px 0px;
+      text-align: left;
+    }
   }
+}
+.modal.active {
+  opacity: 1;
+  transform: translate(-50%, -50%);
+}
+.modal--shrinkable.visible {
+  opacity: 1;
+  transform: scale(1) translate(-50%, -50%);
 }
 
 // ==== MODAL FORM ==== //
+
 .form {
   width: 100%;
   &__item {
-    margin-bottom: 20px;
+    margin-bottom: 25px;
   }
 }

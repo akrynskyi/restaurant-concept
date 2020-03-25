@@ -1,0 +1,33 @@
+.footer {
+  // @include betweenTheCloudsGradient;
+  padding: 20px 0px;
+  &-items-wrapper {
+    justify-content: space-between;
+  }
+  &-logo {
+    color: $main-color;
+    transition: color .1s linear;
+    text-transform: uppercase;
+    letter-spacing: $customLetterSpacing;
+    &:hover {
+      color: $default-color;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  &__item {
+    margin-right: 40px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &-link {
+      color: $main-color;
+      transition: color .1s linear;
+      &:hover {
+        color: $default-color;
+      }
+    }
+  }
+}

@@ -1,0 +1,42 @@
+mixin hero
+    // HERO
+    section.hero
+        .section-inner
+            .items-wrapper.hero-wrapper
+                #heroBlock.hero-block
+                    #heroHeader.hero-block__header
+                        .hero-block__header-item
+                            h1.hero-text Booking
+                        .hero-block__header-item
+                            button.btn-icon.btn-icon--col
+                                i#chevronIcon.fas.fa-chevron-up
+                    .hero-block__body
+                        h2.hero-block__body-title Book a table
+                        form.booking-form
+                            .booking-form__fields
+                                input.input-field-col(
+                                    type='text',
+                                    name='first name',
+                                    placeholder='First Name',
+                                    required
+                                )
+                                input.input-field-col(
+                                    type='text',
+                                    name='last name',
+                                    placeholder='Last Name',
+                                    required
+                                )
+                                input.input-field-col(
+                                    type='email',
+                                    name='email',
+                                    placeholder='Email',
+                                    required
+                                )
+                                input.input-field-col(
+                                    type='text',
+                                    name='phone',
+                                    placeholder='Phone Number',
+                                    required
+                                )
+                            .booking-form__button
+                                button.btn.btn--mod.btn--secondary Book

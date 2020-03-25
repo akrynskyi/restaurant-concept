@@ -8,6 +8,7 @@
   background-color: $neutral-primary;
   letter-spacing: 0.1em;
   cursor: pointer;
+  font-family: inherit;
 
   &--ml {
     margin-left: 10px;
@@ -21,6 +22,20 @@
       border: 1px solid $neutral-primary;
       color: $neutral-primary;
     }
+  }
+
+  &--mod {
+    // text-transform: uppercase;
+    color: $neutral-primary;
+    font-size: 18px;
+    padding: 7px 45px;
+  }
+
+  &--large {
+    width: 100%;
+    padding: 10px 0px;
+    text-transform: uppercase;
+    letter-spacing: $customLetterSpacing;
   }
 
   &--primary {
@@ -57,5 +72,9 @@
   &--mod {
     font-size: 20px;
     color: $neutral-regular;
+  }
+  &--col {
+      font-size: 20px;
+      color: $main-color;
   }
 }

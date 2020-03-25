@@ -1,18 +1,28 @@
 // ==== IMPORTS ==== //
+
 @import "utils/variables";
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
 
 // ==== COMPONENTS ==== //
+
 @import "./components/header.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
 @import "./components/modals.scss";
 @import "./components/search.scss";
 @import "./components/loader.scss";
+@import "./components/login.scss";
+@import "./components/footer.scss";
+@import "./components/hero.scss";
+
+// ==== PAGES ==== //
+
+@import "./home.scss";
 
 // ==== GLOBAL STYLES ==== //
+
 body {
   font-family: $main-font;
   font-size: $mainFontSize;
@@ -20,6 +30,7 @@ body {
 
 .section-inner {
   width: 100%;
+  height: 100%;
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 20px;
@@ -31,12 +42,38 @@ body {
 }
 
 // ==== LINKS ==== //
-.link-default {
+
+.link-action {
   color: $action-color;
   margin-left: 5px;
   transition: color 0.1s linear;
+  cursor: pointer;
   &:hover {
     color: $neutral-secondary;
+  }
+}
+
+.link-default {
+  position: relative;
+  font-size: 12px;
+  font-weight: 500;
+  color: $main-color;
+  cursor: pointer;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: $main-color;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .3s ease-in;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 }
 
@@ -45,6 +82,7 @@ body {
 }
 
 // ==== INPUTS ==== //
+
 .input-field {
   width: 100%;
   font-size: 14px;
@@ -54,7 +92,12 @@ body {
   border-bottom: 2px solid $neutral-secondary;
   &:required {
     box-shadow: none;
-    // outline: none;
+  }
+  &:focus {
+    border-bottom: 2px solid $neutral-regular;
+  }
+  &:focus::placeholder {
+    color: $border-base;
   }
 }
 
@@ -71,7 +114,31 @@ body {
   }
 }
 
+.input-field-col {
+  width: 100%;
+  font-size: 18px;
+  color: $default-color;
+  background: none;
+  height: 40px;
+  border-bottom: 2px solid $main-color;
+  &::placeholder {
+    // text-transform: uppercase;
+    color: $main-color;
+    // letter-spacing: $customLetterSpacing;
+  }
+  &:required {
+    box-shadow: none;
+  }
+  &:focus {
+    border-bottom: 2px solid $default-color;
+  }
+  &:focus::placeholder {
+    color: $default-color;
+  }
+}
+
 // ==== ICONS ==== //
+
 .ico-wrapper {
   width: 30px;
   display: inline-block;
@@ -81,4 +148,9 @@ body {
   margin-right: 25px;
   font-size: 20px;
   color: $neutral-regular;
+}
+
+.shadow {
+  box-shadow: 0px -5px 10px 0px rgba(0,0,0,0.7);
+  position: relative;
 }

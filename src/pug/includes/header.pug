@@ -21,20 +21,20 @@ mixin header
                                 | About
                 .logo
                     a.logo__text.c-default(href='./index.html')
-                        | Restaurant
-                        br
-                        | concept
-                    //.logo__subtext
+                        .logo__text-line Restaurant
+                        .logo__text-line concept
                 .bar
-                    .bar__auth
+                    #auth.bar__auth
                         button#signInBtn.btn.btn--secondary
                             | Sign in
-                        button.btn.btn--primary.btn--ml
+                        button#signUpBtn.btn.btn--primary.btn--ml
                             | Create account
-                    .bar__user-nav
-                        a#userNavBtn.user-nav__btn(href='#userId')
-                            .user-nav__btn-avatar
-                            .user-nav__btn-name
+                    #userNav.bar__usernav
+                        a#userNavBtn.bar__usernav-btn(href='#userId')
+                            .bar__usernav-btn-avatar
+                                span#userLetter.user-letter
+                                img#userPicture.user-photo
+                            #userName.bar__usernav-btn-name
                                 | test
                         .dropdown-menu
                             ul.dropdown-menu__list
@@ -53,6 +53,11 @@ mixin header
                                         i.fas.fa-heart
                                     a.dropdown-menu__link(href="#")
                                         | Likes
+                                li#signOutBtn.dropdown-menu__item
+                                    span.ico-wrapper
+                                        i.fas.fa-sign-out-alt
+                                    a.dropdown-menu__link(href="#")
+                                        | Sign out
                     .bar__helpers
                         button#searchBtn.btn-icon
                             i.fas.fa-search
