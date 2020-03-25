@@ -1,5 +1,5 @@
-import { auth } from './firebase';
-import { ui } from '../components/ui_class';
+import { auth } from '../../js/firebase.cofig';
+import { ui } from './ui_class';
 
 // ---- AUTH STATUS ----
 
@@ -16,6 +16,7 @@ auth
 document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('user')) {
 		ui.userSignInSetupUI();
+		console.log('from auth');
 	} else {
 		ui.userSignOutSetupUI();
 	}
@@ -23,7 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ---- SIGN UP WITH EMAIL & PASSWORD ----
 
-export const signUp = (userdata, elements) => {
+export const signUp = (userdata: object, elements: object) => {
 	const {
 		firstname,
 		lastname,
@@ -62,7 +63,7 @@ export const signUp = (userdata, elements) => {
 
 // ---- SIGN IN WITH EMAIL & PASSWORD ----
 
-export const signInWithEmailAndPass = (userdata, elements) => {
+export const signInWithEmailAndPass = (userdata: object, elements: object) => {
 	const {
 		email,
 		password,
@@ -93,7 +94,7 @@ export const signInWithEmailAndPass = (userdata, elements) => {
 
 // ---- SIGN IN WITH GOOGLE ACCOUNT ----
 
-export const signInWithGoogle = (provider, elements) => {
+export const signInWithGoogle = (provider, elements: object) => {
 	const {
 		overlay,
 		modal,

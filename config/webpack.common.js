@@ -48,6 +48,12 @@ module.exports = {
 				exclude: '/node_modules/',
 			},
 			{
+				// TypeScript
+				test: /\.ts$/,
+				use: ['babel-loader', 'eslint-loader'],
+				exclude: '/node_modules/',
+			},
+			{
 				// Pug
 				test: /\.pug$/,
 				loader: 'pug-loader',
@@ -115,21 +121,21 @@ module.exports = {
 			},
 		],
 	},
-
+	resolve: {
+		extensions: ['.ts', '.js'],
+	},
 	plugins: [
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].[contenthash].css`,
 		}),
 		new CopyWebpackPlugin([
 			{ from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
-			// { from: `${PATHS.src}/${PATHS.assets}fonts`, to: `${PATHS.assets}fonts` },
 			{ from: `${PATHS.src}/static`, to: '' },
 		]),
 
 		...PAGES.map(
 			(page) => new HtmlWebpackPlugin({
 				template: `${PAGES_DIR}/${page}`, // .pug
-				// filename: `./${page}` //.html
 				filename: `./${page.replace(/\.pug/, '.html')}`,
 			}),
 		),

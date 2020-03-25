@@ -9,8 +9,8 @@ mixin signin
                 h2.modal__header-title Login
                 .login-with
                     span.login-with__text Login with
-                    a#googleSignInBtn.login-with__link(href="#")
-                        i.fab.fa-google
+                    a.login-with__link(href="#")
+                        i(data-action='google').fab.fa-google
                     a#facebookBtn.login-with__link(href="#")
                         i.fab.fa-facebook
             .modal__body
@@ -34,10 +34,10 @@ mixin signin
                         button.btn.btn--hov.btn--large Continue
                 //- FORM
                 .modal__body-resetpass
-                    a#resetPassLink.link-default(href='#') Forgot password
+                    span(data-action='reset').link-default Forgot password
             .modal__footer
                 h3.modal__footer-text Don't have account?
-                    a#signUpLink.link-action(href='#') Sign up
+                    span(data-action='signup').link-action Sign up
 
         // RESET PASSWORD MODAL
 
@@ -61,4 +61,4 @@ mixin signin
                         button.btn.btn--hov.btn--large Continue
                 //- FORM
             .modal__footer.modal__footer--mod
-                button(data-to-signin='').btn.btn--hov.btn--large Sign in
+                button(data-action='signin').btn.btn--hov.btn--large Sign in

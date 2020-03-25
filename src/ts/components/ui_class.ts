@@ -1,4 +1,13 @@
 export const DOM_ELEMENTS = {
+	// Header
+
+	header: document.querySelector('.header'),
+	searchBar: document.querySelector('.search-bar'),
+	searchButton: document.getElementById('searchBtn'),
+	hero: document.querySelector('.hero'),
+	heroHeader: document.getElementById('heroHeader'),
+	heroBlock: document.getElementById('heroBlock'),
+
 	// User
 
 	userNav: document.getElementById('userNav'),
@@ -12,7 +21,6 @@ export const DOM_ELEMENTS = {
 	// Signup
 
 	signUpButton: document.getElementById('signUpBtn'),
-	signUpRedirectBtn: document.getElementById('signUpLink'),
 	overlaySignUp: document.getElementById('overlayForSignUp'),
 	modalSignUp: document.getElementById('modalSignUp'),
 	formSignUp: document.getElementById('signUpForm'),
@@ -20,11 +28,15 @@ export const DOM_ELEMENTS = {
 	// Signin
 
 	signInButton: document.getElementById('signInBtn'),
-	signInRedirectBtns: document.querySelectorAll('[data-to-signin]'),
+	signInRedirectBtns: document.querySelectorAll('[data-action="signin"]'),
 	overlaySignIn: document.getElementById('overlayForSignIn'),
 	modalSignIn: document.getElementById('modalSignIn'),
 	formSignIn: document.getElementById('signInForm'),
-	googleSignIn: document.getElementById('googleSignInBtn'),
+	modalResetPass: document.getElementById('modalResetPass'),
+
+	// Sign out
+
+	signOutBtn: document.getElementById('signOutBtn'),
 };
 
 
@@ -39,11 +51,15 @@ class UI {
 		});
 	}
 
-	hideModalOnClick(overlay, modal) {
-		overlay.addEventListener('click', (e) => {
-			if (e.target !== e.currentTarget) return;
-			overlay.classList.remove('visible');
-			modal.classList.remove('active');
+	hideModalOnClick(overlays, modals) {
+		overlays.forEach((overlay) => {
+			overlay.addEventListener('click', (e) => {
+				if (e.target !== e.currentTarget) return;
+				overlay.classList.remove('visible');
+				modals.forEach((modal) => {
+					modal.classList.remove('active', 'visible');
+				});
+			});
 		});
 	}
 
@@ -67,7 +83,7 @@ class UI {
 
 	// ---- LOADER LOGIC ----
 
-	loaderToggle(id) {
+	loaderToggle(id: string) {
 		const loader = document.getElementById(id);
 		loader.classList.toggle('active');
 	}
@@ -98,11 +114,11 @@ class UI {
 		this.removeUserInfo();
 	}
 
-	setUser(user) {
+	setUser(user: object) {
 		localStorage.setItem('user', JSON.stringify(user));
 	}
 
-	getUser() {
+	getUser(): object {
 		return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : [];
 	}
 
@@ -113,8 +129,8 @@ class UI {
 
 	displayUserInfo() {
 		const { displayName: name, photoURL: picture } = this.getUser();
-		const firstName = name.split(' ', 1).toString();
-		const getLetter = firstName.charAt(0).toUpperCase();
+		const firstName: string = name.split(' ', 1).toString();
+		const getLetter: string = firstName.charAt(0).toUpperCase();
 		DOM_ELEMENTS.userName.innerText = firstName;
 		if (picture === null) {
 			DOM_ELEMENTS.userletter.innerText = getLetter;

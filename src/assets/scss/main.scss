@@ -47,6 +47,7 @@ body {
   color: $action-color;
   margin-left: 5px;
   transition: color 0.1s linear;
+  cursor: pointer;
   &:hover {
     color: $neutral-secondary;
   }
@@ -57,6 +58,7 @@ body {
   font-size: 12px;
   font-weight: 500;
   color: $main-color;
+  cursor: pointer;
   &::after {
     content: '';
     position: absolute;
