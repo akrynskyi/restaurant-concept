@@ -1,62 +1,23 @@
-export const DOM_ELEMENTS = {
-	// Header
-
-	header: document.querySelector('.header'),
-	searchBar: document.querySelector('.search-bar'),
-	searchButton: document.getElementById('searchBtn'),
-	hero: document.querySelector('.hero'),
-	heroHeader: document.getElementById('heroHeader'),
-	heroBlock: document.getElementById('heroBlock'),
-
-	// User
-
-	userNav: document.getElementById('userNav'),
-	userNavButton: document.getElementById('userNavBtn'),
-	userNavDropdown: document.querySelector('.dropdown-menu'),
-	userName: document.getElementById('userName'),
-	userletter: document.getElementById('userLetter'),
-	userPicture: document.getElementById('userPicture'),
-	authBlock: document.getElementById('auth'),
-
-	// Signup
-
-	signUpButton: document.getElementById('signUpBtn'),
-	overlaySignUp: document.getElementById('overlayForSignUp'),
-	modalSignUp: document.getElementById('modalSignUp'),
-	formSignUp: document.getElementById('signUpForm'),
-
-	// Signin
-
-	signInButton: document.getElementById('signInBtn'),
-	signInRedirectBtns: document.querySelectorAll('[data-action="signin"]'),
-	overlaySignIn: document.getElementById('overlayForSignIn'),
-	modalSignIn: document.getElementById('modalSignIn'),
-	formSignIn: document.getElementById('signInForm'),
-	modalResetPass: document.getElementById('modalResetPass'),
-
-	// Sign out
-
-	signOutBtn: document.getElementById('signOutBtn'),
-};
-
+import { DOM_ELEMENTS } from './dom-collection';
+import { storage } from './class-storage';
 
 class UI {
 	// ---- MODAL LOGIC ----
 
 	// On click
-	showModalOnClick(element, overlay, modal) {
+	showModalOnClick(element: Element, overlay: Element, modal: Element) {
 		element.addEventListener('click', () => {
 			overlay.classList.add('visible');
 			modal.classList.add('active');
 		});
 	}
 
-	hideModalOnClick(overlays, modals) {
-		overlays.forEach((overlay) => {
+	hideModalOnClick(overlays: Array<Element>, modals: Array<Element>) {
+		overlays.forEach((overlay: Element) => {
 			overlay.addEventListener('click', (e) => {
 				if (e.target !== e.currentTarget) return;
 				overlay.classList.remove('visible');
-				modals.forEach((modal) => {
+				modals.forEach((modal: Element) => {
 					modal.classList.remove('active', 'visible');
 				});
 			});
@@ -64,18 +25,18 @@ class UI {
 	}
 
 	// Default
-	showModalDefault(overlay, modal) {
+	showModalDefault(overlay: Element, modal: Element) {
 		overlay.classList.add('visible');
 		modal.classList.add('active');
 	}
 
-	hideModalDefault(overlay, modal) {
+	hideModalDefault(overlay: Element, modal: Element) {
 		overlay.classList.remove('visible');
 		modal.classList.remove('active');
 	}
 
 	// Reset
-	resetModal(overlay, modal, form) {
+	resetModal(overlay: Element, modal: Element, form: Element) {
 		overlay.classList.remove('visible');
 		modal.classList.remove('active');
 		form.reset();
@@ -114,21 +75,13 @@ class UI {
 		this.removeUserInfo();
 	}
 
-	setUser(user: object) {
-		localStorage.setItem('user', JSON.stringify(user));
-	}
-
-	getUser(): object {
-		return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : [];
-	}
-
 	signOutUser() {
 		localStorage.clear();
 		this.userSignOutSetupUI();
 	}
 
 	displayUserInfo() {
-		const { displayName: name, photoURL: picture } = this.getUser();
+		const { displayName: name, photoURL: picture } = storage.getUser();
 		const firstName: string = name.split(' ', 1).toString();
 		const getLetter: string = firstName.charAt(0).toUpperCase();
 		DOM_ELEMENTS.userName.innerText = firstName;

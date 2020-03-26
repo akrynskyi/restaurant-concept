@@ -1,15 +1,56 @@
 .home {
-    background-color: #0b0b0b;
-}
+    background-color: $space-color;
 
-.content {
-    &-wrapper {
-        // background: linear-gradient(to right, #73C8A9, #373B44);
-        height: 100vh;
+}
+.section-aboutus {
+    padding: 150px 0px;
+    &__wrapper {
+        // height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    &__info {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        &-title {
+            color: $default-color;
+            font-size: 42px;
+            font-weight: 700;
+            line-height: 1;
+        }
+        &-text {
+            color: $default-color;
+            font-size: 21px;
+            grid-column: span 2;
+            text-align: justify;
+        }
+    }
+    &__panel {
+        margin-top: 75px;
+        height: 100%;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        grid-gap: 30px;
+        &-photo {
+            width: 100%;
+            height: 100%;
+            background-color: #ccc;
+            &.tall {
+                grid-row: span 2;
+            }
+        }
     }
 }
-
-.section-vh {
+.panel-pic {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.section-banner {
     height: 100vh;
     background-image: url('/assets/img/backgrounds/background-2.jpg');
     background-size: cover;

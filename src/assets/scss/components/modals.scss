@@ -13,7 +13,7 @@
   align-items: center;
   padding: 0px 40px;
   opacity: 0;
-  transition: all 0.3s ease;
+  transition: all .40s cubic-bezier(.8,.2,.24,.88);
   &--mod {
     height: auto;
   }

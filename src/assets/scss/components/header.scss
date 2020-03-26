@@ -96,6 +96,7 @@
     &-btn {
       display: flex;
       align-items: center;
+      cursor: pointer;
       &::after {
         content: "";
         right: 5px;

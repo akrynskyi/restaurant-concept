@@ -122,9 +122,7 @@ body {
   height: 40px;
   border-bottom: 2px solid $main-color;
   &::placeholder {
-    // text-transform: uppercase;
     color: $main-color;
-    // letter-spacing: $customLetterSpacing;
   }
   &:required {
     box-shadow: none;
@@ -148,9 +146,4 @@ body {
   margin-right: 25px;
   font-size: 20px;
   color: $neutral-regular;
-}
-
-.shadow {
-  box-shadow: 0px -5px 10px 0px rgba(0,0,0,0.7);
-  position: relative;
 }

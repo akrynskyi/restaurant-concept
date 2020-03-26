@@ -1,5 +1,7 @@
 import { auth } from '../../js/firebase.cofig';
-import { ui } from './ui_class';
+import { ui } from './class-ui';
+import { storage } from './class-storage';
+import { Credential, Modal } from './interfaces';
 
 // ---- AUTH STATUS ----
 
@@ -24,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // ---- SIGN UP WITH EMAIL & PASSWORD ----
 
-export const signUp = (userdata: object, elements: object) => {
+export const signUp = (userdata: Credential, elements: Modal) => {
 	const {
 		firstname,
 		lastname,
@@ -50,7 +52,7 @@ export const signUp = (userdata: object, elements: object) => {
 		})
 		.then(() => {
 			const user = auth.currentUser;
-			ui.setUser(user);
+			storage.setUser(user);
 			ui.userSignInSetupUI();
 		})
 		.then(() => {
@@ -63,7 +65,7 @@ export const signUp = (userdata: object, elements: object) => {
 
 // ---- SIGN IN WITH EMAIL & PASSWORD ----
 
-export const signInWithEmailAndPass = (userdata: object, elements: object) => {
+export const signInWithEmailAndPass = (userdata: Credential, elements: Modal) => {
 	const {
 		email,
 		password,
@@ -81,7 +83,7 @@ export const signInWithEmailAndPass = (userdata: object, elements: object) => {
 		})
 		.then((credential) => {
 			const { user } = credential;
-			ui.setUser(user);
+			storage.setUser(user);
 			ui.userSignInSetupUI();
 		})
 		.then(() => {
@@ -94,7 +96,7 @@ export const signInWithEmailAndPass = (userdata: object, elements: object) => {
 
 // ---- SIGN IN WITH GOOGLE ACCOUNT ----
 
-export const signInWithGoogle = (provider, elements: object) => {
+export const signInWithGoogle = (provider: any, elements: Modal) => {
 	const {
 		overlay,
 		modal,
@@ -109,7 +111,7 @@ export const signInWithGoogle = (provider, elements: object) => {
 		})
 		.then((credential) => {
 			const { user } = credential;
-			ui.setUser(user);
+			storage.setUser(user);
 			ui.userSignInSetupUI();
 		})
 		.then(() => {

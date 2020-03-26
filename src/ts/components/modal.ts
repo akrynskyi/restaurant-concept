@@ -1,4 +1,5 @@
-import { DOM_ELEMENTS, ui } from './ui_class';
+import { DOM_ELEMENTS } from './dom-collection';
+import { ui } from './class-ui';
 import { signUp, signInWithEmailAndPass, signInWithGoogle } from './authentication';
 import { googleAuthProvider } from '../../js/firebase.cofig';
 
@@ -32,7 +33,7 @@ export const modal = (): void => {
 			lastname,
 			email,
 			password,
-		} = e.currentTarget;
+		} = e.currentTarget as HTMLFormElement;
 
 		signUp(
 			{
@@ -62,7 +63,7 @@ export const modal = (): void => {
 		const {
 			email,
 			password,
-		} = e.currentTarget;
+		} = e.currentTarget as HTMLFormElement;
 
 		signInWithEmailAndPass(
 			{
