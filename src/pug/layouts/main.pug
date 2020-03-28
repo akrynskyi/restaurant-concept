@@ -1,9 +1,8 @@
-include ../includes/header
-include ../includes/footer
-include ../includes/signin_modal
-include ../includes/signup_modal
-include ../includes/search
-include ../includes/hero
+include ../../app/components/header/header
+include ../../app/components/footer/footer
+include ../../app/components/modal-auth/modal
+include ../../app/components/search/search
+include ../../app/components/hero/hero
 
 block variables
 
@@ -20,9 +19,7 @@ html(lang='en')
     body
         + header
 
-        + signin
-
-        + signup
+        + auth
 
         + search
 

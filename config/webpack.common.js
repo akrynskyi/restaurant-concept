@@ -10,10 +10,11 @@ const PATHS = {
 	assets: 'assets/',
 };
 
-const PAGES_DIR = `${PATHS.src}/pug/pages/`;
-const PAGES = fs
-	.readdirSync(PAGES_DIR)
-	.filter((fileName) => fileName.endsWith('.pug'));
+// const PAGES_DIR = `${PATHS.src}/pug/pages/`;
+
+// const PAGES = fs
+// 	.readdirSync(PAGES_DIR)
+// 	.filter((fileName) => fileName.endsWith('.pug'));
 
 module.exports = {
 	externals: {
@@ -132,12 +133,23 @@ module.exports = {
 			{ from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
 			{ from: `${PATHS.src}/static`, to: '' },
 		]),
+		new HtmlWebpackPlugin({
+			template: `${PATHS.src}/app/pages/home/index.pug`,
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'products.html',
+			template: `${PATHS.src}/app/pages/products/products.pug`,
+		}),
+		new HtmlWebpackPlugin({
+			filename: 'gallery.html',
+			template: `${PATHS.src}/app/pages/gallery/gallery.pug`,
+		}),
 
-		...PAGES.map(
-			(page) => new HtmlWebpackPlugin({
-				template: `${PAGES_DIR}/${page}`, // .pug
-				filename: `./${page.replace(/\.pug/, '.html')}`,
-			}),
-		),
+		// ...PAGES.map(
+		// 	(page) => new HtmlWebpackPlugin({
+		// 		template: `${PAGES_DIR.forEach(page => page)}/${page}`, // .pug
+		// 		filename: `./${page.replace(/\.pug/, '.html')}`,
+		// 	}),
+		// ),
 	],
 };

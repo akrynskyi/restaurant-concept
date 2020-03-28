@@ -1,0 +1,28 @@
+extends ../../../pug/layouts/main
+
+block variables
+    - var title = "Home"
+
+block content
+    // MAIN SECTION
+    main.home
+        section.section-aboutus
+            .section-inner
+                .section-aboutus__wrapper
+                    .section-aboutus__info
+                        h2.section-aboutus__info-title About us
+                        .section-aboutus__info-text
+                            p We offer raw, enzyme rich, cold pressed juices, nutrient dense organic salads, medicinal herbalism and much more. Our food is designed to provide optimal nourishment to build and repair your bones, skin, hair, and mind.
+                    .section-aboutus__panel
+                        .section-aboutus__panel-photo.tall
+                            img.panel-pic(src="/assets/img/aboutus/pic-promo-01.jpg", alt="promo")
+                        .section-aboutus__panel-photo
+                            img.panel-pic(src="/assets/img/aboutus/pic-promo-02.jpg", alt="promo")
+                        .section-aboutus__panel-text
+                            h4.block__title Our menu
+                            p We’ve worked hard to create an extensive menu of veggie treats, using independent suppliers and the best ethical produce available. Enjoy a relaxed breakfast with fair-trade tea or pop in for an afternoon pick me up with one of our lovely homemade cakes and locally roasted coffee.
+                        .section-aboutus__panel-text
+                            p It is our best wish for all of our customers to be able to enjoy a relaxing and restorative time in our restaurant and at the same time benefit from the healthy and delicious foods our chefs prepare which utilizes both love and dedication.
+                        .section-aboutus__panel-photo
+                            img.panel-pic(src="/assets/img/aboutus/pic-promo-03.jpg", alt="promo")
+        section.section-banner

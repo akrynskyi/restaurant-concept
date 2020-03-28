@@ -2,6 +2,10 @@ export interface Collection {
 	[key: string]: HTMLElement
 }
 
+export interface Form {
+	[key: string]: HTMLFormElement
+}
+
 export interface Credential {
 	firstname?: string
 	lastname?: string
@@ -10,7 +14,7 @@ export interface Credential {
 }
 
 export interface Modal {
-	overlay: HTMLElement
+	overlay?: HTMLElement
 	modal: HTMLElement
-	form: HTMLElement
+	form: HTMLFormElement
 }

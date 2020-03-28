@@ -1,4 +1,4 @@
-import { DOM_ELEMENTS } from './dom-collection';
+import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 
 export const hero = (): void => {
 	const chevronIcon = document.getElementById('chevronIcon');

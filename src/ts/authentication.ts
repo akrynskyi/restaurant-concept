@@ -1,4 +1,4 @@
-import { auth } from '../../js/firebase.cofig';
+import { auth } from '../js/firebase.cofig';
 import { ui } from './class-ui';
 import { storage } from './class-storage';
 import { Credential, Modal } from './interfaces';
@@ -18,7 +18,6 @@ auth
 document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('user')) {
 		ui.userSignInSetupUI();
-		console.log('from auth');
 	} else {
 		ui.userSignOutSetupUI();
 	}
@@ -103,8 +102,7 @@ export const signInWithGoogle = (provider: any, elements: Modal) => {
 		form,
 	} = elements;
 	ui.loaderToggle('loaderSignIn');
-	firebase
-		.auth()
+	auth
 		.signInWithPopup(provider)
 		.finally(() => {
 			ui.loaderToggle('loaderSignIn');
@@ -118,7 +116,29 @@ export const signInWithGoogle = (provider: any, elements: Modal) => {
 			ui.resetModal(overlay, modal, form);
 		})
 		.catch((error) => {
-			console.log(error);
+			console.error(error);
+		});
+};
+
+// ---- SEND A PASSWORD RESET EMAIL ----
+
+export const passwordReset = (email: string, elements: Modal) => {
+	const {
+		overlay,
+		modal,
+		form,
+	} = elements;
+	ui.loaderToggle('loaderResetPass');
+	auth
+		.sendPasswordResetEmail(email)
+		.finally(() => {
+			ui.loaderToggle('loaderResetPass');
+		})
+		.then(() => {
+			ui.resetModal(overlay, modal, form);
+		})
+		.catch((error) => {
+			console.error(error);
 		});
 };
 

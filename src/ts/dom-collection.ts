@@ -25,7 +25,6 @@ export const DOM_ELEMENTS: Collection = {
 	signUpButton: document.getElementById('signUpBtn'),
 	overlaySignUp: document.getElementById('overlayForSignUp'),
 	modalSignUp: document.getElementById('modalSignUp'),
-	formSignUp: document.getElementById('signUpForm'),
 
 	// Signin
 
@@ -33,10 +32,15 @@ export const DOM_ELEMENTS: Collection = {
 	signInRedirectBtns: document.querySelectorAll('[data-action="signin"]'),
 	overlaySignIn: document.getElementById('overlayForSignIn'),
 	modalSignIn: document.getElementById('modalSignIn'),
-	formSignIn: document.getElementById('signInForm'),
 	modalResetPass: document.getElementById('modalResetPass'),
 
 	// Sign out
 
 	signOutBtn: document.getElementById('signOutBtn'),
+};
+
+export const DOM_FORMS = {
+	formSignUp: document.getElementById('signUpForm') as HTMLFormElement,
+	formSignIn: document.getElementById('signInForm') as HTMLFormElement,
+	formResetPass: document.getElementById('resetPassForm') as HTMLFormElement,
 };

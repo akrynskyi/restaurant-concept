@@ -1,6 +1,6 @@
-import { DOM_ELEMENTS } from './dom-collection';
-import { ui } from './class-ui';
-import { signOut } from './authentication';
+import { DOM_ELEMENTS } from '../../../ts/dom-collection';
+import { ui } from '../../../ts/class-ui';
+import { signOut } from '../../../ts/authentication';
 
 export const header = (): void => {
 	DOM_ELEMENTS.userNavButton.addEventListener('click', () => {

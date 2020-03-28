@@ -7,19 +7,19 @@
 
 // ==== COMPONENTS ==== //
 
-@import "./components/header.scss";
+@import "../../app/components/header/header.scss";
+@import "../../app/components/footer/footer.scss";
+@import "../../app/components/modal-auth/modal.scss";
+@import "../../app/components/hero/hero.scss";
+@import "../../app/components/search/search.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
-@import "./components/modals.scss";
-@import "./components/search.scss";
 @import "./components/loader.scss";
-@import "./components/login.scss";
-@import "./components/footer.scss";
-@import "./components/hero.scss";
+
 
 // ==== PAGES ==== //
 
-@import "./home.scss";
+@import "../../app/pages/home/home.scss";
 
 // ==== GLOBAL STYLES ==== //
 

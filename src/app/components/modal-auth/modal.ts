@@ -1,7 +1,9 @@
-import { DOM_ELEMENTS } from './dom-collection';
-import { ui } from './class-ui';
-import { signUp, signInWithEmailAndPass, signInWithGoogle } from './authentication';
-import { googleAuthProvider } from '../../js/firebase.cofig';
+import { DOM_ELEMENTS, DOM_FORMS } from '../../../ts/dom-collection';
+import { ui } from '../../../ts/class-ui';
+import {
+	signUp, signInWithEmailAndPass, signInWithGoogle, passwordReset,
+} from '../../../ts/authentication';
+import { googleAuthProvider } from '../../../js/firebase.cofig';
 
 export const modal = (): void => {
 	// ---- Default ----
@@ -26,7 +28,7 @@ export const modal = (): void => {
 		DOM_ELEMENTS.modalSignUp,
 	);
 
-	DOM_ELEMENTS.formSignUp.addEventListener('submit', (e) => {
+	DOM_FORMS.formSignUp.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const {
 			firstname,
@@ -45,7 +47,7 @@ export const modal = (): void => {
 			{
 				overlay: DOM_ELEMENTS.overlaySignUp,
 				modal: DOM_ELEMENTS.modalSignUp,
-				form: DOM_ELEMENTS.formSignUp,
+				form: DOM_FORMS.formSignUp,
 			},
 		);
 	});
@@ -58,7 +60,7 @@ export const modal = (): void => {
 		DOM_ELEMENTS.modalSignIn,
 	);
 
-	DOM_ELEMENTS.formSignIn.addEventListener('submit', (e) => {
+	DOM_FORMS.formSignIn.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const {
 			email,
@@ -73,7 +75,7 @@ export const modal = (): void => {
 			{
 				overlay: DOM_ELEMENTS.overlaySignIn,
 				modal: DOM_ELEMENTS.modalSignIn,
-				form: DOM_ELEMENTS.formSignIn,
+				form: DOM_FORMS.formSignIn,
 			},
 		);
 	});
@@ -87,7 +89,7 @@ export const modal = (): void => {
 					{
 						overlay: DOM_ELEMENTS.overlaySignIn,
 						modal: DOM_ELEMENTS.modalSignIn,
-						form: DOM_ELEMENTS.formSignIn,
+						form: DOM_FORMS.formSignIn,
 					},
 				);
 				break;
@@ -107,6 +109,21 @@ export const modal = (): void => {
 			default:
 				break;
 		}
+	});
+
+	// ---- RESET PASSWORD ----
+
+	DOM_FORMS.formResetPass.addEventListener('submit', (e) => {
+		e.preventDefault();
+		const { email } = e.currentTarget as HTMLFormElement;
+
+		passwordReset(
+			email.value,
+			{
+				modal: DOM_ELEMENTS.modalResetPass,
+				form: DOM_FORMS.formResetPass,
+			},
+		);
 	});
 
 	// ---- REDIRECT ----

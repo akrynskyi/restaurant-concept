@@ -36,10 +36,15 @@ class UI {
 	}
 
 	// Reset
-	resetModal(overlay: Element, modal: Element, form: Element) {
-		overlay.classList.remove('visible');
-		modal.classList.remove('active');
-		form.reset();
+	resetModal(overlay: Element, modal: Element, form: HTMLFormElement) {
+		if (overlay === undefined) {
+			modal.classList.remove('active', 'visible');
+			form.reset();
+		} else {
+			overlay.classList.remove('visible');
+			modal.classList.remove('active', 'visible');
+			form.reset();
+		}
 	}
 
 	// ---- LOADER LOGIC ----
