@@ -1,0 +1,27 @@
+.gallery {
+    background-color: $space-color;
+
+}
+
+.section-gallery {
+    &__container {
+        margin-top: 40px;
+        padding-bottom: 120px;
+        column-count: 3;
+        column-gap: 20px;
+        &-post {
+            margin-bottom: 20px;
+            background-color: $neutral-placeholder;
+            width: 100%;
+        }
+    }
+
+}
+
+.categories-navigation {
+    padding-top: 80px;
+    .nav {
+        display: flex;
+        justify-content: space-around;
+    }
+}

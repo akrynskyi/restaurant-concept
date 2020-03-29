@@ -1,9 +1,12 @@
 import { DOM_ELEMENTS, DOM_FORMS } from '../../../ts/dom-collection';
+import { googleAuthProvider } from '../../../js/firebase.cofig';
 import { ui } from '../../../ts/class-ui';
 import {
-	signUp, signInWithEmailAndPass, signInWithGoogle, passwordReset,
+	signUp,
+	signInWithEmailAndPass,
+	signInWithGoogle,
+	passwordReset,
 } from '../../../ts/authentication';
-import { googleAuthProvider } from '../../../js/firebase.cofig';
 
 export const modal = (): void => {
 	// ---- Default ----

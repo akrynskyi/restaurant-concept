@@ -23,6 +23,19 @@
     "linebreak-style": 0,
     "no-console": "off",
     "no-undef": 0,
+    "consistent-return": [
+      "error",
+      {
+        "treatUndefinedAsUnspecified": true
+      }
+    ],
+    "lines-between-class-members": [
+      "error",
+      "always",
+      {
+        "exceptAfterSingleLine": true
+      }
+    ],
     "@typescript-eslint/indent": [
       "error",
       "tab"
@@ -32,7 +45,7 @@
     "max-len": [
       2,
       {
-        "code": 100,
+        "code": 150,
         "ignoreComments": true,
         "ignoreUrls": true
       }

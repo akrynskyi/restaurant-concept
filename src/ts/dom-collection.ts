@@ -37,6 +37,10 @@ export const DOM_ELEMENTS: Collection = {
 	// Sign out
 
 	signOutBtn: document.getElementById('signOutBtn'),
+
+	// Gallery
+
+	galleryContainer: document.getElementById('gallery-container'),
 };
 
 export const DOM_FORMS = {
