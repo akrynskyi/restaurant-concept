@@ -41,6 +41,13 @@ export const DOM_ELEMENTS: Collection = {
 	// Gallery
 
 	galleryContainer: document.getElementById('gallery-container'),
+	categoriesNav: document.getElementById('categoriesNav'),
+
+	// Notification
+
+	notification: document.getElementById('notif'),
+	notifMessage: document.getElementById('notifMessage'),
+	closeNotifBtn: document.getElementById('closeNotif'),
 };
 
 export const DOM_FORMS = {

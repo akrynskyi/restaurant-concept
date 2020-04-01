@@ -9,12 +9,30 @@ block content
         section.section-gallery
             .section-inner
                 .section-gallery__wrapper
+                    h1.section-gallery__title Discover more food
                     .categories-navigation
-                        ul.nav
+                        ul#categoriesNav.nav
                             li
-                                span(data-key="food") Food
+                                span.link-default.link-default--mod(data-key="pasta") Pasta
                             li
-                                span(data-key="drink") Drink
-                    //- close .categories-navigation
+                                span.link-default.link-default--mod(data-key="pizza") Pizza
+                            li
+                                span.link-default.link-default--mod(data-key="salad") Salad
+                            li
+                                span.link-default.link-default--mod(data-key="soup") Soup
+                            li
+                                span.link-default.link-default--mod(data-key="sandwich") Sandwich
+                            li
+                                span.link-default.link-default--mod(data-key="juice") Juice
+                            li
+                                span.link-default.link-default--mod(data-key="tea") Tea
+                            li
+                                span.link-default.link-default--mod(data-key="coffe") Coffe
+                    // close .categories-navigation
                     #gallery-container.section-gallery__container
+                    // close .section-gallery__container
+                    #loaderGallery.loader
+                        .ball-clip-rotate.mod
+                            div
+                    // close .loader
 

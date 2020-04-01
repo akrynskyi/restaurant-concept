@@ -1,3 +1,5 @@
+import { Post } from './interfaces';
+
 export class Photos {
 	apiUrl: string;
 	accessKey: string;
@@ -11,8 +13,8 @@ export class Photos {
 			apiUrl: string,
 			accessKey: string,
 			keyWord: string,
-			pageNum: number,
-			perPage: number,
+			pageNum?: number,
+			perPage?: number,
 		},
 	) {
 		this.apiUrl = options.apiUrl;
@@ -27,7 +29,8 @@ export class Photos {
 		try {
 			const response = await fetch(this.url);
 			const data = await response.json();
-			return data;
+			const items = data.results.map((item: Post) => ({ description: item.alt_description, photos: item.urls }));
+			return items;
 		} catch (error) {
 			console.error(error);
 			return error;

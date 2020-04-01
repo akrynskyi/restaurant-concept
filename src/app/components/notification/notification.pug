@@ -1,0 +1,15 @@
+mixin notification
+    .cover
+        #notif.notification
+            .notification__content
+                .notification__content-massage
+                    span#notifMessage
+                .notification__content-button
+                    button#closeNotif.btn-default
+                        svg.icon.icon--col(viewbox='0 0 16 14')
+                            path(
+                                d='M15 0L1 14m14 0L1 0', stroke='currentColor', fill='none', fill-rule='evenodd'
+                            )
+            // close .notification__content
+        // close .notification
+    // close .cover

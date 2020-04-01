@@ -12,6 +12,7 @@
 @import "../../app/components/modal-auth/modal.scss";
 @import "../../app/components/hero/hero.scss";
 @import "../../app/components/search/search.scss";
+@import "../../app/components/notification/notification.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
 @import "./components/loader.scss";
@@ -76,6 +77,18 @@ body {
     transform: scaleX(1);
     transform-origin: left;
   }
+  &--mod {
+    color: $neutral-regular;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: color .2s ease-in;
+    &:hover {
+      color: $border-base;
+    }
+    &::after {
+      background-color: $border-base;
+    }
+  }
 }
 
 .c-default {
@@ -137,6 +150,15 @@ body {
 }
 
 // ==== ICONS ==== //
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  &--col {
+    color: #fff;
+  }
+}
 
 .ico-wrapper {
   width: 30px;
