@@ -1,5 +1,5 @@
 import { DOM_ELEMENTS } from './dom-collection';
-import { storage } from './class-storage';
+import { Storage } from './class-storage';
 
 class UI {
 	// ---- MODAL LOGIC ----
@@ -81,19 +81,19 @@ class UI {
 	}
 
 	signOutUser() {
-		localStorage.clear();
+		Storage.clearStorage();
 		this.userSignOutSetupUI();
 	}
 
 	displayUserInfo() {
-		const { displayName: name, photoURL: picture } = storage.getUser();
+		const { displayName: name, photoURL: picture } = Storage.getUser();
 		const firstName: string = name.split(' ', 1).toString();
 		const getLetter: string = firstName.charAt(0).toUpperCase();
 		DOM_ELEMENTS.userName.innerText = firstName;
 		if (picture === null) {
 			DOM_ELEMENTS.userletter.innerText = getLetter;
 		} else {
-			DOM_ELEMENTS.userPicture.src = picture;
+			(DOM_ELEMENTS.userPicture as HTMLImageElement).src = picture;
 		}
 	}
 
@@ -101,6 +101,16 @@ class UI {
 		DOM_ELEMENTS.userName.innerText = '';
 		DOM_ELEMENTS.userletter.innerText = '';
 		DOM_ELEMENTS.userPicture.removeAttribute('src');
+	}
+
+	// ---- GALLERY ----
+	// Categories navigation
+
+	optionActive(event: Event) {
+		(DOM_ELEMENTS.categoriesNavOptions as NodeListOf<Element>).forEach((option) => {
+			option.classList.remove('active');
+		});
+		(event.target as HTMLElement).classList.add('active');
 	}
 }
 

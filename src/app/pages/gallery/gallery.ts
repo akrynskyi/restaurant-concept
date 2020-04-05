@@ -1,21 +1,21 @@
+import { fromEvent, Observable } from 'rxjs';
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { ui } from '../../../ts/class-ui';
-import { API_URL, API_KEY } from '../../../js/unsplash_api';
+import { API_KEY, API_URL } from '../../../js/unsplash_api';
 import { Photos } from '../../../ts/photos-class';
-import { Post } from '../../../ts/interfaces';
+import { Option, Post } from '../../../ts/interfaces';
+
 
 export const gallery = () => {
-	// ---- SETUP GALLERY ----
+	const photos = new Photos({
+		apiUrl: API_URL,
+		accessKey: API_KEY,
+		keyWord: 'food',
+		pageNum: 1,
+		perPage: 20,
+	});
 
-	const setupGallery = (word: string) => {
-		const photos = new Photos({
-			apiUrl: API_URL,
-			accessKey: API_KEY,
-			keyWord: word,
-			pageNum: 5,
-			perPage: 20,
-		});
-
+	const setupGallery = () => {
 		ui.loaderToggle('loaderGallery');
 
 		photos.request()
@@ -23,28 +23,71 @@ export const gallery = () => {
 				ui.loaderToggle('loaderGallery');
 			})
 			.then((items) => {
-				let template = '';
-				items.forEach((item: Post) => {
-					const { description, photos: imgs } = item;
-					template += `
-					<div class="section-gallery__container-post">
-						<img src="${imgs.regular}" alt="${description}" />
+				DOM_ELEMENTS.galleryContainer.innerHTML = items.map((item: Post) => {
+					const { description, color, photos: imgs } = item;
+					return `
+					<div class="post" style="background-color: ${color}">
+						<img class="post__image" src="${imgs.regular}" alt="${description === null ? 'Photo' : description}" />
+						<div class="post__description">
+							<span>${description === null ? 'No description' : description}</span>
+						</div>
 					</div>
 					<!-- close .post -->
 					`;
-				});
-				DOM_ELEMENTS.galleryContainer.innerHTML = template;
+				}).join('');
 			})
 			.catch((error) => {
 				console.error(error);
 			});
 	};
-	setupGallery('');
+	setupGallery();
 
-	// ---- CATEGORIES NAVIGATION ----
+	const categoriesObservable$ = fromEvent(DOM_ELEMENTS.categoriesNav, 'click');
+	const selectObservable$ = fromEvent(DOM_ELEMENTS.photosPerpageSelect, 'change');
 
-	DOM_ELEMENTS.categoriesNav.addEventListener('click', (e) => {
-		const { key } = e.target.dataset;
-		setupGallery(key);
+	categoriesObservable$.subscribe((e) => {
+		const { key } = (e.target as HTMLElement).dataset;
+		ui.optionActive(e);
+		photos.updateWord(key);
+		setupGallery();
+	});
+
+	selectObservable$.subscribe((e) => {
+		const { value } = e.target as Option;
+		photos.updateVal(value);
+		setupGallery();
+	});
+
+	const paginationObservable$ = Observable.create((observer) => {
+		let currentPage = 1;
+		const update = (page: number) => {
+			DOM_ELEMENTS.currentPage.innerHTML = page;
+		};
+
+		DOM_ELEMENTS.galleryPagination.addEventListener('click', (e) => {
+			const { page } = (e.target as HTMLElement).dataset;
+			if (page === 'prev' && currentPage > 1) {
+				setTimeout(() => {
+					currentPage -= 1;
+					update(currentPage);
+					observer.next(currentPage);
+				}, 1000);
+			} else if (page === 'next' && currentPage < 10) {
+				setTimeout(() => {
+					currentPage += 1;
+					update(currentPage);
+					observer.next(currentPage);
+				}, 1000);
+			} else {
+				currentPage = 1;
+				update(currentPage);
+				observer.next(currentPage);
+			}
+		});
+	});
+
+	paginationObservable$.subscribe((val: number) => {
+		photos.updatePage(val);
+		setupGallery();
 	});
 };

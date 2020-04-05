@@ -1,6 +1,6 @@
 import { auth } from '../js/firebase.cofig';
 import { ui } from './class-ui';
-import { storage } from './class-storage';
+import { Storage } from './class-storage';
 import { Credential, Modal } from './interfaces';
 import { notif } from '../app/components/notification/notification-subject';
 
@@ -52,7 +52,7 @@ export const signUp = (userdata: Credential, elements: Modal) => {
 		})
 		.then(() => {
 			const user = auth.currentUser;
-			storage.setUser(user);
+			Storage.setUser(user);
 			ui.userSignInSetupUI();
 			notif.getMessage({ message: `Welcome! ${user.displayName}` });
 		})
@@ -84,7 +84,7 @@ export const signInWithEmailAndPass = (userdata: Credential, elements: Modal) =>
 		})
 		.then((credential) => {
 			const { user } = credential;
-			storage.setUser(user);
+			Storage.setUser(user);
 			ui.userSignInSetupUI();
 			notif.getMessage({ message: `Welcome! ${user.displayName}` });
 		})
@@ -112,7 +112,7 @@ export const signInWithGoogle = (provider: any, elements: Modal) => {
 		})
 		.then((credential) => {
 			const { user } = credential;
-			storage.setUser(user);
+			Storage.setUser(user);
 			ui.userSignInSetupUI();
 			notif.getMessage({ message: `Welcome! ${user.displayName}` });
 		})

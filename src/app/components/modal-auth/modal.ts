@@ -84,7 +84,7 @@ export const modal = (): void => {
 	});
 
 	DOM_ELEMENTS.modalSignIn.addEventListener('click', (e) => {
-		const { action } = e.target.dataset;
+		const { action } = (e.target as HTMLElement).dataset;
 		switch (action) {
 			case 'google':
 				signInWithGoogle(

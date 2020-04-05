@@ -13,14 +13,17 @@
 @import "../../app/components/hero/hero.scss";
 @import "../../app/components/search/search.scss";
 @import "../../app/components/notification/notification.scss";
+@import "../../app/components/sidebar/sidebar.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
 @import "./components/loader.scss";
+@import "./components/select.scss";
 
 
 // ==== PAGES ==== //
 
 @import "../../app/pages/home/home.scss";
+@import "../../app/pages/products/products.scss";
 @import "../../app/pages/gallery/gallery.scss";
 
 // ==== GLOBAL STYLES ==== //
@@ -87,6 +90,12 @@ body {
     }
     &::after {
       background-color: $border-base;
+    }
+    &.active{
+      color: $border-base;
+      &::after {
+        transform: scaleX(1);
+      }
     }
   }
 }
@@ -169,4 +178,12 @@ body {
   margin-right: 25px;
   font-size: 20px;
   color: $neutral-regular;
+}
+
+.ico-pl {
+  padding-left: 10px;
+}
+
+.ico-pr {
+  padding-right: 10px;
 }

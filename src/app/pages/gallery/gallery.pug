@@ -9,7 +9,20 @@ block content
         section.section-gallery
             .section-inner
                 .section-gallery__wrapper
-                    h1.section-gallery__title Discover more food
+                    .section-gallery__header
+                        h1.section-gallery__header-title Discover more food
+                        //- .select-wrapper
+                        .select-container
+                            select#perpage.select(name='perpage-select')
+                                option(
+                                    value='20', 
+                                    selected='true', 
+                                    disabled='true'
+                                ) Photos per page
+                                option(value='10') 10
+                                option(value='20') 20
+                                option(value='30') 30
+                    // close .section-gallery__header
                     .categories-navigation
                         ul#categoriesNav.nav
                             li
@@ -27,7 +40,7 @@ block content
                             li
                                 span.link-default.link-default--mod(data-key="tea") Tea
                             li
-                                span.link-default.link-default--mod(data-key="coffe") Coffe
+                                span.link-default.link-default--mod(data-key="coffee") Coffee
                     // close .categories-navigation
                     #gallery-container.section-gallery__container
                     // close .section-gallery__container
@@ -35,4 +48,13 @@ block content
                         .ball-clip-rotate.mod
                             div
                     // close .loader
-
+                    #galleryPagination.pagination
+                        .pagination__wrapper
+                            button.btn.btn--secondary
+                                i.ico-pr.fas.fa-chevron-left
+                                span(data-page="prev") Prev
+                            span#currentPage.pagination__currentpage 1
+                            button.btn.btn--secondary
+                                span(data-page="next") Next
+                                i.ico-pl.fas.fa-chevron-right
+                    // close .pagination

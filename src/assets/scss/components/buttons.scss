@@ -86,7 +86,14 @@
 }
 
 .btn-default {
+  padding: 0;
   background-color: transparent;
   cursor: pointer;
-  width: 100%;
+  &--mod {
+    width: 100%;
+  }
 }
+
+//.btn-align {
+//  margin-right: 40px;
+//}

@@ -1,12 +1,12 @@
 extends ../../../pug/layouts/main
 
-
 block variables
     - var title = "Products"
 
 block content
     // MAIN SECTION
     main.products
-        section.products-content
+        section.section-products
+            include ../../components/sidebar/sidebar
             .section-inner
-                #content.items-wrapper
+                .section-products__wrapper

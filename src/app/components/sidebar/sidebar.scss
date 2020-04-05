@@ -1,0 +1,118 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    min-width: 350px;
+    width: 30vh;
+    height: 100%;
+    background: $neutral-primary;
+    transition: transform .2s ease-in-out;
+    transform: translateX(-90%);
+    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.4);
+    z-index: 5;
+    &__header {
+        padding: 25px 30px;
+    }
+    &__navigation {
+        flex-grow: 1;
+        display: flex;
+    }
+    &__navigationlist {
+        width: 100%;
+        padding: 0px 40px;
+        &-trigger {
+            position: relative;
+            color: $neutral-secondary;
+            cursor: pointer;
+        }
+        &-item {
+            border-bottom: 1px solid $neutral-regular;
+            padding: 20px 0px;
+            // &:last-child {
+            //     border-bottom: none;
+            // }
+        }
+    }
+    &__toggler {
+        display: flex;
+        align-items: center;
+        padding: 0px 5px;
+        border-left: 1px solid $neutral-regular;
+        cursor: pointer;
+        & > button {
+            transform: rotate(90deg);
+        }
+    }
+    &__footer {
+        padding: 20px 40px;
+        // border-top: 1px solid $border-base;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+.sidebar.active {
+    transform: translateX(0);
+}
+
+.collapsible-list {
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    &__item {
+        padding: 15px;
+        transition: all 0.1s linear;
+        color: $neutral-regular;
+        font-size: 14px;
+        font-weight: 300;
+        cursor: pointer;
+        &:hover > span {
+            color: $main-color;
+        }
+        &:last-child {
+            padding-bottom: 0px;
+        }
+    }
+}
+.collapsible-list.active {
+    max-height: 200px;
+}
+
+.collapsible-plus {
+    position: absolute;
+    right: 0;
+    top: calc(50% - (11px / 2));
+    width: 11px;
+    height: 11px;
+    &:before,
+    &:after {
+        position: absolute;
+        content: "";
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-90deg);
+        background-color: $neutral-secondary;
+        transition: transform 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    }
+    &:before {
+        width: 11px;
+        height: 1px;
+        opacity: 1;
+    }
+    &:after {
+        width: 1px;
+        height: 11px;
+    }
+}
+
+.collapsible-plus.active {
+    &:before,
+    &:after {
+        transform: translate(-50%, -50%) rotate(90deg);
+    }
+    &:before {
+        opacity: 0;
+    }
+}

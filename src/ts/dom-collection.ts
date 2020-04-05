@@ -1,6 +1,4 @@
-import { Collection } from './interfaces';
-
-export const DOM_ELEMENTS: Collection = {
+export const DOM_ELEMENTS = {
 	// Header
 
 	header: document.querySelector('.header'),
@@ -42,12 +40,20 @@ export const DOM_ELEMENTS: Collection = {
 
 	galleryContainer: document.getElementById('gallery-container'),
 	categoriesNav: document.getElementById('categoriesNav'),
+	categoriesNavOptions: document.querySelectorAll('[data-key]'),
+	photosPerpageSelect: document.getElementById('perpage'),
+	galleryPagination: document.getElementById('galleryPagination'),
+	currentPage: document.getElementById('currentPage'),
 
 	// Notification
 
 	notification: document.getElementById('notif'),
 	notifMessage: document.getElementById('notifMessage'),
 	closeNotifBtn: document.getElementById('closeNotif'),
+
+	// Sidebar
+
+	sidebar: document.getElementById('sidebar'),
 };
 
 export const DOM_FORMS = {

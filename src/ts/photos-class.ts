@@ -25,12 +25,26 @@ export class Photos {
 		this.url = `${this.apiUrl}/search/photos/${this.accessKey}&page=${this.pageNum}&per_page=${this.perPage}&query=${this.keyWord}`;
 	}
 
+	updateWord(word: string) {
+		this.keyWord = word;
+		this.url = `${this.apiUrl}/search/photos/${this.accessKey}&page=${this.pageNum}&per_page=${this.perPage}&query=${this.keyWord}`;
+	}
+
+	updateVal(num: number) {
+		this.perPage = num;
+		this.url = `${this.apiUrl}/search/photos/${this.accessKey}&page=${this.pageNum}&per_page=${this.perPage}&query=${this.keyWord}`;
+	}
+
+	updatePage(num: number) {
+		this.pageNum = num;
+		this.url = `${this.apiUrl}/search/photos/${this.accessKey}&page=${this.pageNum}&per_page=${this.perPage}&query=${this.keyWord}`;
+	}
+
 	async request() {
 		try {
 			const response = await fetch(this.url);
 			const data = await response.json();
-			const items = data.results.map((item: Post) => ({ description: item.alt_description, photos: item.urls }));
-			return items;
+			return data.results.map((item: Post) => ({ description: item.alt_description, color: item.color, photos: item.urls }));
 		} catch (error) {
 			console.error(error);
 			return error;

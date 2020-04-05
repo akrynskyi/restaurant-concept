@@ -1,6 +1,6 @@
-export interface Collection {
-	[key: string]: HTMLElement
-}
+// export interface Collection {
+// 	[key: string]: HTMLElement
+// }
 
 export interface Credential {
 	firstname?: string
@@ -26,8 +26,14 @@ export interface Image {
 export interface Post {
 	alt_description?: string
 	urls?: Object
+	color: string
 	description: string
 	photos: Image
+}
+
+export interface Option {
+	value?: number
+	key?: string
 }
 
 export interface Subject {

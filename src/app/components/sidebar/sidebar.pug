@@ -1,0 +1,52 @@
+//- .overlay
+#sidebar.sidebar
+    .sidebar__header
+        //- button.btn-default
+        //-     svg.icon(viewbox='0 0 16 14')
+        //-         path(d='M15 0L1 14m14 0L1 0', stroke='currentColor', fill='none', fill-rule='evenodd')
+    // close .sidebar__header
+    nav.sidebar__navigation
+        ul.sidebar__navigationlist
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Food
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
+                        span Pasta
+                    li.collapsible-list__item
+                        span Salad
+                    li.collapsible-list__item
+                        span Sandwich
+                    li.collapsible-list__item
+                        span Soup
+            // close .sidebar__navigationlist-item
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Drink
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
+                        span Tea
+                    li.collapsible-list__item
+                        span Coffee
+                    li.collapsible-list__item
+                        span Cacao
+                    li.collapsible-list__item
+                        span Juice
+            // close .sidebar__navigationlist-item
+        .sidebar__toggler(data-trigger='sidebar')
+            button.btn-icon
+                i.fas.fa-bars(data-trigger='sidebar')
+    // close .sidebar__navigation
+    .sidebar__footer
+        //- ul
+        //-     li
+        //-         a(href='#')
+        //-             i.fab.fa-instagram
+        //-     li
+        //-         a(href='#')
+        //-             i.fab.fa-twitter
+        //-     li
+        //-         a(href='#')
+        //-             i.fab.fa-facebook
+    // close .sidebar__footer
+// close .sidebar
