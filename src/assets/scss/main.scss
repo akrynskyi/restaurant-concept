@@ -14,6 +14,7 @@
 @import "../../app/components/search/search.scss";
 @import "../../app/components/notification/notification.scss";
 @import "../../app/components/sidebar/sidebar.scss";
+@import "../../app/components/product/product.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
 @import "./components/loader.scss";
@@ -38,12 +39,18 @@ body {
   height: 100%;
   max-width: 1280px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 25px;
 }
 
 .items-wrapper {
   display: flex;
   align-items: center;
+}
+
+.page-title {
+  color: $default-color;
+  font-size: 42px;
+  font-weight: 700;
 }
 
 // ==== LINKS ==== //

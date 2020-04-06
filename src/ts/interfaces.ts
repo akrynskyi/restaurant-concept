@@ -46,3 +46,14 @@ export interface Observer {
 	behavior: any
 	update(p: any): void
 }
+
+export interface PublishSubscribe {
+	subscribe(eventName: string, handler: Function): void
+	unsubscribe(eventName: string, handler?: Function): void
+	publish(eventName: string, data: any): void
+}
+
+export interface CustomEvent {
+	eventName: string
+	handler: Function
+}

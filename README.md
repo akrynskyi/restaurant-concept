@@ -2,4 +2,4 @@
 
 ---
 
-> Future vision of how must look like the restaurant application...
+> restaurant-concept

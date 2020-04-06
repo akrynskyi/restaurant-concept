@@ -10,12 +10,11 @@ block content
             .section-inner
                 .section-gallery__wrapper
                     .section-gallery__header
-                        h1.section-gallery__header-title Discover more food
+                        h1.page-title Discover more food
                         //- .select-wrapper
                         .select-container
                             select#perpage.select(name='perpage-select')
-                                option(
-                                    value='20', 
+                                option( 
                                     selected='true', 
                                     disabled='true'
                                 ) Photos per page
@@ -42,7 +41,7 @@ block content
                             li
                                 span.link-default.link-default--mod(data-key="coffee") Coffee
                     // close .categories-navigation
-                    #gallery-container.section-gallery__container
+                    #galleryContainer.section-gallery__container
                     // close .section-gallery__container
                     #loaderGallery.loader
                         .ball-clip-rotate.mod

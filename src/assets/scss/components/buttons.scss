@@ -92,6 +92,10 @@
   &--mod {
     width: 100%;
   }
+  &--col {
+    color: $default-color;
+    font-size: 20px;
+  }
 }
 
 //.btn-align {

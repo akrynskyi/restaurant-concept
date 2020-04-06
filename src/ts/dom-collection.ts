@@ -36,9 +36,13 @@ export const DOM_ELEMENTS = {
 
 	signOutBtn: document.getElementById('signOutBtn'),
 
+	// Products
+
+	productsContainer: document.getElementById('productsContainer'),
+
 	// Gallery
 
-	galleryContainer: document.getElementById('gallery-container'),
+	galleryContainer: document.getElementById('galleryContainer'),
 	categoriesNav: document.getElementById('categoriesNav'),
 	categoriesNavOptions: document.querySelectorAll('[data-key]'),
 	photosPerpageSelect: document.getElementById('perpage'),
