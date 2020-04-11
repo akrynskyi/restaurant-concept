@@ -3,17 +3,17 @@ import { ui } from './class-ui';
 import { Storage } from './class-storage';
 import { Credential, Modal } from './interfaces';
 import { notif } from '../app/components/notification/notification-subject';
+import { database } from './database';
 
 // ---- AUTH STATUS ----
 
 auth
 	.onAuthStateChanged((user) => {
-		if (user) {
-			console.log('sign in');
-		} else {
-			console.log('sign out');
+		if (!user) {
 			ui.signOutUser();
 		}
+
+		database.getData(user);
 	});
 
 document.addEventListener('DOMContentLoaded', () => {

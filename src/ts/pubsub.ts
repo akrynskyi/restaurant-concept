@@ -21,3 +21,27 @@ class PubSub implements PublishSubscribe {
 }
 
 export const pubsub = new PubSub();
+
+// create custom event
+// const likeEvent = new CustomEvent('like', {
+// 	detail: {
+// 		liked: true,
+// 	},
+// });
+
+// DOM_ELEMENTS.productsContainer.addEventListener('like', (e) => {
+// 	console.log(e);
+// 	pubsub.publish('like', e);
+// });
+// pubsub.publish('consoleLog', 'Description open');
+// DOM_ELEMENTS.productsContainer.dispatchEvent(likeEvent);
+
+// pubsub.subscribe('consoleLog', (data: string) => {
+// 	console.log(data);
+// });
+
+// // pubsub.unsubscribe('consoleLog');
+
+// pubsub.subscribe('like', (event: Event) => {
+// 	console.log(event.detail.liked);
+// });

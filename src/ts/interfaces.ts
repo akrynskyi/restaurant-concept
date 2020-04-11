@@ -31,6 +31,17 @@ export interface Post {
 	photos: Image
 }
 
+export interface Item {
+	id: string
+	likes: number
+	image: string
+	title: string
+	price: number
+	portion: number
+	description: string
+	type: string
+}
+
 export interface Option {
 	value?: number
 	key?: string

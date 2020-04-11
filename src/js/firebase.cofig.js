@@ -1,4 +1,4 @@
-import * as firebase from 'firebase/app';
+import firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 
@@ -19,6 +19,9 @@ const auth = firebase.auth();
 const firestore = firebase.firestore();
 const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
 
-export { auth, firestore, googleAuthProvider };
-
-console.log('from firebase');
+export {
+	firebase,
+	auth,
+	firestore,
+	googleAuthProvider,
+};

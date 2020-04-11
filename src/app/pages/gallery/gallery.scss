@@ -62,22 +62,7 @@
     }
 }
 
-.pagination {
-    &__wrapper {
-        width: 50%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    &__currentpage {
-        margin: 0px 30px;
-        color: $default-color;
-    }
-    position: absolute;
-    width: 100%;
-    left: 0;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    padding-bottom: 40px;
+.currentpage {
+    margin: 0px 30px;
+    color: $default-color;
 }

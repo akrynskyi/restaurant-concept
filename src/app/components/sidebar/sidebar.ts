@@ -6,6 +6,7 @@ export const sidebar = () => {
 		switch (trigger) {
 			case 'sidebar':
 				DOM_ELEMENTS.sidebar.classList.toggle('active');
+				DOM_ELEMENTS.productsWrapper.classList.toggle('active');
 				break;
 
 			case 'collapse':

@@ -38,7 +38,10 @@ export const DOM_ELEMENTS = {
 
 	// Products
 
+	productsWrapper: document.getElementById('productsWrapper'),
 	productsContainer: document.getElementById('productsContainer'),
+	productsPagination: document.getElementById('productsPagination'),
+	prodPagWrapper: document.getElementById('prodPagWrapper'),
 
 	// Gallery
 

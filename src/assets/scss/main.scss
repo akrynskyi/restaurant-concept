@@ -53,6 +53,25 @@ body {
   font-weight: 700;
 }
 
+.pagination {
+  &__wrapper {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 40px;
+  &--products {
+    padding-bottom: 0;
+  }
+}
+
 // ==== LINKS ==== //
 
 .link-action {

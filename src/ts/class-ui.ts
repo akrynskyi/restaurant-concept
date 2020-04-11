@@ -103,6 +103,24 @@ class UI {
 		DOM_ELEMENTS.userPicture.removeAttribute('src');
 	}
 
+	// ---- PRODUCTS ----
+	// Page transition
+
+	pageTransition(element: HTMLElement, action: string, className: string = 'active') {
+		switch (action) {
+			case 'add':
+				element.classList.add(className);
+				break;
+
+			case 'remove':
+				element.classList.remove(className);
+				break;
+
+			default:
+				break;
+		}
+	}
+
 	// ---- GALLERY ----
 	// Categories navigation
 

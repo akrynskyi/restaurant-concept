@@ -1,4 +1,4 @@
-import { fromEvent, Observable } from 'rxjs';
+import { fromEvent, Observable, Observer } from 'rxjs';
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { ui } from '../../../ts/class-ui';
 import { API_KEY, API_URL } from '../../../js/unsplash_api';
@@ -58,13 +58,14 @@ export const gallery = () => {
 		setupGallery();
 	});
 
-	const paginationObservable$ = Observable.create((observer) => {
+	const paginationObservable$ = Observable.create((observer: Observer<number>) => {
 		let currentPage = 1;
 		const update = (page: number) => {
-			DOM_ELEMENTS.currentPage.innerHTML = page;
+			DOM_ELEMENTS.currentPage.innerHTML = page.toString();
 		};
 
 		DOM_ELEMENTS.galleryPagination.addEventListener('click', (e) => {
+			if (e.target === e.currentTarget) return;
 			const { page } = (e.target as HTMLElement).dataset;
 			if (page === 'prev' && currentPage > 1) {
 				setTimeout(() => {
@@ -78,7 +79,7 @@ export const gallery = () => {
 					update(currentPage);
 					observer.next(currentPage);
 				}, 1000);
-			} else {
+			} else if (currentPage === 10) {
 				currentPage = 1;
 				update(currentPage);
 				observer.next(currentPage);

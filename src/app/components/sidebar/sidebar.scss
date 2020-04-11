@@ -13,7 +13,12 @@
     box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.4);
     z-index: 10;
     &__header {
-        padding: 25px 30px;
+        padding: 50px 30px 25px 30px;
+        font-size: 24px;
+        font-weight: 400;
+        color: $default-color;
+        text-transform: uppercase;
+        letter-spacing: $customLetterSpacing;
     }
     &__navigation {
         flex-grow: 1;
@@ -30,9 +35,6 @@
         &-item {
             border-bottom: 1px solid $neutral-regular;
             padding: 20px 0px;
-            // &:last-child {
-            //     border-bottom: none;
-            // }
         }
     }
     &__toggler {

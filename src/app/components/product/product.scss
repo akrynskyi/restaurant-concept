@@ -17,6 +17,22 @@
     &__image-wrapper {
         width: 100%;
         height: 275px;
+        position: relative;
+        overflow: hidden;
+        cursor: pointer;
+        &::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, .25);
+            z-index: 1;
+        }
+        &:hover > .product-image {
+            transform: scale(1.2);
+        }
     }
     &__info {
         padding: 25px;
@@ -38,10 +54,14 @@
         height: 100%;
         display: flex;
         align-items: center;
+        justify-content: center;
+        text-align: center;
         padding: 0px 25px;
         background-color: $border-base;
-        font-size: 14px;
+        font-size: 16px;
+        font-weight: 300;
         opacity: 0;
+        z-index: 4;
         clip-path: circle(0% at 100% 0%);
         transition: all .40s cubic-bezier(.8,.2,.24,.88);
     }
@@ -51,14 +71,33 @@
     }
 }
 
+.ico-heart {
+    color: $default-color;
+    pointer-events: all;
+
+    &.red {
+        color: $action-color;
+        pointer-events: none;
+    }
+    &.disabled {
+        pointer-events: none;
+    }
+}
+
+.like-count {
+    font-size: 14px;
+}
+
 .product-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform .4s linear;
 }
 
 .title {
     text-transform: uppercase;
+    font-weight: 300;
 }
 
 .price {
@@ -67,4 +106,5 @@
     padding: 2px 15px;
     border-radius: 3px;
     font-size: 14px;
+    font-weight: 300;
 }
