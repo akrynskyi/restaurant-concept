@@ -9,7 +9,7 @@
     text-transform: uppercase;
     letter-spacing: $customLetterSpacing;
     &:hover {
-      color: $neutral-secondary;
+      color: $action-color;
     }
   }
 }
@@ -25,7 +25,7 @@
       color: $main-color;
       transition: color .1s linear;
       &:hover {
-        color: $neutral-secondary;
+        color: $action-color;
       }
     }
   }

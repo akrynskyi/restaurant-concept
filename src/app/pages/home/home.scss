@@ -1,6 +1,6 @@
 .home {
     background-color: $space-color;
-
+    overflow: hidden;
 }
 .section-aboutus {
     padding: 150px 0px;
@@ -55,6 +55,18 @@
         }
     }
 }
+.panel-right,
+.panel-left {
+    transition: all .40s cubic-bezier(.8,.2,.24,.88);
+}
+.panel-right {
+    transform: translateX(50%);
+    opacity: 0;
+}
+.panel-left {
+    transform: translateX(-50%);
+    opacity: 0;
+}
 .panel-pic {
     display: block;
     width: 100%;
@@ -73,4 +85,30 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+
+    &__subscribe {
+        display: flex;
+        flex-direction: column;
+        justify-content: end;
+        height: 100%;
+        width: 30%;
+        padding: 80px 0px;
+        transition: opacity .40s cubic-bezier(.8,.2,.24,.88);
+        opacity: 0;
+
+        &-title {
+            color: $default-color;
+            font-size: 24px;
+        }
+    }
+}
+.subscribe-form {
+    width: 100%;
+    &__item {
+        margin-top: 20px;
+    }
+}
+.appear {
+    transform: translateX(0);
+    opacity: 1;
 }

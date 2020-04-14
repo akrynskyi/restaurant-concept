@@ -13,12 +13,12 @@
     box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.4);
     z-index: 10;
     &__header {
-        padding: 50px 30px 25px 30px;
+        padding: 50px 40px 25px 40px;
         font-size: 24px;
         font-weight: 400;
-        color: $default-color;
+        color: $neutral-regular;
         text-transform: uppercase;
-        letter-spacing: $customLetterSpacing;
+        // letter-spacing: $customLetterSpacing;
     }
     &__navigation {
         flex-grow: 1;
@@ -48,7 +48,8 @@
         }
     }
     &__footer {
-        padding: 20px 40px;
+        padding: 25px 40px 50px 40px;
+        // padding: 20px 40px;
         // border-top: 1px solid $border-base;
         display: flex;
         justify-content: center;

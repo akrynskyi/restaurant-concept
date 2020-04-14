@@ -36,6 +36,11 @@ export const DOM_ELEMENTS = {
 
 	signOutBtn: document.getElementById('signOutBtn'),
 
+	// Home
+
+	slideInPanels: document.querySelectorAll('[data-slidein="panel"]'),
+	subscribeSection: document.getElementById('subscribeSection'),
+
 	// Products
 
 	productsWrapper: document.getElementById('productsWrapper'),

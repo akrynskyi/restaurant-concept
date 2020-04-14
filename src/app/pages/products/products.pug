@@ -5,7 +5,7 @@ block variables
 
 block content
     // MAIN SECTION
-    main.products
+    main#products.products
         section.section-products
             include ../../components/sidebar/sidebar
             .section-inner
@@ -14,16 +14,9 @@ block content
                         h1.page-title Our menu
                     #productsContainer.section-products__container
                     // close .section-products__container
-                    #productsPagination.pagination.pagination.pagination--products
+                    #productsPagination.pagination.pagination--products
                         #prodPagWrapper.pagination__wrapper
-                            //- button.btn.btn--secondary
-                            //-     i.ico-pr.fas.fa-chevron-left
-                            //-     span(data-page="prev") Prev
-                            //- button.btn.btn--ml.btn--pag 1
-                            //- button.btn.btn--ml.btn--pag 2
-                            //- button.btn.btn--ml.btn--pag 3
-                            //- button.btn.btn--ml.btn--pag 4
-                            //- button.btn.btn--ml.btn--pag 5
-                            //- button.btn.btn--secondary.btn--ml
-                            //-     span(data-page="next") Next
-                            //-     i.ico-pl.fas.fa-chevron-right
+                    // close .pagination--products
+            // close .section-products__wrapper
+        // close .section-products
+    // close .products

@@ -121,11 +121,31 @@ class UI {
 		}
 	}
 
+	displayTooltip(selector: string, action: string) {
+		const tooltips = document.querySelectorAll(selector);
+		tooltips.forEach((tooltip) => {
+			switch (action) {
+				case 'disable':
+					tooltip.classList.add('tooltip-disabled');
+					tooltip.classList.remove('tooltip');
+					break;
+
+				case 'enable':
+					tooltip.classList.remove('tooltip-disabled');
+					tooltip.classList.add('tooltip');
+					break;
+
+				default:
+					break;
+			}
+		});
+	}
+
 	// ---- GALLERY ----
 	// Categories navigation
 
-	optionActive(event: Event) {
-		(DOM_ELEMENTS.categoriesNavOptions as NodeListOf<Element>).forEach((option) => {
+	optionActive(event: Event, options: NodeListOf<Element>) {
+		options.forEach((option) => {
 			option.classList.remove('active');
 		});
 		(event.target as HTMLElement).classList.add('active');

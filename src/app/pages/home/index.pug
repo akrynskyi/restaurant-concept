@@ -18,11 +18,24 @@ block content
                             img.panel-pic(src="/assets/img/aboutus/pic-promo-01.jpg", alt="promo")
                         .section-aboutus__panel-photo
                             img.panel-pic(src="/assets/img/aboutus/pic-promo-02.jpg", alt="promo")
-                        .section-aboutus__panel-text
+                        .section-aboutus__panel-text.panel-right(data-slidein="panel")
                             h4.block__title Our menu
                             p We’ve worked hard to create an extensive menu of veggie treats, using independent suppliers and the best ethical produce available. Enjoy a relaxed breakfast with fair-trade tea or pop in for an afternoon pick me up with one of our lovely homemade cakes and locally roasted coffee.
-                        .section-aboutus__panel-text
+                        .section-aboutus__panel-text.panel-left(data-slidein="panel")
                             p It is our best wish for all of our customers to be able to enjoy a relaxing and restorative time in our restaurant and at the same time benefit from the healthy and delicious foods our chefs prepare which utilizes both love and dedication.
                         .section-aboutus__panel-photo
                             img.panel-pic(src="/assets/img/aboutus/pic-promo-03.jpg", alt="promo")
         section.section-banner
+            .section-inner
+                #subscribeSection.section-banner__subscribe
+                    h2.section-banner__subscribe-title Subscribe to our news
+                    form.subscribe-form
+                        .subscribe-form__item
+                            input.input-field.input-field--mod(
+                                type="email",
+                                name="email",
+                                placeholder="Email" 
+                            )
+                        .subscribe-form__item
+                            button.btn.btn--secondary Subscribe
+

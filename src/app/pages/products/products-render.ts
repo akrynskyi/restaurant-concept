@@ -81,9 +81,10 @@ export class ProductsRender {
 		DOM_ELEMENTS.productsContainer.innerHTML = data.map((item: Item) => `
 				<div class="product" data-id="${item.id}">
 					<div class="product__overlay">
-						<button class="btn-default btn-default--col">
+						<button class="btn-default btn-default--col btn-heart">
 							<i class="fas fa-heart ico-heart" data-trigger="like"></i>
 							<span class="like-count">${item.likes === 0 ? '' : item.likes}</span>
+							<span class="tooltip-disabled" data-tooltip="like">To save your favourites sign in</span>
 						</button>
 						<button class="btn-default btn-default--col">
 							<i class="fas fa-ellipsis-v" data-trigger="description"></i>
@@ -111,6 +112,9 @@ export class ProductsRender {
 					</div>
 					<!-- close .product__info-->
 					<div class="product__description">
+						<span class="product__description-title">
+							${item.title}
+						</span>
 						<p>
 							${item.description}
 						</p>

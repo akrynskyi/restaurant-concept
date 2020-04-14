@@ -47,7 +47,7 @@ export const gallery = () => {
 
 	categoriesObservable$.subscribe((e) => {
 		const { key } = (e.target as HTMLElement).dataset;
-		ui.optionActive(e);
+		ui.optionActive(e, DOM_ELEMENTS.categoriesNavOptions);
 		photos.updateWord(key);
 		setupGallery();
 	});

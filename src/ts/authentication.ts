@@ -3,18 +3,14 @@ import { ui } from './class-ui';
 import { Storage } from './class-storage';
 import { Credential, Modal } from './interfaces';
 import { notif } from '../app/components/notification/notification-subject';
-import { database } from './database';
 
 // ---- AUTH STATUS ----
 
-auth
-	.onAuthStateChanged((user) => {
-		if (!user) {
-			ui.signOutUser();
-		}
-
-		database.getData(user);
-	});
+auth.onAuthStateChanged((user) => {
+	if (!user) {
+		ui.signOutUser();
+	}
+});
 
 document.addEventListener('DOMContentLoaded', () => {
 	if (localStorage.getItem('user')) {

@@ -4,7 +4,7 @@ export class Storage {
 	}
 
 	static getUser() {
-		return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : [];
+		return localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : null;
 	}
 
 	static setCurrentPage(page: number) {

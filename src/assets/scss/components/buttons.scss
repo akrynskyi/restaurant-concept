@@ -26,7 +26,6 @@
   }
 
   &--mod {
-    // text-transform: uppercase;
     color: $neutral-primary;
     font-size: 18px;
     padding: 7px 45px;
@@ -36,6 +35,17 @@
     width: 30px;
     height: 30px;
     padding: 0;
+    transform: scale(1);
+    transition: all .1s cubic-bezier(0.3, 0, 0, 1);
+    &:hover {
+      transform: scale(.9);
+      background-color: $neutral-primary-d;
+    }
+    &.active {
+      transform: scale(.9);
+      border: 1px solid $action-color;
+      background: transparent;
+    }
   }
 
   &--large {
@@ -90,6 +100,8 @@
     color: $default-color;
   }
 }
+
+// ==== BUTTON DEFAULT ==== //
 
 .btn-default {
   padding: 0;
