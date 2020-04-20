@@ -47,6 +47,21 @@ class UI {
 		}
 	}
 
+	// Toggle password
+	passwordToggle(form: HTMLFormElement) {
+		const { password: input } = form;
+		const icon = input.nextElementSibling.firstChild;
+		if (input.type === 'password') {
+			input.setAttribute('type', 'text');
+			icon.classList.remove('fa-eye');
+			icon.classList.add('fa-eye-slash');
+		} else {
+			input.setAttribute('type', 'password');
+			icon.classList.remove('fa-eye-slash');
+			icon.classList.add('fa-eye');
+		}
+	}
+
 	// ---- LOADER LOGIC ----
 
 	loaderToggle(id: string) {
@@ -81,19 +96,34 @@ class UI {
 	}
 
 	signOutUser() {
-		Storage.clearStorage();
+		Storage.removeItem('user');
 		this.userSignOutSetupUI();
 	}
 
-	displayUserInfo() {
-		const { displayName: name, photoURL: picture } = Storage.getUser();
+	displayUserInfo(page?: string) {
+		const {
+			displayName: name,
+			photoURL: picture,
+			email,
+		} = Storage.getUser();
 		const firstName: string = name.split(' ', 1).toString();
 		const getLetter: string = firstName.charAt(0).toUpperCase();
-		DOM_ELEMENTS.userName.innerText = firstName;
+
 		if (picture === null) {
 			DOM_ELEMENTS.userletter.innerText = getLetter;
 		} else {
 			(DOM_ELEMENTS.userPicture as HTMLImageElement).src = picture;
+		}
+
+		switch (page) {
+			case 'profile':
+				DOM_ELEMENTS.userName.innerText = name;
+				DOM_ELEMENTS.userEmail.innerText = email;
+				break;
+
+			default:
+				DOM_ELEMENTS.userName.innerText = firstName;
+				break;
 		}
 	}
 
@@ -149,6 +179,25 @@ class UI {
 			option.classList.remove('active');
 		});
 		(event.target as HTMLElement).classList.add('active');
+	}
+
+	// ---- PROFILE ----
+
+	pageActive(hash: string, listOfLinks: string, listOfPages: string) {
+		const links = document.querySelectorAll(listOfLinks);
+		const pages = document.querySelectorAll(listOfPages);
+		links.forEach((link) => {
+			link.classList.remove('active');
+			if (link.getAttribute('href') === hash) {
+				link.classList.add('active');
+			}
+		});
+		pages.forEach((page) => {
+			page.classList.remove('active');
+			if (page.getAttribute('data-page') === hash) {
+				page.classList.add('active');
+			}
+		});
 	}
 }
 

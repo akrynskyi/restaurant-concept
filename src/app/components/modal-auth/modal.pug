@@ -33,7 +33,7 @@ mixin auth
                             required
                         )
                         button.show-pass.btn-default(title="Show password")
-                            i.far.fa-eye
+                            i.far.fa-eye(data-action='password')
                     .form__item
                         button.btn.btn--hov.btn--large Continue
                 //- FORM
@@ -106,7 +106,7 @@ mixin auth
                             required
                         )
                         button.show-pass.btn-default(title="Show password")
-                            i.far.fa-eye
+                            i.far.fa-eye(data-action='password')
                     .form__item
                         button.btn.btn--hov.btn--large Register
                 //- FORM

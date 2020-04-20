@@ -1,0 +1,37 @@
+mixin profile-nav
+    .profilenav
+        .profilenav__header
+                a.logo__text.c-default(href='./index.html')
+                    .logo__text-line Restaurant
+                    .logo__text-line concept
+        // close .profilenav__header
+        nav.profilenav__navigation
+            ul.profilenav__navlist
+                li.profilenav__navlist-item
+                    a.link-default.link-default--mod.link-fs(
+                            href="#user",
+                            data-nav="link"
+                        ) Profile
+                li.profilenav__navlist-item
+                    a.link-default.link-default--mod.link-fs(
+                            href="#reservation"
+                            data-nav="link"
+                        ) Reservation
+                li.profilenav__navlist-item
+                    a.link-default.link-default--mod.link-fs(
+                            href="#favourite"
+                            data-nav="link"
+                        ) Favourite
+        .profilenav__footer
+            ul.profilenav__social
+                li
+                    a.c-default(href="#")
+                        i.fab.fa-instagram
+                li
+                    a.c-default(href="#")
+                        i.fab.fa-twitter
+                li
+                    a.c-default(href="#")
+                        i.fab.fa-facebook
+        // close .profilenav__footer
+    // close .profilenav

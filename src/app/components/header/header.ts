@@ -1,6 +1,7 @@
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { ui } from '../../../ts/class-ui';
 import { signOut } from '../../../ts/authentication';
+import { Storage } from '../../../ts/class-storage';
 
 export const header = (): void => {
 	DOM_ELEMENTS.userNavButton.addEventListener('click', () => {
@@ -32,6 +33,7 @@ export const header = (): void => {
 	});
 
 	DOM_ELEMENTS.signOutBtn.addEventListener('click', () => {
+		Storage.clearStorage();
 		signOut();
 		ui.userDropdownHide();
 	});

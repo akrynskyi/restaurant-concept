@@ -15,6 +15,10 @@ export class Storage {
 		return parseInt(localStorage.getItem('page'), 10);
 	}
 
+	static removeItem(item: string) {
+		localStorage.removeItem(item);
+	}
+
 	static clearStorage() {
 		localStorage.clear();
 	}

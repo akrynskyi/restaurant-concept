@@ -12,6 +12,8 @@ const PATHS = {
 
 // const PAGES_DIR = `${PATHS.src}/pug/pages/`;
 
+// const TEMPLATES = [];
+
 // const PAGES = fs
 // 	.readdirSync(PAGES_DIR)
 // 	.filter((fileName) => fileName.endsWith('.pug'));
@@ -144,11 +146,15 @@ module.exports = {
 			filename: 'gallery.html',
 			template: `${PATHS.src}/app/pages/gallery/gallery.pug`,
 		}),
+		new HtmlWebpackPlugin({
+			filename: 'profile.html',
+			template: `${PATHS.src}/app/pages/user/profile.pug`,
+		}),
 
-		// ...PAGES.map(
-		// 	(page) => new HtmlWebpackPlugin({
-		// 		template: `${PAGES_DIR.forEach(page => page)}/${page}`, // .pug
-		// 		filename: `./${page.replace(/\.pug/, '.html')}`,
+		// ...TEMPLATES.map(
+		// 	(temp) => new HtmlWebpackPlugin({
+		// 		template:
+		// 		filename:
 		// 	}),
 		// ),
 	],

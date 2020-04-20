@@ -89,7 +89,7 @@
     &__subscribe {
         display: flex;
         flex-direction: column;
-        justify-content: end;
+        justify-content: flex-end;
         height: 100%;
         width: 30%;
         padding: 80px 0px;
@@ -98,7 +98,7 @@
 
         &-title {
             color: $default-color;
-            font-size: 24px;
+            font-size: 28px;
         }
     }
 }

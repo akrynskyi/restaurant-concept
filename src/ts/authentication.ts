@@ -7,15 +7,15 @@ import { notif } from '../app/components/notification/notification-subject';
 // ---- AUTH STATUS ----
 
 auth.onAuthStateChanged((user) => {
-	if (!user) {
+	if (!user && document.title !== 'Profile') {
 		ui.signOutUser();
 	}
 });
 
 document.addEventListener('DOMContentLoaded', () => {
-	if (localStorage.getItem('user')) {
+	if (localStorage.getItem('user') && document.title !== 'Profile') {
 		ui.userSignInSetupUI();
-	} else {
+	} else if (!localStorage.getItem('user') && document.title !== 'Profile') {
 		ui.userSignOutSetupUI();
 	}
 });

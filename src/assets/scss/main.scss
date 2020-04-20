@@ -15,17 +15,21 @@
 @import "../../app/components/notification/notification.scss";
 @import "../../app/components/sidebar/sidebar.scss";
 @import "../../app/components/product/product.scss";
+@import "../../app/components/profile-nav/profile-nav.scss";
+@import "../../app/pages/user/user-pages/userpage/userpage.scss";
+@import "../../app/pages/user/user-pages/reservation/reservation.scss";
+@import "../../app/pages/user/user-pages/favourite/favourite.scss";
 @import "./components/buttons.scss";
 @import "./components/overlay.scss";
 @import "./components/loader.scss";
 @import "./components/select.scss";
-
 
 // ==== PAGES ==== //
 
 @import "../../app/pages/home/home.scss";
 @import "../../app/pages/products/products.scss";
 @import "../../app/pages/gallery/gallery.scss";
+@import "../../app/pages/user/profile.scss";
 
 // ==== GLOBAL STYLES ==== //
 
@@ -59,7 +63,7 @@ body {
 
 .pagination {
   &__wrapper {
-    width: 50%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -134,6 +138,10 @@ body {
   color: $default-color;
 }
 
+.link-fs {
+  font-size: 21px;
+}
+
 // ==== INPUTS ==== //
 
 .input-field {
@@ -159,8 +167,9 @@ body {
   &--mod {
     color: $neutral-secondary;
     border: 1px solid $neutral-primary;
-    padding: 20px;
+    padding: 15px;
     border-radius: 3px;
+    height: auto;
     &:focus {
       border: 1px solid $neutral-regular;
     }

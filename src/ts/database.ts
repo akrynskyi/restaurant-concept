@@ -1,20 +1,6 @@
 import { firestore, auth, firebase } from '../js/firebase.cofig';
 
 export class Database {
-	// getData(user: firebase.User) {
-	// firestore.collection('menu').onSnapshot((snapshot) => {
-	// 	const data: firebase.firestore.DocumentData = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-
-	// 	if (user !== null) {
-	// 		this.getFavourites(user.uid)
-	// 			.then((ids) => {
-	// 				const userFavourites: [] = data.filter((item) => ids.some((id) => item.id === id));
-	// 				console.log('User Favourites:', userFavourites);
-	// 			});
-	// 	}
-	// });
-	// }
-
 	async getFavourites(uid: string): Promise<string[]> {
 		const favouritesSnapshot = await firestore.collection('favourites').doc(uid).get();
 		if (favouritesSnapshot.exists) {
@@ -51,6 +37,26 @@ export class Database {
 					});
 				}
 			});
+	}
+
+	removeFavourite(docId: string) {
+		const { uid } = auth.currentUser;
+		const menuDocRef = firestore.collection('menu').doc(docId);
+		const userDocRef = firestore.collection('favourites').doc(uid);
+
+		firestore.runTransaction(async (transaction) => {
+			const sfDoc = await transaction.get(menuDocRef);
+			if (!sfDoc.exists) {
+				console.log('Document does not exist!');
+			} else {
+				const updateLikes = sfDoc.data().likes - 1;
+				transaction.update(menuDocRef, { likes: updateLikes });
+			}
+		});
+
+		userDocRef.update({
+			ids: firebase.firestore.FieldValue.arrayRemove(docId),
+		});
 	}
 }
 

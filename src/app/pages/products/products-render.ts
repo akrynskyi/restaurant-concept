@@ -7,7 +7,6 @@ export class ProductsRender {
 	currentPage: number;
 	totalPages: number;
 	itemsPerPage: number;
-	pageButtons: number;
 
 	constructor(
 		state: {
@@ -15,7 +14,6 @@ export class ProductsRender {
 			userFavourites: Promise<string[]>,
 			currentPage: number,
 			itemsPerPage: number,
-			pageButtons?: number,
 		},
 	) {
 		this.data = state.data;
@@ -29,25 +27,6 @@ export class ProductsRender {
 		const start = (this.currentPage - 1) * this.itemsPerPage;
 		const end = start + this.itemsPerPage;
 		return this.data.slice(start, end);
-	}
-
-	displayPageBtns() {
-		DOM_ELEMENTS.prodPagWrapper.innerHTML = '';
-		let maxLeft = this.currentPage - Math.floor(this.totalPages / 2);
-		let maxRight = this.currentPage + Math.floor(this.totalPages / 2);
-		if (maxLeft < 1) {
-			maxLeft = 1;
-			maxRight = this.totalPages;
-		} else if (maxRight > this.totalPages) {
-			maxLeft = this.totalPages - 1;
-			maxRight = this.totalPages;
-		}
-
-		for (let page = 1; page <= this.totalPages; page += 1) {
-			DOM_ELEMENTS.prodPagWrapper.innerHTML += `
-			<button class="btn btn--ml btn--pag" value="${page}">${page}</button>
-			`;
-		}
 	}
 
 	displayUserFavourites() {

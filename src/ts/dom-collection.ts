@@ -16,6 +16,7 @@ export const DOM_ELEMENTS = {
 	userName: document.getElementById('userName'),
 	userletter: document.getElementById('userLetter'),
 	userPicture: document.getElementById('userPicture'),
+	userEmail: document.getElementById('userEmail'),
 	authBlock: document.getElementById('auth'),
 
 	// Signup
@@ -56,6 +57,11 @@ export const DOM_ELEMENTS = {
 	photosPerpageSelect: document.getElementById('perpage'),
 	galleryPagination: document.getElementById('galleryPagination'),
 	currentPage: document.getElementById('currentPage'),
+
+	// Profile
+
+	profileHeader: document.getElementById('profileHeader'),
+	favouriteScrollable: document.getElementById('favouriteScrollable'),
 
 	// Notification
 

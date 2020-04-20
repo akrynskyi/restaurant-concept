@@ -1,9 +1,4 @@
-include ../../app/components/header/header
-include ../../app/components/footer/footer
-include ../../app/components/modal-auth/modal
-include ../../app/components/search/search
-include ../../app/components/hero/hero
-include ../../app/components/notification/notification
+include ../../app/components/profile-nav/profile-nav
 
 block variables
 
@@ -16,10 +11,12 @@ html(lang='en')
         title #{title}
         link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous")
     body
-        + header
-        + auth
-        + search
-        + hero
-        + notification
-        block content
-        + footer
+        main.profile
+            + profile-nav
+            .profile__inner
+                #profileHeader.profile__header
+                    button.btn.btn--secondary(data-trigger="signout") Sign Out
+                    button.btn.btn--primary.btn--ml(data-trigger="close") Close
+                block content
+            // close .profile__inner
+        // close .profile

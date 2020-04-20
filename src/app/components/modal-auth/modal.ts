@@ -55,6 +55,14 @@ export const modal = (): void => {
 		);
 	});
 
+	DOM_ELEMENTS.modalSignUp.addEventListener('click', (e) => {
+		const { action } = (e.target as HTMLElement).dataset;
+		if (action === 'password') {
+			e.preventDefault();
+			ui.passwordToggle(DOM_FORMS.formSignUp);
+		}
+	});
+
 	// ---- SIGN-IN ----
 
 	ui.showModalOnClick(
@@ -96,9 +104,11 @@ export const modal = (): void => {
 					},
 				);
 				break;
+
 			case 'reset':
 				DOM_ELEMENTS.modalResetPass.classList.add('visible');
 				break;
+
 			case 'signup':
 				ui.hideModalDefault(
 					DOM_ELEMENTS.overlaySignIn,
@@ -109,6 +119,12 @@ export const modal = (): void => {
 					DOM_ELEMENTS.modalSignUp,
 				);
 				break;
+
+			case 'password':
+				e.preventDefault();
+				ui.passwordToggle(DOM_FORMS.formSignIn);
+				break;
+
 			default:
 				break;
 		}
