@@ -28,6 +28,15 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
+    &-close {
+      display: none;
+      justify-content: flex-end;
+      width: 100%;
+      margin: 40px 0px 10px 0px;
+      @include mobile {
+        display: flex;
+      }
+    }
     &-title {
       text-transform: uppercase;
       letter-spacing: $customLetterSpacing;
@@ -36,10 +45,16 @@
       color: $neutral-primary;
       &--mod {
         font-size: 28px;
+        @include mobile {
+          font-size: 32px;
+        }
       }
     }
-    &--mod {
-      margin-bottom: 25px;
+    // &--mod {
+    //   margin-bottom: 25px;
+    // }
+    @include mobile {
+      margin-top: 0;
     }
   }
   &__body {
@@ -62,6 +77,10 @@
       text-align: left;
     }
   }
+  @include mobile {
+    height: 100%;
+    width: 100vw;
+  }
 }
 .modal.active {
   opacity: 1;
@@ -76,11 +95,12 @@
 
 .form {
   width: 100%;
+  margin-top: 25px;
   &__item {
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 }
 

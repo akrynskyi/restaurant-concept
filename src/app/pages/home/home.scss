@@ -17,12 +17,25 @@
             font-size: 42px;
             font-weight: 700;
             line-height: 1;
+            @include tablet {
+                grid-column: span 2;
+            }
         }
         &-text {
             color: $default-color;
             font-size: 21px;
             grid-column: span 2;
             text-align: justify;
+            @include smTablet {
+                font-size: 18px;
+            }
+            @include mobile {
+                font-size: 16px;
+            }
+        }
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+            grid-row-gap: 40px;
         }
     }
     &__panel {
@@ -40,6 +53,12 @@
             &.tall {
                 grid-row: span 2;
             }
+            &.square {
+                display: block;
+                @include tablet {
+                    display: none;
+                }
+            }
         }
         &-text {
             display: flex;
@@ -52,6 +71,17 @@
             color: $default-color;
             font-size: 21px;
             font-weight: 300;
+            @include smTablet {
+                font-size: 18px;
+            }
+            @include mobile {
+                font-size: 16px;
+                padding: 20px 0px;
+            }
+        }
+        @include tablet {
+            grid-template-columns: repeat(1, 1fr);
+            grid-template-rows: repeat(2, 1fr);
         }
     }
 }
@@ -66,6 +96,9 @@
 .panel-left {
     transform: translateX(-50%);
     opacity: 0;
+    @include tablet {
+        order: 1;
+    }
 }
 .panel-pic {
     display: block;
@@ -85,6 +118,7 @@
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
+    background-position: 50% 50%;
 
     &__subscribe {
         display: flex;
@@ -99,6 +133,12 @@
         &-title {
             color: $default-color;
             font-size: 28px;
+        }
+        @include tablet {
+            width: 50%;
+        }
+        @include smTablet {
+            width: 100%;
         }
     }
 }

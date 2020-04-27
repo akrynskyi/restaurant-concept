@@ -2,6 +2,9 @@
   padding: 20px 0px;
   &-items-wrapper {
     justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
+    }
   }
   &-logo {
     color: $main-color;
@@ -28,5 +31,8 @@
         color: $action-color;
       }
     }
+  }
+  @include mobile {
+    margin-top: 20px;   
   }
 }

@@ -3,6 +3,10 @@ mixin header
     header.header
         .section-inner
             .items-wrapper.header-items-wrapper
+                ul.burger
+                    li.burger__line
+                    li.burger__line
+                    li.burger__line
                 ul.nav
                     li
                         a.nav__item(href='./index.html')
@@ -25,10 +29,15 @@ mixin header
                         .logo__text-line concept
                 .bar
                     #auth.bar__auth
-                        button#signInBtn.btn.btn--secondary
-                            | Sign in
-                        button#signUpBtn.btn.btn--primary.btn--ml
-                            | Create account
+                        .bar__auth-mobile
+                            button.btn-icon
+                                i.fas.fa-sign-in-alt(data-trigger="signin")
+                        .bar__auth-signin
+                            button#signInBtn.btn.btn--secondary(data-trigger="signin")
+                                | Sign in
+                        .bar__auth-signup
+                            button#signUpBtn.btn.btn--primary.btn--ml(data-trigger="signup")
+                                | Create account
                     #userNav.bar__usernav
                         span#userNavBtn.bar__usernav-btn
                             .bar__usernav-btn-avatar
@@ -58,7 +67,9 @@ mixin header
                                     a.dropdown-menu__link(href="#signout")
                                         | Sign out
                     .bar__helpers
-                        button#searchBtn.btn-icon
-                            i.fas.fa-search
-                        button.btn-icon.btn--ml
-                            i.fas.fa-ellipsis-h
+                        .bar__helpers-search
+                            button.btn-icon
+                                i.fas.fa-search(data-trigger="search")
+                        .bar__helpers-more
+                            button.btn-icon.btn--ml
+                                i.fas.fa-ellipsis-h

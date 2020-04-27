@@ -4,6 +4,42 @@ import { signOut } from '../../../ts/authentication';
 import { Storage } from '../../../ts/class-storage';
 
 export const header = (): void => {
+	DOM_ELEMENTS.header.addEventListener('click', (e) => {
+		const { trigger } = (e.target as HTMLElement).dataset;
+		switch (trigger) {
+			case 'signin':
+				ui.showModalDefault(
+					DOM_ELEMENTS.overlaySignIn,
+					DOM_ELEMENTS.modalSignIn,
+				);
+				break;
+
+			case 'signup':
+				ui.showModalDefault(
+					DOM_ELEMENTS.overlaySignUp,
+					DOM_ELEMENTS.modalSignUp,
+				);
+				break;
+
+			case 'search':
+				if (
+					window.pageYOffset === 0
+					&& DOM_ELEMENTS.userNavDropdown.classList.contains('active')
+				) {
+					DOM_ELEMENTS.searchBar.classList.toggle('active');
+				} else if (window.pageYOffset === 0) {
+					DOM_ELEMENTS.header.classList.toggle('scrolled');
+					DOM_ELEMENTS.searchBar.classList.toggle('active');
+				} else {
+					DOM_ELEMENTS.searchBar.classList.toggle('active');
+				}
+				break;
+
+			default:
+				break;
+		}
+	});
+
 	DOM_ELEMENTS.userNavButton.addEventListener('click', () => {
 		if (
 			window.pageYOffset === 0
@@ -18,17 +54,17 @@ export const header = (): void => {
 		}
 	});
 
-	DOM_ELEMENTS.searchButton.addEventListener('click', () => {
+	DOM_ELEMENTS.closeSearchButton.addEventListener('click', () => {
 		if (
 			window.pageYOffset === 0
 			&& DOM_ELEMENTS.userNavDropdown.classList.contains('active')
 		) {
-			DOM_ELEMENTS.searchBar.classList.toggle('active');
+			DOM_ELEMENTS.searchBar.classList.remove('active');
 		} else if (window.pageYOffset === 0) {
-			DOM_ELEMENTS.header.classList.toggle('scrolled');
-			DOM_ELEMENTS.searchBar.classList.toggle('active');
+			DOM_ELEMENTS.header.classList.remove('scrolled');
+			DOM_ELEMENTS.searchBar.classList.remove('active');
 		} else {
-			DOM_ELEMENTS.searchBar.classList.toggle('active');
+			DOM_ELEMENTS.searchBar.classList.remove('active');
 		}
 	});
 

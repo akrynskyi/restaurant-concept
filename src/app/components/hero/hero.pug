@@ -3,40 +3,133 @@ mixin hero
     section.hero
         .section-inner
             .items-wrapper.hero-wrapper
-                #heroBlock.hero-block
+                #heroBlockFirst.hero-block.first
                     #heroHeader.hero-block__header
                         .hero-block__header-item
-                            h1.hero-text Booking
+                            h1.hero-text Reservation
                         .hero-block__header-item
                             button.btn-icon.btn-icon--col
                                 i#chevronIcon.fas.fa-chevron-up
                     .hero-block__body
                         h2.hero-block__body-title Book a table
-                        form.booking-form
+                        form#bookingForm.booking-form
                             .booking-form__fields
                                 input.input-field-col(
                                     type='text',
                                     name='first name',
                                     placeholder='First Name',
-                                    required
                                 )
                                 input.input-field-col(
                                     type='text',
                                     name='last name',
                                     placeholder='Last Name',
-                                    required
                                 )
                                 input.input-field-col(
                                     type='email',
                                     name='email',
                                     placeholder='Email',
-                                    required
                                 )
                                 input.input-field-col(
                                     type='text',
                                     name='phone',
                                     placeholder='Phone Number',
-                                    required
                                 )
                             .booking-form__button
-                                button.btn.btn--mod.btn--secondary Book
+                                button.btn.btn--mod.btn--secondary Choose a table
+                // close .hero-block
+                #heroBlockSecond.hero-block.second
+                    .hero-block__header
+                        .hero-block__header-item
+                            button.btn-default(data-trigger="back") Back
+                    .hero-block__body.hero-block__body--mod
+                        h2.hero-block__body-title Choose a table
+                        
+                        .hero-block__flow
+                            .plan.scrollable
+                                .section.large
+                                    .group
+                                        button.btn.btn--pag t1
+                                        button.btn.btn--pag t2
+                                        button.btn.btn--pag t3
+                                        //- button.btn.btn--pag t4
+                                    .group
+                                        button.btn.btn--pag t5
+                                        button.btn.btn--pag t6
+                                        //- button.btn.btn--pag t7
+                                        button.btn.btn--pag t8
+                                    .group
+                                        button.btn.btn--pag t9
+                                        //- button.btn.btn--pag t10
+                                        button.btn.btn--pag t11
+                                        button.btn.btn--pag t12
+                                    .group
+                                        //- button.btn.btn--pag t13
+                                        button.btn.btn--pag t14
+                                        button.btn.btn--pag t15
+                                        button.btn.btn--pag t16
+                                .section
+                                    .group
+                                        button.btn.btn--pag t1
+                                        button.btn.btn--pag t2
+                                        button.btn.btn--pag t3
+                                        button.btn.btn--pag t4
+                                    .group
+                                        button.btn.btn--pag t5
+                                        button.btn.btn--pag t6
+                                        button.btn.btn--pag t7
+                                        button.btn.btn--pag t8
+                                .section
+                                    .group
+                                        button.btn.btn--pag t9
+                                        button.btn.btn--pag t10
+                                        button.btn.btn--pag t11
+                                        button.btn.btn--pag t12
+                                    .group
+                                        button.btn.btn--pag t13
+                                        button.btn.btn--pag t14
+                                        button.btn.btn--pag t15
+                                        button.btn.btn--pag t16
+                                .section
+                                    .group
+                                        button.btn.btn--pag t1
+                                        button.btn.btn--pag t2
+                                        button.btn.btn--pag t3
+                                        button.btn.btn--pag t4
+                                    .group
+                                        button.btn.btn--pag t5
+                                        button.btn.btn--pag t6
+                                        button.btn.btn--pag t7
+                                        button.btn.btn--pag t8
+                                .section
+                                    .group
+                                        button.btn.btn--pag t9
+                                        button.btn.btn--pag t10
+                                        button.btn.btn--pag t11
+                                        button.btn.btn--pag t12
+                                    .group
+                                        button.btn.btn--pag t13
+                                        button.btn.btn--pag t14
+                                        button.btn.btn--pag t15
+                                        button.btn.btn--pag t16
+                                .section.long
+                                    .group
+                                        button.btn.btn--pag t1
+                                        button.btn.btn--pag t2
+                                        button.btn.btn--pag t3
+                                        button.btn.btn--pag t4
+                                    .group
+                                        button.btn.btn--pag t5
+                                        button.btn.btn--pag t6
+                                        button.btn.btn--pag t7
+                                        button.btn.btn--pag t8
+                                    .group
+                                        button.btn.btn--pag t9
+                                        button.btn.btn--pag t10
+                                        button.btn.btn--pag t11
+                                        button.btn.btn--pag t12
+                                    .group
+                                        button.btn.btn--pag t13
+                                        button.btn.btn--pag t14
+                                        button.btn.btn--pag t15
+                                        button.btn.btn--pag t16
+                // close .hero-block

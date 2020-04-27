@@ -3,10 +3,11 @@ export const DOM_ELEMENTS = {
 
 	header: document.querySelector('.header'),
 	searchBar: document.querySelector('.search-bar'),
-	searchButton: document.getElementById('searchBtn'),
+	closeSearchButton: document.getElementById('closeSearchBtn'),
 	hero: document.querySelector('.hero'),
 	heroHeader: document.getElementById('heroHeader'),
-	heroBlock: document.getElementById('heroBlock'),
+	heroBlockFirst: document.getElementById('heroBlockFirst'),
+	heroBlockSecond: document.getElementById('heroBlockSecond'),
 
 	// User
 
@@ -21,13 +22,13 @@ export const DOM_ELEMENTS = {
 
 	// Signup
 
-	signUpButton: document.getElementById('signUpBtn'),
+	// signUpButton: document.getElementById('signUpBtn'),
 	overlaySignUp: document.getElementById('overlayForSignUp'),
 	modalSignUp: document.getElementById('modalSignUp'),
 
 	// Signin
 
-	signInButton: document.getElementById('signInBtn'),
+	// signInButton: document.getElementById('signInBtn'),
 	signInRedirectBtns: document.querySelectorAll('[data-action="signin"]'),
 	overlaySignIn: document.getElementById('overlayForSignIn'),
 	modalSignIn: document.getElementById('modalSignIn'),
@@ -78,4 +79,5 @@ export const DOM_FORMS = {
 	formSignUp: document.getElementById('signUpForm') as HTMLFormElement,
 	formSignIn: document.getElementById('signInForm') as HTMLFormElement,
 	formResetPass: document.getElementById('resetPassForm') as HTMLFormElement,
+	formBooking: document.getElementById('bookingForm') as HTMLFormElement,
 };

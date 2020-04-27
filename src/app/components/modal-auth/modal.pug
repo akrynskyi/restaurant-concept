@@ -8,6 +8,15 @@ mixin auth
                 .ball-clip-rotate
                     div
             .modal__header
+                .modal__header-close
+                    button.btn-default(data-action='close')
+                        svg.icon(
+                            viewbox='0 0 16 14',
+                            data-action='close'
+                        )
+                            path(
+                                d='M15 0L1 14m14 0L1 0', stroke='currentColor', fill='none', fill-rule='evenodd'
+                            )
                 h2.modal__header-title Login
                 .login-with
                     span.login-with__text Login with
@@ -50,6 +59,15 @@ mixin auth
                 .ball-clip-rotate
                     div
             .modal__header
+                .modal__header-close
+                    button.btn-default
+                        svg.icon(
+                                viewbox='0 0 16 14',
+                                data-action='close'
+                            )
+                            path(
+                                d='M15 0L1 14m14 0L1 0', stroke='currentColor', fill='none', fill-rule='evenodd'
+                            )
                 h2.modal__header-title.modal__header-title--mod  Forgot your password?
             .modal__body
                 //- FORM
@@ -75,6 +93,15 @@ mixin auth
                 .ball-clip-rotate
                     div
             .modal__header.modal__header--mod
+                .modal__header-close
+                    button.btn-default
+                        svg.icon(
+                                viewbox='0 0 16 14',
+                                data-action='close'
+                            )
+                            path(
+                                d='M15 0L1 14m14 0L1 0', stroke='currentColor', fill='none', fill-rule='evenodd'
+                            )
                 h2.modal__header-title.modal__header-title--mod Create an account
             .modal__body
                 //- FORM

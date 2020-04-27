@@ -1,6 +1,7 @@
 // ==== MAIN HEADER STYLES ==== //
 
 .header {
+  min-height: 95px;
   position: fixed;
   z-index: 15;
   width: 100%;
@@ -22,6 +23,26 @@
 }
 
 // ==== NAVIGATION ==== //
+
+.burger {
+  display: none;
+  cursor: pointer;
+  &__line {
+    height: 2px;
+    width: 30px;
+    margin-top: 5px;
+    background-color: $neutral-secondary;
+    &:nth-child(2) {
+      width: 20px;
+    }
+    &:nth-child(3) {
+      width: 10px;
+    }
+  }
+  @include tablet {
+    display: block;
+  }
+}
 
 .nav {
   display: flex;
@@ -57,6 +78,9 @@
       transform: scale(1, 1);
     }
   }
+  @include tablet {
+    display: none;
+  }
 }
 
 // ==== LOGO ==== //
@@ -73,6 +97,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    @include smTablet {
+      font-size: 16px;
+    }
   }
 }
 
@@ -85,9 +112,27 @@
     display: none;
     opacity: 0;
     transition: opacity .1s ease-in;
+    &-mobile {
+      display: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+      justify-content: center;
+      border: 1px solid $neutral-regular;
+      @include tablet {
+        display: flex;
+      }
+    }
+    &-signup,
+    &-signin {
+      display: block;
+      @include tablet {
+        display: none;
+      }
+    }
   }
   &__auth.active {
-    display: block;
+    display: flex;
     opacity: 1;
   }
   &__usernav {
@@ -130,6 +175,9 @@
         color: $neutral-secondary;
         margin-left: 10px;
         transition: color 0.1s linear;
+        @include mobile {
+          display: none;
+        }
       }
     }
     &-btn.active::after {
@@ -141,6 +189,13 @@
   }
   &__helpers {
     margin-left: 15px;
+    display: flex;
+    &-more {
+      display: block;
+      @include tablet {
+        display: none;
+      }
+    }
   }
 }
 
@@ -148,6 +203,7 @@
 
 .dropdown-menu {
   position: fixed;
+  width: 140px;
   top: 95px;
   background-color: $neutral-primary;
   border-top: 1px solid rgba(0, 0, 0, 0.4);
@@ -167,6 +223,9 @@
   }
   &__link {
     color: $border-base;
+  }
+  @include mobile {
+    right: 0;
   }
 }
 

@@ -115,3 +115,10 @@
     font-size: 20px;
   }
 }
+
+.btn-mob {
+  padding: 10px;
+  @include mobile {
+    width: 100%;
+  }
+}

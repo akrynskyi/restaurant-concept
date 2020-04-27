@@ -32,7 +32,7 @@ class UI {
 
 	hideModalDefault(overlay: Element, modal: Element) {
 		overlay.classList.remove('visible');
-		modal.classList.remove('active');
+		modal.classList.remove('active', 'visible');
 	}
 
 	// Reset
@@ -108,21 +108,24 @@ class UI {
 		} = Storage.getUser();
 		const firstName: string = name.split(' ', 1).toString();
 		const getLetter: string = firstName.charAt(0).toUpperCase();
-
-		if (picture === null) {
-			DOM_ELEMENTS.userletter.innerText = getLetter;
-		} else {
-			(DOM_ELEMENTS.userPicture as HTMLImageElement).src = picture;
-		}
+		const displayPicture = () => {
+			if (picture === null) {
+				DOM_ELEMENTS.userletter.innerText = getLetter;
+			} else {
+				(DOM_ELEMENTS.userPicture as HTMLImageElement).src = picture;
+			}
+		};
 
 		switch (page) {
 			case 'profile':
 				DOM_ELEMENTS.userName.innerText = name;
 				DOM_ELEMENTS.userEmail.innerText = email;
+				displayPicture();
 				break;
 
 			default:
 				DOM_ELEMENTS.userName.innerText = firstName;
+				displayPicture();
 				break;
 		}
 	}

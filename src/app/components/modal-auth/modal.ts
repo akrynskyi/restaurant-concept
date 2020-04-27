@@ -25,12 +25,6 @@ export const modal = (): void => {
 
 	// ---- SIGN-UP ----
 
-	ui.showModalOnClick(
-		DOM_ELEMENTS.signUpButton,
-		DOM_ELEMENTS.overlaySignUp,
-		DOM_ELEMENTS.modalSignUp,
-	);
-
 	DOM_FORMS.formSignUp.addEventListener('submit', (e) => {
 		e.preventDefault();
 		const {
@@ -57,19 +51,25 @@ export const modal = (): void => {
 
 	DOM_ELEMENTS.modalSignUp.addEventListener('click', (e) => {
 		const { action } = (e.target as HTMLElement).dataset;
-		if (action === 'password') {
-			e.preventDefault();
-			ui.passwordToggle(DOM_FORMS.formSignUp);
+		switch (action) {
+			case 'password':
+				e.preventDefault();
+				ui.passwordToggle(DOM_FORMS.formSignUp);
+				break;
+
+			case 'close':
+				ui.hideModalDefault(
+					DOM_ELEMENTS.overlaySignUp,
+					(e.currentTarget as HTMLElement),
+				);
+				break;
+
+			default:
+				break;
 		}
 	});
 
 	// ---- SIGN-IN ----
-
-	ui.showModalOnClick(
-		DOM_ELEMENTS.signInButton,
-		DOM_ELEMENTS.overlaySignIn,
-		DOM_ELEMENTS.modalSignIn,
-	);
 
 	DOM_FORMS.formSignIn.addEventListener('submit', (e) => {
 		e.preventDefault();
@@ -125,12 +125,29 @@ export const modal = (): void => {
 				ui.passwordToggle(DOM_FORMS.formSignIn);
 				break;
 
+			case 'close':
+				ui.hideModalDefault(
+					DOM_ELEMENTS.overlaySignIn,
+					(e.currentTarget as HTMLElement),
+				);
+				break;
+
 			default:
 				break;
 		}
 	});
 
 	// ---- RESET PASSWORD ----
+
+	DOM_ELEMENTS.modalResetPass.addEventListener('click', (e) => {
+		const { action } = (e.target as HTMLElement).dataset;
+		if (action === 'close') {
+			ui.hideModalDefault(
+				DOM_ELEMENTS.overlaySignIn,
+				DOM_ELEMENTS.modalResetPass,
+			);
+		}
+	});
 
 	DOM_FORMS.formResetPass.addEventListener('submit', (e) => {
 		e.preventDefault();
