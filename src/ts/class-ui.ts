@@ -1,4 +1,4 @@
-import { DOM_ELEMENTS } from './dom-collection';
+import { DOM_ELEMENTS, DOM_FORMS } from './dom-collection';
 import { Storage } from './class-storage';
 
 class UI {
@@ -62,6 +62,31 @@ class UI {
 		}
 	}
 
+	// Validate inputs
+	validateInputs(e: Event, input: HTMLInputElement, behaviour?: string) {
+		const { length } = (e.target as HTMLInputElement).value;
+
+		switch (behaviour) {
+			case 'focus':
+				if (!length) {
+					input.classList.add('invalid');
+				}
+				break;
+
+			case 'blur':
+				input.classList.remove('invalid');
+				break;
+
+			default:
+				if (!length) {
+					input.classList.add('invalid');
+				} else {
+					input.classList.remove('invalid');
+				}
+				break;
+		}
+	}
+
 	// ---- LOADER LOGIC ----
 
 	loaderToggle(id: string) {
@@ -102,11 +127,17 @@ class UI {
 
 	displayUserInfo(page?: string) {
 		const {
+			firstname,
+			lastname,
+			email,
+		} = DOM_FORMS.formBooking !== null ? DOM_FORMS.formBooking : { firstname: '', lastname: '', email: '' };
+		const {
 			displayName: name,
 			photoURL: picture,
-			email,
+			email: userEmail,
 		} = Storage.getUser();
 		const firstName: string = name.split(' ', 1).toString();
+		const lastName: string = name.split(' ').pop().toString();
 		const getLetter: string = firstName.charAt(0).toUpperCase();
 		const displayPicture = () => {
 			if (picture === null) {
@@ -119,13 +150,18 @@ class UI {
 		switch (page) {
 			case 'profile':
 				DOM_ELEMENTS.userName.innerText = name;
-				DOM_ELEMENTS.userEmail.innerText = email;
+				DOM_ELEMENTS.userEmail.innerText = userEmail;
 				displayPicture();
 				break;
 
 			default:
 				DOM_ELEMENTS.userName.innerText = firstName;
 				displayPicture();
+				DOM_FORMS.formBooking.querySelectorAll('input')
+					.forEach((input) => input.classList.remove('invalid'));
+				firstname.value = firstName;
+				lastname.value = lastName;
+				email.value = userEmail;
 				break;
 		}
 	}
@@ -134,6 +170,7 @@ class UI {
 		DOM_ELEMENTS.userName.innerText = '';
 		DOM_ELEMENTS.userletter.innerText = '';
 		DOM_ELEMENTS.userPicture.removeAttribute('src');
+		DOM_FORMS.formBooking.reset();
 	}
 
 	// ---- PRODUCTS ----
@@ -177,11 +214,11 @@ class UI {
 	// ---- GALLERY ----
 	// Categories navigation
 
-	optionActive(event: Event, options: NodeListOf<Element>) {
+	optionActive(event: Event, options: NodeListOf<Element>, cl: string = 'active') {
 		options.forEach((option) => {
-			option.classList.remove('active');
+			option.classList.remove(cl);
 		});
-		(event.target as HTMLElement).classList.add('active');
+		(event.target as HTMLElement).classList.add(cl);
 	}
 
 	// ---- PROFILE ----

@@ -39,6 +39,7 @@ export const signUp = (userdata: Credential, elements: Modal) => {
 		.createUserWithEmailAndPassword(email, password)
 		.finally(() => {
 			ui.loaderToggle('loaderSignUp');
+			window.location.hash = '#signin';
 		})
 		.then((credential) => {
 			const { user } = credential;
@@ -77,6 +78,7 @@ export const signInWithEmailAndPass = (userdata: Credential, elements: Modal) =>
 		.signInWithEmailAndPassword(email, password)
 		.finally(() => {
 			ui.loaderToggle('loaderSignIn');
+			window.location.hash = '#signin';
 		})
 		.then((credential) => {
 			const { user } = credential;

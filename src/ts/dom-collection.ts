@@ -8,6 +8,9 @@ export const DOM_ELEMENTS = {
 	heroHeader: document.getElementById('heroHeader'),
 	heroBlockFirst: document.getElementById('heroBlockFirst'),
 	heroBlockSecond: document.getElementById('heroBlockSecond'),
+	bookingDate: document.getElementById('bookingDate'),
+	bookingTime: document.getElementById('bookingTime'),
+	tables: document.querySelectorAll('[data-table]'),
 
 	// User
 
@@ -22,13 +25,11 @@ export const DOM_ELEMENTS = {
 
 	// Signup
 
-	// signUpButton: document.getElementById('signUpBtn'),
 	overlaySignUp: document.getElementById('overlayForSignUp'),
 	modalSignUp: document.getElementById('modalSignUp'),
 
 	// Signin
 
-	// signInButton: document.getElementById('signInBtn'),
 	signInRedirectBtns: document.querySelectorAll('[data-action="signin"]'),
 	overlaySignIn: document.getElementById('overlayForSignIn'),
 	modalSignIn: document.getElementById('modalSignIn'),

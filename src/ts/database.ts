@@ -1,4 +1,5 @@
 import { firestore, auth, firebase } from '../js/firebase.cofig';
+import { Booking } from '../app/components/hero/class-booking';
 
 export class Database {
 	async getFavourites(uid: string): Promise<string[]> {
@@ -57,6 +58,18 @@ export class Database {
 		userDocRef.update({
 			ids: firebase.firestore.FieldValue.arrayRemove(docId),
 		});
+	}
+
+	setBooking(bookingObj: Booking) {
+		firestore.collection('reservation').doc()
+			.set({
+				...bookingObj,
+			});
+	}
+
+	async getBookings() {
+		const reservationSnapshot = await firestore.collection('reservation').get();
+		return reservationSnapshot.docs.map((doc) => ({ ...doc.data() }));
 	}
 }
 
