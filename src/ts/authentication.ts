@@ -3,10 +3,12 @@ import { ui } from './class-ui';
 import { Storage } from './class-storage';
 import { Credential, Modal } from './interfaces';
 import { notif } from '../app/components/notification/notification-subject';
+import { database } from './database';
 
 // ---- AUTH STATUS ----
 
 auth.onAuthStateChanged((user) => {
+	database.user = user;
 	if (!user && document.title !== 'Profile') {
 		ui.signOutUser();
 	}

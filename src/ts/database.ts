@@ -1,47 +1,56 @@
-import { firestore, auth, firebase } from '../js/firebase.cofig';
+import { firestore, firebase } from '../js/firebase.cofig';
 import { Booking } from '../app/components/hero/class-booking';
 
-export class Database {
+class Database {
+	public date: string;
+	public user: firebase.User;
+
 	async getFavourites(uid: string): Promise<string[]> {
-		const favouritesSnapshot = await firestore.collection('favourites').doc(uid).get();
-		if (favouritesSnapshot.exists) {
-			return favouritesSnapshot.data().ids;
+		try {
+			const favouritesSnapshot = await firestore.collection('favourites').doc(uid).get();
+			return favouritesSnapshot.exists ? favouritesSnapshot.data().ids : [];
+		} catch (error) {
+			return error;
 		}
-		return [];
 	}
 
 	async updateFavourites(docId: string) {
-		const { uid } = auth.currentUser;
+		const { uid } = this.user;
 		const menuDocRef = firestore.collection('menu').doc(docId);
-		const userDocRef = await firestore.collection('favourites').doc(uid).get();
 
-		firestore.runTransaction(async (transaction) => {
-			const sfDoc = await transaction.get(menuDocRef);
-			if (!sfDoc.exists) {
-				console.log('Document does not exist!');
-			} else {
-				const updateLikes = sfDoc.data().likes + 1;
-				transaction.update(menuDocRef, { likes: updateLikes });
-			}
-		});
+		try {
+			const userDocRef = await firestore.collection('favourites').doc(uid).get();
 
-		menuDocRef
-			.get()
-			.then((menuDocSnapshot) => {
-				if (!userDocRef.exists) {
-					firestore.collection('favourites').doc(uid).set({
-						ids: firebase.firestore.FieldValue.arrayUnion(menuDocSnapshot.id),
-					});
+			firestore.runTransaction(async (transaction) => {
+				const sfDoc = await transaction.get(menuDocRef);
+				if (!sfDoc.exists) {
+					console.log('Document does not exist!');
 				} else {
-					firestore.collection('favourites').doc(uid).update({
-						ids: firebase.firestore.FieldValue.arrayUnion(menuDocSnapshot.id),
-					});
+					const updateLikes = sfDoc.data().likes + 1;
+					transaction.update(menuDocRef, { likes: updateLikes });
 				}
 			});
+
+			menuDocRef
+				.get()
+				.then((menuDocSnapshot) => {
+					if (!userDocRef.exists) {
+						firestore.collection('favourites').doc(uid).set({
+							ids: firebase.firestore.FieldValue.arrayUnion(menuDocSnapshot.id),
+						});
+					} else {
+						firestore.collection('favourites').doc(uid).update({
+							ids: firebase.firestore.FieldValue.arrayUnion(menuDocSnapshot.id),
+						});
+					}
+				});
+		} catch (error) {
+			console.error(error);
+		}
 	}
 
 	removeFavourite(docId: string) {
-		const { uid } = auth.currentUser;
+		const { uid } = this.user;
 		const menuDocRef = firestore.collection('menu').doc(docId);
 		const userDocRef = firestore.collection('favourites').doc(uid);
 
@@ -67,9 +76,27 @@ export class Database {
 			});
 	}
 
-	async getBookings() {
-		const reservationSnapshot = await firestore.collection('reservation').get();
-		return reservationSnapshot.docs.map((doc) => ({ ...doc.data() }));
+	async getBookings(): Promise<any[]> {
+		try {
+			const reservationSnapshot = await firestore.collection('reservation').get();
+			return reservationSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		} catch (error) {
+			return error;
+		}
+	}
+
+	async getActualBookings(): Promise<any[]> {
+		const today = new Date().getTime();
+
+		try {
+			const reservationSnapshot = await firestore.collection('reservation').get();
+			const reservationData: any[] = reservationSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+
+			return reservationData.filter((item) => (today <= new Date(`${item.date} ${item.time}`).getTime())
+				&& (new Date(this.date).setHours(0, 0, 0, 0) === new Date(item.date).setHours(0, 0, 0, 0)));
+		} catch (error) {
+			return error;
+		}
 	}
 }
 

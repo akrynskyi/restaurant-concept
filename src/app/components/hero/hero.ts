@@ -11,14 +11,26 @@ export const hero = (): void => {
 	const booking = new Booking();
 	const tooltips: Element[] = [];
 
-	document.addEventListener('DOMContentLoaded', () => {
+	// Reset state
+
+	function resetUI() {
 		(DOM_ELEMENTS.bookingDate as HTMLInputElement).value = '';
 		(DOM_ELEMENTS.bookingTime as HTMLInputElement).value = '';
-	});
+		DOM_ELEMENTS.bookingDate.classList.remove('invalid');
+		DOM_ELEMENTS.bookingTime.classList.remove('invalid');
+		DOM_ELEMENTS.tables.forEach((table) => table.classList.remove('active', 'picked', 'selected'));
+	}
+
+	document.addEventListener('DOMContentLoaded', resetUI);
+
+	// Hero toggle
 
 	DOM_ELEMENTS.heroHeader.addEventListener('click', () => {
 		const chevronIcon = document.getElementById('chevronIcon');
+
+		resetUI();
 		DOM_ELEMENTS.heroBlockFirst.classList.toggle('active');
+
 		if (chevronIcon.classList.contains('fa-chevron-up')) {
 			chevronIcon.classList.remove('fa-chevron-up');
 			chevronIcon.classList.add('fa-chevron-down');
@@ -28,21 +40,45 @@ export const hero = (): void => {
 		}
 	});
 
+	// Inputs validation
+	// Hero form
+
 	DOM_FORMS.formBooking.querySelectorAll('input').forEach((input) => {
+		const tooltipForPhone = DOM_FORMS.formBooking.querySelector('#tipForPhone');
+
 		input.addEventListener('input', (e) => {
 			ui.validateInputs(e, input);
 		});
 		input.addEventListener('focus', (e) => {
 			ui.validateInputs(e, input, 'focus');
+			if ((e.target as HTMLInputElement).type === 'tel') {
+				tooltipForPhone.classList.add('active');
+			}
 		});
 		input.addEventListener('blur', (e) => {
 			ui.validateInputs(e, input, 'blur');
+			if ((e.target as HTMLInputElement).type === 'tel') {
+				tooltipForPhone.classList.remove('active');
+			}
 		});
+	});
+
+	// Date && time
+
+	DOM_ELEMENTS.bookingTime.addEventListener('focus', () => {
+		DOM_ELEMENTS.tipWorkingHours.classList.add('active');
+		DOM_ELEMENTS.bookingTime.classList.remove('invalid');
+	});
+	DOM_ELEMENTS.bookingTime.addEventListener('blur', () => {
+		DOM_ELEMENTS.tipWorkingHours.classList.remove('active');
+	});
+	DOM_ELEMENTS.bookingDate.addEventListener('focus', () => {
+		DOM_ELEMENTS.bookingDate.classList.remove('invalid');
 	});
 
 	DOM_FORMS.formBooking.addEventListener('submit', (e) => {
 		e.preventDefault();
-		const user = Storage.getUser();
+		const user: firebase.User = Storage.getUser();
 		const {
 			firstname,
 			lastname,
@@ -73,13 +109,56 @@ export const hero = (): void => {
 			&& phone.value.length
 			&& user === null
 		) {
-			notif.getMessage({ message: 'Sign in or create account to continue booking' });
+			setTimeout(() => { ui.showModalDefault(DOM_ELEMENTS.overlaySignIn, DOM_ELEMENTS.modalSignIn); }, 1000);
+			notif.getMessage({ message: 'Sign in or create account to continue reservation' });
 		} else {
 			notif.getMessage({ message: 'Complete all fields to continue' });
 			(e.currentTarget as HTMLFormElement).querySelectorAll('input')
 				.forEach((input) => (!input.value ? input.classList.add('invalid') : input.classList.remove('invalid')));
 		}
 	});
+
+	function displayReservedTables(data: Booking[]) {
+		const user: firebase.User = Storage.getUser();
+		tooltips.length = 0;
+
+		const text = {
+			tableAndTime: 'My table</br>Time: ',
+			time: 'Time: ',
+		};
+
+		/* eslint-disable @typescript-eslint/indent */
+		data.forEach((item) => {
+			const reserved = Array.from(DOM_ELEMENTS.tables)
+				.find((table) => table.getAttribute('data-table') === item.tableId);
+			reserved.innerHTML += `
+				<span class="tooltip tooltip--fortable" data-tooltip="table">
+					${user !== null && user.uid === item.uid
+					? text.tableAndTime + item.time.split(':', 2).join(':').toString()
+					: text.time + item.time.split(':', 2).join(':').toString()}
+				</span>`;
+			if (item.uid === user.uid) {
+				reserved.classList.add('selected');
+			} else {
+				reserved.classList.remove('selected');
+			}
+			tooltips.push(reserved.firstElementChild);
+		});
+
+		DOM_ELEMENTS.tables.forEach((table) => {
+			const tableId = table.getAttribute('data-table');
+			const reserved = data.find((item) => item.tableId === tableId);
+
+			if (reserved) {
+				table.classList.remove('picked');
+				table.classList.add('active');
+				table.setAttribute('disabled', 'disabled');
+			} else {
+				table.classList.remove('active', 'selected');
+				table.removeAttribute('disabled');
+			}
+		});
+	}
 
 	DOM_ELEMENTS.heroBlockSecond.addEventListener('click', (e) => {
 		const { trigger } = (e.target as HTMLElement).dataset;
@@ -102,12 +181,33 @@ export const hero = (): void => {
 					&& timeValue.length
 					&& booking.tableId !== undefined
 				) {
+					// Make booking
+					ui.loaderToggle('loaderHero');
 					database.setBooking(booking);
-					(DOM_ELEMENTS.bookingDate as HTMLInputElement).value = '';
+					// Update UI
+					database.getActualBookings()
+						.finally(() => {
+							ui.loaderToggle('loaderHero');
+							notif.getMessage({ message: 'You have successfully reserved a table!' });
+						})
+						.then((data) => {
+							tooltips.forEach((tooltip) => {
+								tooltip.remove();
+							});
+							displayReservedTables(data);
+						})
+						.catch((error) => console.error(error));
+					// Reset
+					booking.reset();
 					(DOM_ELEMENTS.bookingTime as HTMLInputElement).value = '';
-					notif.getMessage({ message: 'Success!' });
+				} else if (dateValue.length && timeValue.length) {
+					notif.getMessage({ message: 'Please choose a table to continue!' });
+				} else if (dateValue.length) {
+					notif.getMessage({ message: 'Please choose a time to continue!' });
+					DOM_ELEMENTS.bookingTime.classList.add('invalid');
 				} else {
-					notif.getMessage({ message: 'Choose date to check available tables!' });
+					notif.getMessage({ message: 'Choose a date to check available tables!' });
+					DOM_ELEMENTS.bookingDate.classList.add('invalid');
 				}
 				break;
 
@@ -119,43 +219,6 @@ export const hero = (): void => {
 				break;
 		}
 	});
-
-	function displayReservedTables(data: Booking[]) {
-		const user = Storage.getUser();
-		tooltips.length = 0;
-
-		const text = {
-			tableAndTime: 'My table</br>Time: ',
-			time: 'Time:',
-		};
-
-		/* eslint-disable @typescript-eslint/indent */
-		data.forEach((item) => {
-			const reserved = Array.from(DOM_ELEMENTS.tables)
-				.find((table) => table.getAttribute('data-table') === item.tableId);
-			reserved.innerHTML += `
-				<span class="tooltip tooltip--fortable" data-tooltip="table">
-					${user !== null && user.uid === item.uid
-					? text.tableAndTime + item.time.split(':', 2).join(':').toString()
-					: text.time + item.time.split(':', 2).join(':').toString()}
-				</span>`;
-			tooltips.push(reserved.firstElementChild);
-		});
-
-		DOM_ELEMENTS.tables.forEach((table) => {
-			const tableId = table.getAttribute('data-table');
-			const reserved = data.find((item) => item.tableId === tableId);
-
-			if (reserved) {
-				table.classList.remove('picked');
-				table.classList.add('active');
-				table.setAttribute('disabled', 'disabled');
-			} else {
-				table.classList.remove('active');
-				table.removeAttribute('disabled');
-			}
-		});
-	}
 
 	const time$ = fromEvent(DOM_ELEMENTS.bookingTime, 'input')
 		.pipe(
@@ -173,17 +236,23 @@ export const hero = (): void => {
 			debounceTime(2000),
 		);
 	date$.subscribe((date) => {
+		database.date = date;
 		booking.setDate(date);
-		database.getBookings()
-			.then((data) => data.filter((item) => (new Date().getTime() <= new Date(`${item.date} ${item.time}`).getTime())
-				&& (new Date(date).setHours(0, 0, 0, 0) === new Date(item.date).setHours(0, 0, 0, 0))))
+		ui.loaderToggle('loaderHero');
+		database.getActualBookings()
+			.finally(() => {
+				ui.loaderToggle('loaderHero');
+			})
 			.then((data) => {
 				tooltips.forEach((tooltip) => {
 					tooltip.remove();
 				});
 				displayReservedTables(data);
-			});
+			})
+			.catch((error) => console.error(error));
 	});
+
+	// Input mask
 
 	(DOM_FORMS.formBooking as HTMLFormElement).phone.addEventListener('input', (e: Event) => {
 		const x = (e.target as HTMLInputElement).value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);

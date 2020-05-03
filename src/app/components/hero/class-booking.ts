@@ -3,7 +3,7 @@ export class Booking {
 	public firstName: string;
 	public lastName: string;
 	public email: string;
-	public phoneNumber: number;
+	public phoneNumber: string;
 	public tableId: string;
 	public date: string;
 	public time: string;
@@ -17,7 +17,7 @@ export class Booking {
 		firstName: string,
 		lastName: string,
 		email: string,
-		phoneNumber: number,
+		phoneNumber: string,
 	) {
 		this.uid = uid;
 		this.firstName = firstName;
@@ -36,5 +36,10 @@ export class Booking {
 
 	setTableId(tableId: string) {
 		this.tableId = tableId;
+	}
+
+	reset() {
+		this.time = null;
+		this.tableId = undefined;
 	}
 }

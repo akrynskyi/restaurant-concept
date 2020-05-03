@@ -29,13 +29,15 @@ mixin hero
                                     name='email',
                                     placeholder='Email',
                                 )
-                                input.input-field.input-field--mod.inp-col(
-                                    type='tel',
-                                    name='phone',
-                                    placeholder='Phone Number',
-                                )
+                                .form-group
+                                    span#tipForPhone.tooltip-form Phone format: (XXX) XX XXXX
+                                    input.input-field.input-field--mod.inp-col(
+                                        type='tel',
+                                        name='phone',
+                                        placeholder='Phone Number',
+                                    )
                             .booking-form__button
-                                button.btn.btn--mod.btn--secondary(name='continueBtn') Choose a table
+                                button.btn.btn--mod.btn--secondary(name='continue') Choose a table
                 // close .hero-block
                 #heroBlockSecond.hero-block.second
                     .hero-block__header
@@ -46,9 +48,22 @@ mixin hero
                             h2.hero-block__body-title Choose a date
                             .hero-block__row-group
                                 .hero-block__row-item
-                                    input#bookingDate.input-field.input-field--mod(type="date")
+                                    #loaderHero.hero-loader
+                                        .line-spin-fade-loader
+                                            div
+                                            div
+                                            div
+                                            div
+                                            div
+                                            div
+                                            div
+                                            div
                                 .hero-block__row-item
-                                    input#bookingTime.input-field.input-field--mod(
+                                    .form-group
+                                        span#tipWorkingHours.tooltip-form.fix-w Restaurant working hours from 10:00 to 22:00
+                                        input#bookingDate.input-field.input-field--mod(type="date")
+                                .hero-block__row-item
+                                    input#bookingTime.input-field.input-field--mod.time-inp(
                                         type="time",
                                         min="10:00",
                                         max="22:00"

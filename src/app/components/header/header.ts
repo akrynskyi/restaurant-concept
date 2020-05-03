@@ -69,9 +69,10 @@ export const header = (): void => {
 	});
 
 	DOM_ELEMENTS.signOutBtn.addEventListener('click', () => {
+		DOM_ELEMENTS.header.classList.remove('scrolled');
 		Storage.clearStorage();
-		signOut();
 		ui.userDropdownHide();
+		signOut();
 	});
 
 	// ---- INTERSECTION OBSERVER ----

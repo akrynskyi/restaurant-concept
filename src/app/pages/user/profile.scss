@@ -16,6 +16,7 @@
         padding: 30px 80px;
     }
     &__body {
+        position: relative;
         display: none;
         flex-direction: column;
         flex-grow: 1;

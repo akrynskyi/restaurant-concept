@@ -46,7 +46,6 @@ export class Photos {
 			const data = await response.json();
 			return data.results.map((item: Post) => ({ description: item.alt_description, color: item.color, photos: item.urls }));
 		} catch (error) {
-			console.error(error);
 			return error;
 		}
 	}

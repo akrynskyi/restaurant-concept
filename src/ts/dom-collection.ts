@@ -4,6 +4,9 @@ export const DOM_ELEMENTS = {
 	header: document.querySelector('.header'),
 	searchBar: document.querySelector('.search-bar'),
 	closeSearchButton: document.getElementById('closeSearchBtn'),
+
+	// Hero
+
 	hero: document.querySelector('.hero'),
 	heroHeader: document.getElementById('heroHeader'),
 	heroBlockFirst: document.getElementById('heroBlockFirst'),
@@ -11,6 +14,7 @@ export const DOM_ELEMENTS = {
 	bookingDate: document.getElementById('bookingDate'),
 	bookingTime: document.getElementById('bookingTime'),
 	tables: document.querySelectorAll('[data-table]'),
+	tipWorkingHours: document.getElementById('tipWorkingHours'),
 
 	// User
 

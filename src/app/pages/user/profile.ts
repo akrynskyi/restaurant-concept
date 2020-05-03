@@ -66,14 +66,31 @@ export const profile = () => {
 		<!-- close .favourite__item-->`;
 	}
 
+	function placeholderRender() {
+		return `
+		<div class="placeholder">
+			<div class="placeholder__item">
+				<p>You favourites list is empty</p>
+			</div>
+			<button class="btn btn--hov">Check some products</button>
+		</div>
+		`;
+	}
+
 	auth.onAuthStateChanged((user) => {
 		firestore.collection('menu').onSnapshot((snapshot) => {
 			const data: firebase.firestore.DocumentData = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
 			database.getFavourites(user.uid)
 				.then((ids) => {
 					const userFavourites: [] = data.filter((item: Item) => ids.some((id) => item.id === id));
-					DOM_ELEMENTS.favouriteScrollable.innerHTML = userFavourites.map((item) => favTemplateRender(item)).join('');
-				});
+					if (userFavourites.length) {
+						DOM_ELEMENTS.favouriteScrollable.innerHTML = userFavourites
+							.map((item) => favTemplateRender(item)).join('');
+					} else {
+						DOM_ELEMENTS.favouriteScrollable.innerHTML = placeholderRender();
+					}
+				})
+				.catch((error) => console.error(error));
 		});
 	});
 

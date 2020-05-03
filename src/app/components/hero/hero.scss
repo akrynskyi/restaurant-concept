@@ -5,6 +5,16 @@
     background-size: cover;
     background-position: center;
     overflow: hidden;
+    &-loader {
+        width: 25px;
+        height: 100%;
+        display: none;
+        justify-content: flex-end;
+        align-items: center;
+        &.active {
+            display: flex;
+        }
+    }
     &-wrapper {
         position: relative;
         padding-top: 90px;
@@ -83,6 +93,7 @@
             z-index: 2;
         }
         &.second {
+            height: calc(100vh - 125px);
             z-index: 1;
             opacity: 0;
         }
@@ -92,14 +103,14 @@
         &__row {
             display: flex;
             justify-content: space-between;
-            margin: 30px 0px 15px 0px;
+            margin: 20px 0px 15px 0px;
             &--mod {
                 justify-content: center;
                 margin: 15px 0px;
             }
             &-group {
                 display: grid;
-                grid-template-columns: repeat(2, auto);
+                grid-template-columns: repeat(3, auto);
                 grid-gap: 20px;
             }
             &-item {
@@ -111,16 +122,38 @@
         }
     }
     &-block.active {
-        transform: scale(1, 1) translateY(0%);
+        transform: scale(1, 1) translateY(0);
     }
     &-block.shrink {
         transform: scale(.9, 1) translateY(0);
         z-index: 1;
     }
     &-block.front {
-        transform: scale(1, 1) translateY(30px);
+        transform: scale(1, 1) translateY(0);
         opacity: 1;
         z-index: 2;
+    }
+}
+
+.form-group {
+    position: relative;
+}
+.tooltip-form {
+    position: absolute;
+    left: 0;
+    font-size: 12px;
+    font-weight: 300;
+    opacity: 0;
+    transform: translateY(-15px);
+    transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+
+    &.fix-w {
+        width: 265px;
+    }
+
+    &.active {
+        opacity: 1;
+        transform: translateY(-25px);
     }
 }
 
@@ -163,7 +196,8 @@
                 grid-row-start: 2;
             }
             & > button:nth-child(2) {
-                grid-row-start: 2;
+                grid-column-start: 2;
+                grid-row-start: 1;
             }
             & > button:nth-child(3) {
                 grid-column-start: 2;
@@ -207,10 +241,6 @@
             }
         }
     }
-    // &:nth-of-type(4) {
-    //     // background-color: #e5682d;
-    //     // background-color: #212328;
-    // }
     &:nth-of-type(3) {
         // background-color: #e5682d;
         & > .group:first-child {

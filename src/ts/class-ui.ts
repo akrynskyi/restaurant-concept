@@ -117,6 +117,8 @@ class UI {
 	userSignOutSetupUI() {
 		DOM_ELEMENTS.userNav.classList.remove('active');
 		DOM_ELEMENTS.authBlock.classList.add('active');
+		DOM_ELEMENTS.heroBlockFirst.classList.remove('shrink', 'active');
+		setTimeout(() => DOM_ELEMENTS.heroBlockSecond.classList.remove('front'), 200);
 		this.removeUserInfo();
 	}
 
@@ -214,11 +216,11 @@ class UI {
 	// ---- GALLERY ----
 	// Categories navigation
 
-	optionActive(event: Event, options: NodeListOf<Element>, cl: string = 'active') {
+	optionActive(event: Event, options: NodeListOf<Element>, className: string = 'active') {
 		options.forEach((option) => {
-			option.classList.remove(cl);
+			option.classList.remove(className);
 		});
-		(event.target as HTMLElement).classList.add(cl);
+		(event.target as HTMLElement).classList.add(className);
 	}
 
 	// ---- PROFILE ----
