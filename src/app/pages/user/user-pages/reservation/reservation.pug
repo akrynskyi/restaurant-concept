@@ -1,4 +1,17 @@
 mixin reservation
     .profile__body(data-page="#reservation")
-        h1 Reservation
+        .reservation
+            #reservationScrollable.reservation__scrollable
+                template
+                    .timeline
+                        .timeline__item
+                            span.timeline__item-date May 5
+                            .timeline__item-content
+                                .timeline__item-group
+                                    h4.timeline__item-title Table №18
+                                    span.timeline__item-time Time: 18:00
+                                .timeline__item-group
+                                    a.link-default.link-default--mod(href="#") Remove
+                        // close .timeline__item
+                    // close .timeline
     // close .profile__body

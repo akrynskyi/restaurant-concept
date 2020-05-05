@@ -15,6 +15,12 @@ html(lang='en')
             + profile-nav
             .profile__inner
                 #profileHeader.profile__header
+                    #profileDash.dash
+                        .sort.column
+                            span.sort__suptitle Sort by:
+                            button.btn-default.btn-sort New first
+                        .total.column
+                            span#reservTotal
                     button.btn.btn--secondary(data-trigger="signout") Sign Out
                     button.btn.btn--primary.btn--ml(data-trigger="close") Close
                 block content

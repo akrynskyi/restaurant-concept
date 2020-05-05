@@ -1,4 +1,5 @@
 export class Booking {
+	public id?: string;
 	public uid: string;
 	public firstName: string;
 	public lastName: string;

@@ -67,7 +67,10 @@ export const DOM_ELEMENTS = {
 	// Profile
 
 	profileHeader: document.getElementById('profileHeader'),
+	profileDash: document.getElementById('profileDash'),
+	reservationTotal: document.getElementById('reservTotal'),
 	favouriteScrollable: document.getElementById('favouriteScrollable'),
+	reservationScrollable: document.getElementById('reservationScrollable'),
 
 	// Notification
 

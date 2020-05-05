@@ -4,6 +4,7 @@ import { Item } from '../../../ts/interfaces';
 import { ui } from '../../../ts/class-ui';
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { signOut } from '../../../ts/authentication';
+import { Booking } from '../../components/hero/class-booking';
 
 export const profile = () => {
 	DOM_ELEMENTS.profileHeader.addEventListener('click', (e) => {
@@ -30,6 +31,11 @@ export const profile = () => {
 	});
 
 	function favTemplateRender(item: Item) {
+		const portion = {
+			g: 'g',
+			ml: 'ml',
+		};
+
 		return `
 		<div class="favourite__item">
 			<div class="favourite__item-picture">
@@ -51,7 +57,7 @@ export const profile = () => {
 					</div>
 					<div class="favourite__item-meta-tag">
 						<span>
-							${item.type === 'food' ? `${item.portion}g` : `${item.portion}ml`}
+							${item.type === 'food' ? item.portion + portion.g : item.portion + portion.ml}
 						</span>
 					</div>
 					<div class="favourite__item-meta-tag">
@@ -66,13 +72,56 @@ export const profile = () => {
 		<!-- close .favourite__item-->`;
 	}
 
-	function placeholderRender() {
+	function timelineTemplateRender(booking: Booking) {
+		const options = {
+			month: 'short',
+			day: 'numeric',
+		};
+		const formatedDate = new Intl.DateTimeFormat('en-US', options).format(new Date(booking.date));
+		const bookingDate = new Date(`${booking.date} ${booking.time}`);
+		const today = new Date();
+
+		const d = today.getDate() + 1;
+		const m = today.getMonth();
+		const y = today.getFullYear();
+
+		const tomorrow = new Date(y, m, d);
+
+		/* eslint-disable @typescript-eslint/indent */
+		/* eslint-disable no-nested-ternary */
+		return `
+		<div class="timeline__item">
+			<span class="timeline__item-date">
+				${today.setHours(0, 0, 0, 0) === bookingDate.setHours(0, 0, 0, 0) ? 'Today'
+				: tomorrow.setHours(0, 0, 0, 0) === bookingDate.setHours(0, 0, 0, 0) ? 'Tom' : formatedDate}
+			</span>
+			<div class="timeline__item-content">
+				<div class="timeline__item-group">
+					<h4 class="timeline__item-title">
+						Table ${booking.tableId}
+					</h4>
+					<span class="timeline__item-time">
+						Time: ${booking.time.split(':', 2).join(':').toString()}
+					</span>
+				</div>
+				<div class="timeline__item-group">
+					<a class="link-default link-default--mod" href="#" data-id="${booking.id}">
+						${today.getTime() <= bookingDate.getTime() ? 'Cancel' : 'Remove'}
+					</a>
+				</div>
+			</div>
+		</div>
+		<!-- close .timeline__item-->`;
+	}
+
+	function placeholderRender(word: string, displayBtn: boolean) {
+		const button = '<button class="btn btn--hov">Check some products</button>';
 		return `
 		<div class="placeholder">
 			<div class="placeholder__item">
-				<p>You favourites list is empty</p>
+				<p>You ${word} list is empty</p>
 			</div>
-			<button class="btn btn--hov">Check some products</button>
+			${displayBtn ? button : null}
 		</div>
 		`;
 	}
@@ -87,17 +136,39 @@ export const profile = () => {
 						DOM_ELEMENTS.favouriteScrollable.innerHTML = userFavourites
 							.map((item) => favTemplateRender(item)).join('');
 					} else {
-						DOM_ELEMENTS.favouriteScrollable.innerHTML = placeholderRender();
+						DOM_ELEMENTS.favouriteScrollable.innerHTML = placeholderRender('favourites', true);
 					}
 				})
 				.catch((error) => console.error(error));
 		});
+
+		database.getBookings()
+			.then((data) => {
+				const userReservation: Booking[] = data.filter((item) => item.uid === user.uid);
+				const timelineElement = document.createElement('div');
+				timelineElement.className = 'timeline';
+				if (userReservation.length) {
+					timelineElement.innerHTML = userReservation
+						.map((item) => timelineTemplateRender(item)).join('');
+
+					DOM_ELEMENTS.reservationScrollable.appendChild(timelineElement);
+					DOM_ELEMENTS.reservationTotal.innerHTML = `Total: ${userReservation.length.toString()}`;
+				} else {
+					DOM_ELEMENTS.reservationScrollable.innerHTML = placeholderRender('reservation', false);
+				}
+			});
 	});
 
 	function hashChecker() {
 		const { hash } = window.location;
 		ui.pageActive(hash, '[data-nav="link"]', '[data-page]');
 		ui.displayUserInfo('profile');
+
+		if (hash === '#reservation') {
+			DOM_ELEMENTS.profileDash.classList.add('active');
+		} else {
+			DOM_ELEMENTS.profileDash.classList.remove('active');
+		}
 	}
 
 	window.addEventListener('hashchange', hashChecker);
