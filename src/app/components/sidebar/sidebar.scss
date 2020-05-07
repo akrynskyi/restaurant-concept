@@ -11,7 +11,7 @@
     transition: transform .2s ease-in-out;
     transform: translateX(calc(-100% + 35px));
     box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.4);
-    z-index: 10;
+    z-index: 5;
     &__header {
         padding: 50px 40px 25px 40px;
         font-size: 24px;

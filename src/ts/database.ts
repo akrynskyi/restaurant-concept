@@ -76,16 +76,18 @@ class Database {
 			});
 	}
 
-	async getBookings(): Promise<any[]> {
+	async getBookings(): Promise<Booking[]> {
 		try {
 			const reservationSnapshot = await firestore.collection('reservation').get();
-			return reservationSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+			const data: any[] = reservationSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+			const userReservation: Booking[] = data.filter((item) => item.uid === this.user.uid);
+			return userReservation.sort((a, b) => (new Date(b.date).getTime() - new Date(a.date).getTime()));
 		} catch (error) {
 			return error;
 		}
 	}
 
-	async getActualBookings(): Promise<any[]> {
+	async getActualBookings(): Promise<Booking[]> {
 		const today = new Date().getTime();
 
 		try {
@@ -97,6 +99,10 @@ class Database {
 		} catch (error) {
 			return error;
 		}
+	}
+
+	removeBooking(docId: string) {
+		firestore.collection('reservation').doc(docId).delete();
 	}
 }
 

@@ -1,7 +1,8 @@
 .favourite {
     overflow: auto;
     &__scrollable {
-        max-height: 495px;
+        // max-height: 495px;
+        max-height: calc(100vh - 165px);
         margin-right: 25px;
     }
     &__item {

@@ -120,6 +120,9 @@ body {
     text-transform: uppercase;
     font-size: 16px;
     transition: color .2s ease-in;
+    &.darken {
+      color: $neutral-primary;
+    }
     &:hover {
       color: $border-base;
     }
