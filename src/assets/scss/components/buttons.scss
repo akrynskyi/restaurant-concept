@@ -160,13 +160,38 @@
 
   &:hover,
   &:hover::after {
-    border-color: $neutral-secondary transparent transparent transparent;
-    color: $neutral-secondary;
+    border-color: $neutral-primary transparent transparent transparent;
+    color: $neutral-primary;
   }
 
   &.active::after {
     transform: rotate(180deg);
   }
+  &.fix-w {
+    width: 95px;
+  }
+}
+
+.btn-reset {
+  display: flex;
+  align-items: center;
+  color: $default-color;
+
+  & > i {
+    font-size: 10px;
+    margin-left: 10px;
+  }
+
+  &:hover,
+  &:hover > i {
+    color: $neutral-primary;
+  }
+}
+
+.border {
+  border: 1px solid $neutral-regular;
+  padding: 2px 4px;
+  border-radius: 3px;
 }
 
 .btn-mob {

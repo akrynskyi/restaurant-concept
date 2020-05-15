@@ -72,20 +72,6 @@
     }
 }
 
-.column {
-    display: flex;
-    flex-direction: column;
-    font-size: 16px;
-}
-
-.sort {
-    margin-right: 40px;
-    &__suptitle {
-        font-size: 12px;
-        font-weight: 300;
-    }
-}
-
 .total {
     justify-content: flex-end;
     line-height: 1;

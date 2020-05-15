@@ -23,7 +23,9 @@
 @import "./components/overlay.scss";
 @import "./components/loader.scss";
 @import "./components/loaders/spin-fade-loader.scss";
+@import "./components/loaders/ball-beat.scss";
 @import "./components/select.scss";
+@import "./components/sort.scss";
 
 // ==== PAGES ==== //
 
@@ -258,6 +260,22 @@ body {
 
 .ico-fnt {
   font-size: 14px;
+}
+
+.ico-spin {
+  animation: spin 1s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  // 50% {
+  //   transform: rotate(180deg);
+  // }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 // ==== TOOLTIP ==== //

@@ -10,8 +10,24 @@ block content
             include ../../components/sidebar/sidebar
             .section-inner
                 #productsWrapper.section-products__wrapper
+                    #loaderProducts.loader
+                        .loader-box
+                            .loader-ico
+                                i.fas.fa-mug-hot
+                            .ball-beat
+                                div
+                                div
+                                div
                     .section-products__header
                         h1.page-title Our menu
+                        #productsSort.sort-group
+                            .sort.sort--mod.column
+                                span.sort__suptitle Sort by:
+                                button#btnProductsSort.btn-default.btn-sort(data-trigger="sort") Popularity
+                            .sort.sort--mod.column
+                                button.btn-default.btn-reset
+                                    span(data-trigger="reset") Reset
+                                    i#redoIco.fas.fa-redo-alt
                     #productsContainer.section-products__container
                     // close .section-products__container
                     #productsPagination.pagination.pagination--products

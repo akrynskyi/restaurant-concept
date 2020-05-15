@@ -2,6 +2,8 @@
 #sidebar.sidebar
     .sidebar__header
         span Categories
+        button.btn-icon(title="Reset")
+            i.fas.fa-sync-alt(data-trigger="reset")
     // close .sidebar__header
     nav.sidebar__navigation
         ul.sidebar__navigationlist
@@ -10,26 +12,28 @@
                     span.collapsible-plus
                 ul.collapsible-list
                     li.collapsible-list__item
-                        span Pasta
+                        span(data-category='pasta') Pasta
                     li.collapsible-list__item
-                        span Salad
+                        span(data-category='potato') Potato
                     li.collapsible-list__item
-                        span Sandwich
+                        span(data-category='salad') Salad
                     li.collapsible-list__item
-                        span Soup
+                        span(data-category='sandwich') Sandwich
+                    li.collapsible-list__item
+                        span(data-category='soup') Soup
             // close .sidebar__navigationlist-item
             li.sidebar__navigationlist-item
-                div.sidebar__navigationlist-trigger(data-trigger='collapse') Drink
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Beverages
                     span.collapsible-plus
                 ul.collapsible-list
                     li.collapsible-list__item
-                        span Tea
+                        span(data-category='tea') Tea
                     li.collapsible-list__item
-                        span Coffee
+                        span(data-category='coffe') Coffee
                     li.collapsible-list__item
-                        span Cacao
+                        span(data-category='chocolate') Chocolate
                     li.collapsible-list__item
-                        span Juice
+                        span(data-category='fresh') Juice
             // close .sidebar__navigationlist-item
         .sidebar__toggler(data-trigger='sidebar')
             button.btn-icon

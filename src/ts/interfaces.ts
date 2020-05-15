@@ -31,7 +31,7 @@ export interface Post {
 	photos: Image
 }
 
-export interface Item {
+export interface Product {
 	id: string
 	likes: number
 	image: string
@@ -40,6 +40,7 @@ export interface Item {
 	portion: number
 	description: string
 	type: string
+	category: string
 }
 
 export interface Option {

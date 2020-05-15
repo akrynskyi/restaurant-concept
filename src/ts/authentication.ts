@@ -9,9 +9,7 @@ import { database } from './database';
 
 auth.onAuthStateChanged((user) => {
 	database.user = user;
-	if (!user && document.title !== 'Profile') {
-		ui.signOutUser();
-	}
+	if (!user && document.title !== 'Profile') ui.signOutUser();
 });
 
 document.addEventListener('DOMContentLoaded', () => {

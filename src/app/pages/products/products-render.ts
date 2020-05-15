@@ -1,17 +1,20 @@
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
-import { Item } from '../../../ts/interfaces';
+import { Product } from '../../../ts/interfaces';
+import { ui } from '../../../ts/class-ui';
 
-export class ProductsRender {
-	data: firebase.firestore.DocumentData;
-	favourites: Promise<string[]>;
-	currentPage: number;
-	totalPages: number;
-	itemsPerPage: number;
+class ProductsRender {
+	public data: Product[];
+	public favourites: string[];
+	public currentPage: number;
+	public totalPages: number;
+	public itemsPerPage: number;
 
-	constructor(
+	// constructor() { }
+
+	initializePage(
 		state: {
-			data: firebase.firestore.DocumentData,
-			userFavourites: Promise<string[]>,
+			data: Product[],
+			userFavourites: string[],
 			currentPage: number,
 			itemsPerPage: number,
 		},
@@ -30,20 +33,17 @@ export class ProductsRender {
 	}
 
 	displayUserFavourites() {
-		const likeBtns = document.querySelectorAll('[data-trigger="like"]');
+		const favButtons = document.querySelectorAll('[data-trigger="like"]');
 
-		likeBtns.forEach((btn) => {
+		favButtons.forEach((btn) => {
 			const id = (btn as HTMLElement).offsetParent.parentElement.getAttribute('data-id');
-
-			this.favourites
-				.then((ids) => {
-					const liked = ids.find((item) => item === id);
-					if (liked) {
-						(btn as HTMLElement).classList.add('red');
-					} else {
-						(btn as HTMLElement).classList.remove('red');
-					}
-				});
+			const liked = this.favourites.find((item) => item === id);
+			(btn as HTMLElement).classList.remove('disabled');
+			if (liked) {
+				(btn as HTMLElement).classList.add('red');
+			} else {
+				(btn as HTMLElement).classList.remove('red');
+			}
 		});
 	}
 
@@ -52,13 +52,27 @@ export class ProductsRender {
 
 		likeBtns.forEach((btn) => {
 			btn.classList.add('disabled');
+			btn.classList.remove('red');
 		});
+	}
+
+	productsUpdateUI(user: firebase.User) {
+		if (user !== null) {
+			this.displayUserFavourites();
+			ui.displayTooltip('[data-tooltip="like"]', 'disable');
+		} else {
+			this.disableLikeBtns();
+			ui.displayTooltip('[data-tooltip="like"]', 'enable');
+		}
 	}
 
 	renderProductCart() {
 		const data = this.paginateData();
-		DOM_ELEMENTS.productsContainer.innerHTML = data.map((item: Item) => `
+		DOM_ELEMENTS.productsContainer.innerHTML = data.map((item) => `
 				<div class="product" data-id="${item.id}">
+					<div class="product__center">
+						<i class="fas fa-heart heart-scaled"></i>
+					</div>
 					<div class="product__overlay">
 						<button class="btn-default btn-default--col btn-heart">
 							<i class="fas fa-heart ico-heart" data-trigger="like"></i>
@@ -107,6 +121,7 @@ export class ProductsRender {
 	updatePage(page: number) {
 		this.currentPage = page;
 		this.renderProductCart();
-		this.displayUserFavourites();
 	}
 }
+
+export const productsRender = new ProductsRender();

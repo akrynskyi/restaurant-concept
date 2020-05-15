@@ -7,6 +7,19 @@
   height: 100%;
   align-items: center;
   justify-content: center;
+
+  &-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &-ico {
+    font-size: 48px;
+    color: $neutral-primary;
+    margin-left: 5px;
+    margin-bottom: 5px;
+  }
 }
 .loader.active {
   display: flex;

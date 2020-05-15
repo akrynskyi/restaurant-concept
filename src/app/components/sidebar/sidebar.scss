@@ -16,9 +16,11 @@
         padding: 50px 40px 25px 40px;
         font-size: 24px;
         font-weight: 400;
-        color: $neutral-regular;
+        color: $neutral-secondary;
         text-transform: uppercase;
-        // letter-spacing: $customLetterSpacing;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
     &__navigation {
         flex-grow: 1;
@@ -49,8 +51,6 @@
     }
     &__footer {
         padding: 25px 40px 50px 40px;
-        // padding: 20px 40px;
-        // border-top: 1px solid $border-base;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -77,10 +77,13 @@
         &:last-child {
             padding-bottom: 0px;
         }
+        & > span.active {
+            color: $main-color;
+        }
     }
 }
 .collapsible-list.active {
-    max-height: 200px;
+    max-height: 400px;
 }
 
 .collapsible-plus {

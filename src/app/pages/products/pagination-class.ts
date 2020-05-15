@@ -1,7 +1,7 @@
 export class Pagination {
 	private container: HTMLElement;
 	private html: string = '';
-	private totalPages: number;
+	public totalPages: number;
 	public currentPage: number;
 	private step: number;
 
@@ -118,5 +118,12 @@ export class Pagination {
 	init(container: HTMLElement) {
 		this.create(container);
 		this.start();
+	}
+
+	remove(container: HTMLElement) {
+		if (container.children.length) {
+			container.childNodes.forEach((node) => node.remove());
+			container.querySelector('div').remove();
+		}
 	}
 }

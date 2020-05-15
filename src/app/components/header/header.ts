@@ -69,7 +69,7 @@ export const header = (): void => {
 	});
 
 	DOM_ELEMENTS.signOutBtn.addEventListener('click', () => {
-		DOM_ELEMENTS.header.classList.remove('scrolled');
+		if (window.pageYOffset === 0) DOM_ELEMENTS.header.classList.remove('scrolled');
 		Storage.clearStorage();
 		ui.userDropdownHide();
 		signOut();

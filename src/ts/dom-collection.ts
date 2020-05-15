@@ -53,6 +53,10 @@ export const DOM_ELEMENTS = {
 	productsWrapper: document.getElementById('productsWrapper'),
 	productsContainer: document.getElementById('productsContainer'),
 	productsPagination: document.getElementById('productsPagination'),
+	productsCategoryList: document.querySelectorAll('[data-category]'),
+	productsSort: document.getElementById('productsSort'),
+	btnProductsSort: document.getElementById('btnProductsSort'),
+	redoIco: document.getElementById('redoIco'),
 	prodPagWrapper: document.getElementById('prodPagWrapper'),
 
 	// Gallery

@@ -1,13 +1,24 @@
 import { firestore, firebase } from '../js/firebase.cofig';
 import { Booking } from '../app/components/hero/class-booking';
+import { Product } from './interfaces';
 
 class Database {
 	public date: string;
 	public user: firebase.User;
 
-	async getFavourites(uid: string): Promise<string[]> {
+	async getProducts(): Promise<Product[]> {
 		try {
-			const favouritesSnapshot = await firestore.collection('favourites').doc(uid).get();
+			const productsSnapshot = await firestore.collection('menu').get();
+			const data: any[] = productsSnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+			return data;
+		} catch (error) {
+			return error;
+		}
+	}
+
+	async getFavourites(): Promise<string[]> {
+		try {
+			const favouritesSnapshot = await firestore.collection('favourites').doc(this.user.uid).get();
 			return favouritesSnapshot.exists ? favouritesSnapshot.data().ids : [];
 		} catch (error) {
 			return error;

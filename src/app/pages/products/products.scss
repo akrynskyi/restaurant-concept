@@ -6,13 +6,19 @@
 .section-products {
     position: relative;
     padding: 80px 0px;
-    // min-height: 100vh;
+    height: 1295px;
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
     &__wrapper {
         padding: 0px 40px;
         transform: translateX(0);
         transition: transform .2s ease-in-out;
-        min-height: 100vh;
+        height: 100%;
         &.active {
             transform: translateX(25vw);
         }
@@ -27,7 +33,10 @@
         padding-bottom: 120px;
         opacity: 1;
         transform: translateX(0);
-        transition: all .3s cubic-bezier(.8,.2,.24,.88);
+        transition: 
+            transform .3s cubic-bezier(.8,.2,.24,.88),
+            opacity .2s cubic-bezier(.8,.2,.24,.88)
+        ;
 
         &.active {
             opacity: 0;

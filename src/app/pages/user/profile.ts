@@ -1,6 +1,6 @@
 import { firestore, auth } from '../../../js/firebase.cofig';
 import { database } from '../../../ts/database';
-import { Item } from '../../../ts/interfaces';
+import { Product } from '../../../ts/interfaces';
 import { ui } from '../../../ts/class-ui';
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { signOut } from '../../../ts/authentication';
@@ -23,7 +23,7 @@ export const profile = () => {
 		}
 	});
 
-	function favTemplateRender(item: Item) {
+	function favTemplateRender(item: Product) {
 		const portion = {
 			g: 'g',
 			ml: 'ml',
