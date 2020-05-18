@@ -33,6 +33,7 @@ export interface Post {
 
 export interface Product {
 	id: string
+	idx?: number
 	likes: number
 	image: string
 	title: string

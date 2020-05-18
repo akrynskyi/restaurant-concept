@@ -5,7 +5,7 @@ mixin search
             .items-wrapper
                 .search-bar__item
                     i.fas.fa-search.ico-m
-                    input.input-field-m(
+                    input#searchInput.input-field-m(
                         type='text', 
                         placeholder='Search...'
                     )
@@ -15,3 +15,23 @@ mixin search
                             path(
                                 d='M15 0L1 14m14 0L1 0', stroke='currentColor', fill='none', fill-rule='evenodd'
                             )
+            #searchResultBox.result-box
+                .section-inner
+                    .result-box__container
+                        #searchResultScrollable.result-box__scrollable
+                            template
+                                .result
+                                    .result__group
+                                        .result__picture
+                                            img.res-picture(src="./assets/img/aboutus/pic-promo-03.jpg", alt="result")
+                                        .result__count
+                                            span 1
+                                        .result__title
+                                            span Pizza
+                                    .result__group
+                                        .result__price
+                                            span $5
+                                        .result__like
+                                            i.fas.fa-heart
+                                            span 18
+                                // close .result

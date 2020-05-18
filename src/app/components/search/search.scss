@@ -9,6 +9,9 @@
   z-index: 10;
   background-color: $default-color;
   pointer-events: none;
+  min-height: 95px;
+  display: flex;
+  align-items: center;
   transition: opacity 0.1s ease-in-out, transform 0.2s ease-in-out;
   &__item {
     display: flex;
@@ -22,4 +25,111 @@
   transform: translateY(100%);
   opacity: 1;
   pointer-events: all;
+}
+
+.result-box {
+  display: none;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  width: 100%;
+  height: 0px;
+  background-color: $default-color;
+  border-top: 1px solid $border-base;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  &__container {
+    margin: 20px 0px;
+    overflow: auto;
+  }
+  &__scrollable {
+    max-height: 258px;
+    margin-right: 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &.active {
+    display: block;
+  }
+}
+
+.result {
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid $border-light;
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+  transition: all .2s cubic-bezier(.8,.2,.24,.88);
+  &:hover {
+    background-color: $border-light;
+    & 
+    > .result__group 
+    > .result__like 
+    > span {
+      display: block;
+    }
+    & 
+    > .result__group 
+    > .result__like 
+    > i {
+      display: none;
+    }
+  }
+  &__group {
+    display: flex;
+    align-items: center;
+  }
+  &__picture {
+    width: 70px;
+    height: 70px;
+  }
+  &__count,
+  &__price,
+  &__like {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__price,
+  &__like {
+    border: 1px solid $neutral-placeholder;
+    border-radius: 4px;
+    background-color: $default-color;
+    margin: 0px 10px;
+    transition: border .2s cubic-bezier(.8,.2,.24,.88);
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+  &__count {
+    color: $neutral-secondary;
+    margin: 0px 15px;
+  }
+  &__price {
+    &:hover {
+      border: 1px solid $neutral-secondary;
+    }
+  }
+  &__like {
+    &:hover {
+      border: 1px solid $action-color;
+    }
+    & > i {
+      display: block;
+    }
+    & > span {
+      display: none;
+    }
+  }
+}
+
+.res-picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

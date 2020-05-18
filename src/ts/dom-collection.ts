@@ -5,6 +5,12 @@ export const DOM_ELEMENTS = {
 	searchBar: document.querySelector('.search-bar'),
 	closeSearchButton: document.getElementById('closeSearchBtn'),
 
+	// Search
+
+	searchInput: document.getElementById('searchInput'),
+	searchResultBox: document.getElementById('searchResultBox'),
+	searchResultScrollable: document.getElementById('searchResultScrollable'),
+
 	// Hero
 
 	hero: document.querySelector('.hero'),

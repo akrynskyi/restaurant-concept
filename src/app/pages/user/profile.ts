@@ -1,4 +1,4 @@
-import { firestore, auth } from '../../../js/firebase.cofig';
+import { firestore } from '../../../js/firebase.cofig';
 import { database } from '../../../ts/database';
 import { Product } from '../../../ts/interfaces';
 import { ui } from '../../../ts/class-ui';
@@ -166,27 +166,28 @@ export const profile = () => {
 			case 'sort':
 				sortToggle(e);
 				break;
+
 			default:
 				break;
 		}
 	});
 
-	auth.onAuthStateChanged((user) => {
-		firestore.collection('menu').onSnapshot((snapshot) => {
-			const data: firebase.firestore.DocumentData = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-			database.getFavourites(user.uid)
-				.then((ids) => {
-					const userFavourites: [] = data.filter((item: Item) => ids.some((id) => item.id === id));
-					if (userFavourites.length) {
-						DOM_ELEMENTS.favouriteScrollable.innerHTML = userFavourites
-							.map((item) => favTemplateRender(item)).join('');
-					} else {
-						DOM_ELEMENTS.favouriteScrollable.innerHTML = placeholderRender('favourites', true);
-					}
-				})
-				.catch((error) => console.error(error));
-		});
+
+	firestore.collection('menu').onSnapshot((snapshot) => {
+		const data: firebase.firestore.DocumentData = snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+		database.getFavourites()
+			.then((ids) => {
+				const userFavourites: [] = data.filter((item: Product) => ids.some((id) => item.id === id));
+				if (userFavourites.length) {
+					DOM_ELEMENTS.favouriteScrollable.innerHTML = userFavourites
+						.map((item) => favTemplateRender(item)).join('');
+				} else {
+					DOM_ELEMENTS.favouriteScrollable.innerHTML = placeholderRender('favourites', true);
+				}
+			})
+			.catch((error) => console.error(error));
 	});
+
 
 	database.getBookings()
 		.then((data) => {

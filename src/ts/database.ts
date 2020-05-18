@@ -70,7 +70,7 @@ class Database {
 			if (!sfDoc.exists) {
 				console.log('Document does not exist!');
 			} else {
-				const updateLikes = sfDoc.data().likes - 1;
+				const updateLikes = sfDoc.data().likes !== 0 ? sfDoc.data().likes - 1 : sfDoc.data().likes = 0;
 				transaction.update(menuDocRef, { likes: updateLikes });
 			}
 		});

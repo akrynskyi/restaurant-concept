@@ -26,12 +26,12 @@ export class Pagination {
 	firstPage() {
 		this.html += `
 		<button class="btn btn--ml btn--pag" value="1">1</button>
-		<button class="btn btn--ml btn--pag">...</button>`;
+		<button class="btn btn--ml btn--pag" disabled>...</button>`;
 	}
 
 	lastPage() {
 		this.html += `
-		<button class="btn btn--ml btn--pag">...</button>
+		<button class="btn btn--ml btn--pag" disabled>...</button>
 		<button class="btn btn--ml btn--pag" value="${this.totalPages}">
 			${this.totalPages}
 		</button>`;

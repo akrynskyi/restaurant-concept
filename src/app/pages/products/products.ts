@@ -18,9 +18,6 @@ export const products = () => {
 	let popular = false;
 	let pickedCategory: string;
 
-	console.log('prodResponse', prods);
-	console.log('favResponse', favIds);
-
 	productsRender.initializePage({
 		data: prods,
 		userFavourites: favIds,
@@ -31,7 +28,7 @@ export const products = () => {
 	const pagination = new Pagination({
 		totalPages: productsRender.totalPages,
 		currentPage: Storage.getCurrentPage() ? Storage.getCurrentPage() : 1,
-		step: 3,
+		step: 2,
 	});
 
 	auth.onAuthStateChanged((user) => {
@@ -89,8 +86,6 @@ export const products = () => {
 			productsRender.displayUserFavourites();
 		}, 500);
 	}
-
-	console.log('to sort', toSort);
 
 	function filterByCategories(category: string) {
 		const user = auth.currentUser;
@@ -221,7 +216,6 @@ export const products = () => {
 
 			case 'like':
 				updateFav(id, prodCenter);
-				console.log('favPushed', favIds);
 				break;
 
 			default:

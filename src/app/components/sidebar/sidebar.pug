@@ -8,7 +8,7 @@
     nav.sidebar__navigation
         ul.sidebar__navigationlist
             li.sidebar__navigationlist-item
-                div.sidebar__navigationlist-trigger(data-trigger='collapse') Food
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Main
                     span.collapsible-plus
                 ul.collapsible-list
                     li.collapsible-list__item
@@ -16,11 +16,31 @@
                     li.collapsible-list__item
                         span(data-category='potato') Potato
                     li.collapsible-list__item
+                        span(data-category='pizza') Pizza
+                    li.collapsible-list__item
+                        span(data-category='soup') Soup
+            // close .sidebar__navigationlist-item
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Snack
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
                         span(data-category='salad') Salad
                     li.collapsible-list__item
                         span(data-category='sandwich') Sandwich
+            // close .sidebar__navigationlist-item
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Desserts
+                    span.collapsible-plus
+                ul.collapsible-list
                     li.collapsible-list__item
-                        span(data-category='soup') Soup
+                        span(data-category='cookie') Cookie
+                    li.collapsible-list__item
+                        span(data-category='pancake') Pancake
+                    li.collapsible-list__item
+                        span(data-category='pie') Pie
+                    li.collapsible-list__item
+                        span(data-category='icecream') Ice cream
             // close .sidebar__navigationlist-item
             li.sidebar__navigationlist-item
                 div.sidebar__navigationlist-trigger(data-trigger='collapse') Beverages

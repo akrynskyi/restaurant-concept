@@ -2,6 +2,7 @@ import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { ui } from '../../../ts/class-ui';
 import { signOut } from '../../../ts/authentication';
 import { Storage } from '../../../ts/class-storage';
+import { resetSearchBox } from '../search/search';
 
 export const header = (): void => {
 	DOM_ELEMENTS.header.addEventListener('click', (e) => {
@@ -33,6 +34,7 @@ export const header = (): void => {
 				} else {
 					DOM_ELEMENTS.searchBar.classList.toggle('active');
 				}
+				resetSearchBox();
 				break;
 
 			default:
@@ -66,10 +68,13 @@ export const header = (): void => {
 		} else {
 			DOM_ELEMENTS.searchBar.classList.remove('active');
 		}
+		resetSearchBox();
 	});
 
 	DOM_ELEMENTS.signOutBtn.addEventListener('click', () => {
-		if (window.pageYOffset === 0) DOM_ELEMENTS.header.classList.remove('scrolled');
+		if (window.pageYOffset === 0 && !DOM_ELEMENTS.searchBar.classList.contains('active')) {
+			DOM_ELEMENTS.header.classList.remove('scrolled');
+		}
 		Storage.clearStorage();
 		ui.userDropdownHide();
 		signOut();
