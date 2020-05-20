@@ -17,6 +17,10 @@
     justify-content: center;
     align-items: center;
   }
+  &.overlay-lightbox {
+    cursor: zoom-out;
+    overflow: auto;
+  }
 }
 .overlay.visible {
   opacity: 1;

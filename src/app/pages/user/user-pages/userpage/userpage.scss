@@ -23,6 +23,17 @@
             justify-content: center;
             margin-bottom: 10px;
         }
+        &-uploadph {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 5px;
+
+            & > button {
+                width: 135px;
+            }
+        }
     }
     &__meta {
         width: 100%;

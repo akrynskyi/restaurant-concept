@@ -81,6 +81,8 @@ export const DOM_ELEMENTS = {
 	reservationTotal: document.getElementById('reservTotal'),
 	favouriteScrollable: document.getElementById('favouriteScrollable'),
 	reservationScrollable: document.getElementById('reservationScrollable'),
+	uploadPhBtn: document.getElementById('uploadPhBtn'),
+	fileInput: document.getElementById('fileInput'),
 
 	// Notification
 
@@ -91,6 +93,15 @@ export const DOM_ELEMENTS = {
 	// Sidebar
 
 	sidebar: document.getElementById('sidebar'),
+
+	// Lightbox
+
+	lightboxOverlay: document.getElementById('lightboxOverlay'),
+	lightboxImgWrap: document.getElementById('lightboxImgWrap'),
+	lightboxImg: document.getElementById('lightboxImg'),
+	lightboxExpand: document.getElementById('lightboxExpand'),
+	lightboxLeft: document.getElementById('lightboxLeft'),
+	lightboxRight: document.getElementById('lightboxRight'),
 };
 
 export const DOM_FORMS = {

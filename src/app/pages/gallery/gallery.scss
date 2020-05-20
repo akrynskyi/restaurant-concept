@@ -3,8 +3,8 @@
 }
 
 .section-gallery {
-    min-height: 100vh;
-    padding: 80px 0px 150px 0px;
+    min-height: calc(100vh + 800px);
+    padding: 80px 0px 180px 0px;
     position: relative;
     &__header {
         display: flex;
@@ -25,7 +25,7 @@
     break-inside: avoid;
     position: relative;
     overflow: hidden;
-    cursor: pointer;
+    cursor: zoom-in;
     &__description {
         position: absolute;
         height: 100%;

@@ -1,0 +1,19 @@
+#lightboxOverlay.overlay.overlay-lightbox
+    .section-inner.items-wrapper.center
+        .lightbox
+            .lightbox__content
+                .lightbox__content-header
+                    button#lightboxExpand.btn-default(title="expand")
+                        i.fas.fa-expand-alt
+                .lightbox__content-body
+                    #lightboxImgWrap.lightbox__imgwrap
+                        img#lightboxImg.image
+                .lightbox__content-footer
+                    i.fas.fa-camera-retro
+        // close .lightbox
+        button#lightboxLeft.btn-default.lightbox-control.left(title="back")
+            i.fas.fa-chevron-left
+        button#lightboxRight.btn-default.lightbox-control.right(title="forward")
+            i.fas.fa-chevron-right
+        // close .lightbox-controls
+// close .overlay-lightbox

@@ -3,6 +3,7 @@ import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { ui } from '../../../ts/class-ui';
 import { API_KEY, API_URL } from '../../../js/unsplash_api';
 import { Photos } from '../../../ts/photos-class';
+import { Lightbox } from '../../components/lightbox/lightbox';
 import { Option, Post } from '../../../ts/interfaces';
 
 
@@ -15,6 +16,15 @@ export const gallery = () => {
 		perPage: 20,
 	});
 
+	const lightbox = new Lightbox();
+
+	DOM_ELEMENTS.galleryContainer.addEventListener('click', (e) => lightbox.open(e));
+	DOM_ELEMENTS.lightboxOverlay.addEventListener('click', (e) => lightbox.close(e));
+	DOM_ELEMENTS.lightboxExpand.addEventListener('click', (e) => lightbox.expand(e));
+
+	DOM_ELEMENTS.lightboxLeft.addEventListener('click', () => lightbox.back());
+	DOM_ELEMENTS.lightboxRight.addEventListener('click', () => lightbox.forward());
+
 	const setupGallery = () => {
 		ui.loaderToggle('loaderGallery');
 
@@ -22,8 +32,10 @@ export const gallery = () => {
 			.finally(() => {
 				ui.loaderToggle('loaderGallery');
 			})
-			.then((items) => {
-				DOM_ELEMENTS.galleryContainer.innerHTML = items.map((item: Post) => {
+			.then((items: Post[]) => {
+				lightbox.images = items.map((item) => item.photos.regular);
+
+				DOM_ELEMENTS.galleryContainer.innerHTML = items.map((item) => {
 					const { description, color, photos: imgs } = item;
 					return `
 					<div class="post" style="background-color: ${color}">

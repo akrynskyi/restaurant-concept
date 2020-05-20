@@ -8,7 +8,8 @@ mixin userpage
                 .userpage__cart-fullname
                     span#userName Mykola Braveman
                 .userpage__cart-uploadph
-                    button.btn.btn--secondary Update photo
+                    button#uploadPhBtn.btn.btn--secondary Update photo
+                    input#fileInput(type="file", hidden="hidden")
             // close .userpage__cart
             .userpage__meta
                 .userpage__meta-coltitle

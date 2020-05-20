@@ -1,15 +1,57 @@
-import { firestore } from '../../../js/firebase.cofig';
+import { firestore, storage, auth } from '../../../js/firebase.cofig';
 import { database } from '../../../ts/database';
 import { Product } from '../../../ts/interfaces';
 import { ui } from '../../../ts/class-ui';
 import { DOM_ELEMENTS } from '../../../ts/dom-collection';
 import { signOut } from '../../../ts/authentication';
 import { Booking } from '../../components/hero/class-booking';
+import { Storage } from '../../../ts/class-storage';
 
 export const profile = () => {
 	const timelineElement = document.createElement('div');
 	const reservation: Booking[] = [];
 	let reverse = false;
+
+	function uploadFile(file: File) {
+		const user = auth.currentUser;
+		const storageRef = storage.ref(`${user.uid}/profilePicture/${file.name}`);
+		const task = storageRef.put(file);
+
+		task.on('state_changed', (snapshot) => {
+			const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+
+			if (progress !== 100) {
+				DOM_ELEMENTS.uploadPhBtn.innerText = `${progress.toFixed(0)}%`;
+				DOM_ELEMENTS.uploadPhBtn.setAttribute('disabled', 'disabled');
+			} else {
+				DOM_ELEMENTS.uploadPhBtn.innerText = 'Uploaded!';
+				setTimeout(() => {
+					DOM_ELEMENTS.uploadPhBtn.innerText = 'Update photo';
+					DOM_ELEMENTS.uploadPhBtn.removeAttribute('disabled');
+				}, 4000);
+			}
+		});
+
+		task.then(async (snapshot) => {
+			const photoURL = await snapshot.ref.getDownloadURL();
+			await user.updateProfile({ photoURL });
+			Storage.setUser(auth.currentUser);
+		});
+	}
+
+	DOM_ELEMENTS.uploadPhBtn.addEventListener('click', () => DOM_ELEMENTS.fileInput.click());
+
+	DOM_ELEMENTS.fileInput.addEventListener('change', (e) => {
+		const file = (e.currentTarget as HTMLInputElement).files[0];
+		const fileReader = new FileReader();
+		fileReader.readAsDataURL(file);
+		fileReader.onload = () => {
+			const image = fileReader.result;
+			DOM_ELEMENTS.userletter.innerText = '';
+			DOM_ELEMENTS.userPicture.setAttribute('src', image.toString());
+		};
+		uploadFile(file);
+	});
 
 	DOM_ELEMENTS.favouriteScrollable.addEventListener('click', (e) => {
 		const { id } = (e.target as HTMLElement).dataset;
