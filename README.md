@@ -2,15 +2,6 @@
 
 ------------
 
-##### Key features
-
-> - User authentication
-> - Database interaction
-> - Minimalistic design UI
-> - Smooth animation, etc.
-
-------------
-
 ##### How to run the project locally:
 
 *Open your  terminal and run the  following commands...*
@@ -23,7 +14,7 @@
 
 ------------
 
-##### Deployment
+##### Deployment:
 
 *Follow the link to see project deployment*
 
@@ -31,7 +22,7 @@
 
 ------------
 
-##### Tools
+##### Tools:
 
 - Pug
 - Scss

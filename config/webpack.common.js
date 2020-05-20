@@ -10,13 +10,7 @@ const PATHS = {
 	assets: 'assets/',
 };
 
-// const PAGES_DIR = `${PATHS.src}/pug/pages/`;
-
 // const TEMPLATES = [];
-
-// const PAGES = fs
-// 	.readdirSync(PAGES_DIR)
-// 	.filter((fileName) => fileName.endsWith('.pug'));
 
 module.exports = {
 	externals: {
@@ -122,6 +116,14 @@ module.exports = {
 					name: '[name].[ext]',
 				},
 			},
+			{
+				// Video
+				test: /\.mp4$/,
+				loader: 'file-loader',
+				options: {
+					name: '[name].[ext]',
+				},
+			},
 		],
 	},
 	resolve: {
@@ -133,6 +135,7 @@ module.exports = {
 		}),
 		new CopyWebpackPlugin([
 			{ from: `${PATHS.src}/${PATHS.assets}img`, to: `${PATHS.assets}img` },
+			{ from: `${PATHS.src}/${PATHS.assets}video`, to: `${PATHS.assets}video` },
 			{ from: `${PATHS.src}/static`, to: '' },
 		]),
 		new HtmlWebpackPlugin({
