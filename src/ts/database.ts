@@ -115,6 +115,30 @@ class Database {
 	removeBooking(docId: string) {
 		firestore.collection('reservation').doc(docId).delete();
 	}
+
+	async updateUserPhone(newPhoneNumber: string) {
+		const userRef = firestore.collection('users').doc(this.user.uid);
+
+		try {
+			const userDoc = await userRef.get();
+			const userData = userDoc.data();
+			const currentPhoneNum: string = await userDoc.data().phoneNumber;
+
+			if (!userDoc.exists) {
+				userRef.set({
+					newPhoneNumber,
+				});
+			}
+			if (userDoc.exists && currentPhoneNum !== newPhoneNumber) {
+				userRef.update({
+					...userData,
+					newPhoneNumber,
+				});
+			}
+		} catch (error) {
+			console.error(error);
+		}
+	}
 }
 
 export const database = new Database();
