@@ -2,7 +2,7 @@
   "name": "restaurant-concept",
   "version": "1.0.0",
   "description": "restaurant-application",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "webpack-dev-server --open --config ./config/webpack.dev.js",
     "build": "webpack --config ./config/webpack.prod.js",
@@ -25,7 +25,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git@git.epam.com:andrii_krynskyi/restaurant-concept.git"
+    "url": "https://github.com/AnjKrynskyi/restaurant-concept.git"
   },
   "keywords": [
     "restaurant",

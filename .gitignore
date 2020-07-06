@@ -107,3 +107,6 @@ dist
 .firebase
 *.rules
 firebase.json
+
+# conf
+/src/js
