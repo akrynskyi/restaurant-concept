@@ -1,0 +1,65 @@
+//- .overlay
+#sidebar.sidebar
+    .sidebar__header
+        span Categories
+        button.btn-icon(title="Reset")
+            i.fas.fa-sync-alt(data-trigger="reset")
+    // close .sidebar__header
+    nav.sidebar__navigation
+        ul.sidebar__navigationlist
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Main
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
+                        span(data-category='pasta') Pasta
+                    li.collapsible-list__item
+                        span(data-category='potato') Potato
+                    li.collapsible-list__item
+                        span(data-category='pizza') Pizza
+                    li.collapsible-list__item
+                        span(data-category='soup') Soup
+            // close .sidebar__navigationlist-item
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Snack
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
+                        span(data-category='salad') Salad
+                    li.collapsible-list__item
+                        span(data-category='sandwich') Sandwich
+            // close .sidebar__navigationlist-item
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Desserts
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
+                        span(data-category='cookie') Cookie
+                    li.collapsible-list__item
+                        span(data-category='pancake') Pancake
+                    li.collapsible-list__item
+                        span(data-category='pie') Pie
+                    li.collapsible-list__item
+                        span(data-category='icecream') Ice cream
+            // close .sidebar__navigationlist-item
+            li.sidebar__navigationlist-item
+                div.sidebar__navigationlist-trigger(data-trigger='collapse') Beverages
+                    span.collapsible-plus
+                ul.collapsible-list
+                    li.collapsible-list__item
+                        span(data-category='tea') Tea
+                    li.collapsible-list__item
+                        span(data-category='coffe') Coffee
+                    li.collapsible-list__item
+                        span(data-category='chocolate') Chocolate
+                    li.collapsible-list__item
+                        span(data-category='fresh') Juice
+            // close .sidebar__navigationlist-item
+        .sidebar__toggler(data-trigger='sidebar')
+            button.btn-icon
+                i.fas.fa-bars(data-trigger='sidebar')
+    // close .sidebar__navigation
+    .sidebar__footer
+        a.link-default.link-default--mod(href="#products") Scroll top
+    // close .sidebar__footer
+// close .sidebar

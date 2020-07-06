@@ -1,0 +1,30 @@
+include ../../app/components/header/header
+include ../../app/components/footer/footer
+include ../../app/components/modal-auth/modal
+include ../../app/components/search/search
+include ../../app/components/hero/hero
+include ../../app/components/notification/notification
+
+block variables
+
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        meta(name='viewport', content='width=device-width, initial-scale=1.0')
+        meta(http-equiv='X-UA-Compatible', content='ie=edge')
+        title #{title}
+        link(rel="stylesheet", href="https://use.fontawesome.com/releases/v5.13.0/css/all.css")
+        link(rel='icon' type='image/png' sizes='32x32' href='/favicon-32x32.png')
+        link(rel='icon' type='image/png' sizes='16x16' href='/favicon-16x16.png')
+    body
+        + header
+        + auth
+        + search
+        + hero
+        + notification
+        block content
+        + footer
+
+
+//- https://use.fontawesome.com/releases/v5.8.1/css/all.css

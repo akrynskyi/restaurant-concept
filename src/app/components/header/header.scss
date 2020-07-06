@@ -1,0 +1,234 @@
+// ==== MAIN HEADER STYLES ==== //
+
+.header {
+  min-height: 95px;
+  position: fixed;
+  z-index: 15;
+  width: 100%;
+  transition: all .2s linear;
+  &:hover {
+    background-color: $neutral-primary;
+    box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+  }
+  &-items-wrapper {
+    justify-content: space-between;
+    padding: 30px 0px;
+    position: relative;
+  }
+}
+
+.header.scrolled {
+  background-color: $neutral-primary;
+  box-shadow: 0px 4px 5px 0px rgba(0, 0, 0, 0.2);
+}
+
+// ==== NAVIGATION ==== //
+
+.burger {
+  display: none;
+  cursor: pointer;
+  &__line {
+    height: 2px;
+    width: 30px;
+    margin-top: 5px;
+    background-color: $neutral-secondary;
+    &:nth-child(2) {
+      width: 20px;
+    }
+    &:nth-child(3) {
+      width: 10px;
+    }
+  }
+  @include tablet {
+    display: block;
+  }
+}
+
+.nav {
+  display: flex;
+  &__item {
+    color: $default-color;
+    text-transform: uppercase;
+    letter-spacing: $customLetterSpacing;
+    margin-right: 40px;
+    font-weight: 300;
+    font-size: 14px;
+    .link-spacer {
+      position: absolute;
+      display: block;
+      bottom: 0;
+      color: transparent;
+      pointer-events: none;
+      &::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        opacity: 0;
+        transform: scale(0, 1);
+        transform-origin: left center;
+        transition: transform 0.3s, opacity 0.3s;
+        background-color: $default-color;
+        height: 2px;
+      }
+    }
+    &:hover .link-spacer::after {
+      opacity: 1;
+      transform: scale(1, 1);
+    }
+  }
+  @include tablet {
+    display: none;
+  }
+}
+
+// ==== LOGO ==== //
+
+.logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  &__text {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: $customLetterSpacing;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    @include smTablet {
+      font-size: 16px;
+    }
+  }
+}
+
+// ==== USER BAR ==== //
+
+.bar {
+  display: flex;
+  align-items: center;
+  &__auth {
+    display: none;
+    opacity: 0;
+    transition: opacity .1s ease-in;
+    &-mobile {
+      display: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 3px;
+      justify-content: center;
+      border: 1px solid $neutral-regular;
+      @include tablet {
+        display: flex;
+      }
+    }
+    &-signup,
+    &-signin {
+      display: block;
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+  &__auth.active {
+    display: flex;
+    opacity: 1;
+  }
+  &__usernav {
+    margin-left: 15px;
+    display: none;
+    &-btn {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      &::after {
+        content: "";
+        right: 5px;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 5px 5px 0 5px;
+        border-color: $neutral-secondary transparent transparent transparent;
+        margin-left: 10px;
+        transition: transform 0.2s ease, border-color 0.1s linear;
+      }
+      &:hover::after,
+      &:hover > .bar__usernav-btn-name {
+        border-color: $border-base transparent transparent transparent;
+        color: $border-base;
+      }
+      &-avatar {
+        width: 35px;
+        height: 35px;
+        border-radius: 50%;
+        overflow: hidden;
+        background-color: $border-base;
+        color: $neutral-regular;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &-name {
+        font-size: 14px;
+        font-weight: 300;
+        color: $neutral-secondary;
+        margin-left: 10px;
+        transition: color 0.1s linear;
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+    &-btn.active::after {
+      transform: rotate(180deg);
+    }
+  }
+  &__usernav.active {
+    display: block;
+  }
+  &__helpers {
+    margin-left: 15px;
+    display: flex;
+    &-more {
+      display: block;
+      @include tablet {
+        display: none;
+      }
+    }
+  }
+}
+
+// ==== DROPDOWN USER MENU ==== //
+
+.dropdown-menu {
+  position: fixed;
+  width: 140px;
+  top: 95px;
+  background-color: $neutral-primary;
+  border-top: 1px solid rgba(0, 0, 0, 0.4);
+  display: none;
+  &__item {
+    color: $border-base;
+    padding: 10px 15px 10px 10px;
+    font-size: 14px;
+    font-weight: 300;
+    cursor: pointer;
+    &:last-child {
+      border-top: 1px solid $neutral-regular;
+    }
+    &:hover {
+      background-color: $neutral-regular;
+    }
+  }
+  &__link {
+    color: $border-base;
+  }
+  @include mobile {
+    right: 0;
+  }
+}
+
+.dropdown-menu.active {
+  display: block;
+}

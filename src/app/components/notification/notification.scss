@@ -1,0 +1,35 @@
+.notification {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    width: 350px;
+    height: 80px;
+    margin: 0px 20px 20px 0px;
+    background-color: $default-color;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+    transform: translateY(150%);
+    opacity: 0;
+    transition: all .40s cubic-bezier(.8,.2,.24,.88);
+    pointer-events: all;
+    &__content {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        height: 100%;
+        &-massage {
+            font-size: 12px;
+            grid-column: span 3;
+            display: flex;
+            align-items: center;
+            padding: 0px 15px;
+        }
+        &-button {
+            display: flex;
+            justify-content: center;
+            background-color: $action-color;
+        }
+    }
+}
+.notification.active {
+    transform: translateY(0%);
+    opacity: 1;
+}

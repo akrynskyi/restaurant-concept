@@ -1,0 +1,57 @@
+.userpage {
+    display: flex;
+    margin-bottom: 20px;
+    &__cart {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 24px;
+        padding: 25px;
+        border: 1px solid $neutral-primary;
+        border-radius: 10px;
+        min-width: 225px;
+        white-space: nowrap;
+        &-photo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            background-color: $border-base;
+            color: $neutral-regular;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        &-uploadph {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 12px;
+            margin-top: 5px;
+
+            & > button {
+                width: 135px;
+            }
+        }
+    }
+    &__meta {
+        width: 100%;
+        margin-left: 40px;
+        padding: 25px;
+        border: 1px solid $neutral-primary;
+        border-radius: 10px;
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        &-colbody {
+            font-weight: 300;
+            grid-column: span 5;
+        }
+    }
+}
+
+.suptitle {
+    font-size: 14px;
+    font-weight: 300;
+    padding-bottom: 10px;
+}

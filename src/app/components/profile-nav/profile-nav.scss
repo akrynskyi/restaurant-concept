@@ -1,0 +1,39 @@
+.profilenav {
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    width: 30vh;
+    height: 100%;
+    background: $neutral-primary;
+    box-shadow: 5px 0px 10px 0px rgba(0, 0, 0, 0.4);
+    &__header {
+        padding: 20px 40px;
+        border-bottom: 1px solid $neutral-regular;
+    }
+    &__navigation {
+        flex-grow: 1;
+        display: flex;
+    }
+    &__navlist {
+        width: 100%;
+        padding: 0px 40px;
+        &-item {
+            font-size: 21px;
+            padding: 25px 0px;
+            &:first-child {
+                padding-top: 50px;
+            }
+            &:last-child {
+                padding-bottom: 0px;
+            }
+        }
+    }
+    &__social {
+        display: flex;
+        justify-content: space-around;
+    }
+    &__footer {
+        padding: 20px 40px;
+        border-top: 1px solid $neutral-regular;
+    }
+}

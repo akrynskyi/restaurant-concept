@@ -1,11 +1,348 @@
-@import "utils/libs";
+// ==== IMPORTS ==== //
+
 @import "utils/variables";
 @import "utils/mixins";
 @import "utils/fonts";
 @import "utils/reset";
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+// ==== COMPONENTS ==== //
+
+@import "../../app/components/header/header.scss";
+@import "../../app/components/footer/footer.scss";
+@import "../../app/components/modal-auth/modal.scss";
+@import "../../app/components/hero/hero.scss";
+@import "../../app/components/search/search.scss";
+@import "../../app/components/notification/notification.scss";
+@import "../../app/components/sidebar/sidebar.scss";
+@import "../../app/components/lightbox/lightbox.scss";
+@import "../../app/components/product/product.scss";
+@import "../../app/components/profile-nav/profile-nav.scss";
+@import "../../app/pages/user/user-pages/userpage/userpage.scss";
+@import "../../app/pages/user/user-pages/reservation/reservation.scss";
+@import "../../app/pages/user/user-pages/favourite/favourite.scss";
+@import "./components/buttons.scss";
+@import "./components/overlay.scss";
+@import "./components/loader.scss";
+@import "./components/loaders/spin-fade-loader.scss";
+@import "./components/loaders/ball-beat.scss";
+@import "./components/select.scss";
+@import "./components/sort.scss";
+
+// ==== PAGES ==== //
+
+@import "../../app/pages/home/home.scss";
+@import "../../app/pages/products/products.scss";
+@import "../../app/pages/gallery/gallery.scss";
+@import "../../app/pages/user/profile.scss";
+
+// ==== GLOBAL STYLES ==== //
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $main-font;
+  font-size: $mainFontSize;
+}
+
+.section-inner {
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.items-wrapper {
+  display: flex;
+  align-items: center;
+  &.center {
+    justify-content: center;
+    height: auto;
+  }
+}
+
+.page-title {
+  color: $default-color;
+  font-size: 42px;
+  font-weight: 700;
+}
+
+.pagination {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  padding-bottom: 60px;
+  &--products {
+    padding-bottom: 0;
+  }
+}
+
+// ==== LINKS ==== //
+
+.link-action {
+  color: $action-color;
+  margin-left: 5px;
+  transition: color 0.1s linear;
+  cursor: pointer;
+  &:hover {
+    color: $neutral-secondary;
+  }
+}
+
+.link-default {
+  position: relative;
+  font-size: 12px;
+  font-weight: 500;
+  color: $main-color;
+  cursor: pointer;
+  &::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: $main-color;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform .3s ease-in;
+  }
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+  &--mod {
+    color: $neutral-regular;
+    text-transform: uppercase;
+    font-size: 16px;
+    transition: color .2s ease-in;
+    &.darken {
+      color: $neutral-primary;
+    }
+    &:hover {
+      color: $border-base;
+    }
+    &::after {
+      background-color: $border-base;
+    }
+    &.active{
+      color: $border-base;
+      &::after {
+        transform: scaleX(1);
+      }
+    }
+  }
+}
+
+.c-default {
+  color: $default-color;
+}
+
+.link-fs {
+  font-size: 21px;
+}
+
+// ==== INPUTS ==== //
+
+.input-field {
+  width: 100%;
+  font-size: 14px;
+  color: $neutral-primary;
+  background: none;
+  height: 40px;
+  border-bottom: 2px solid $neutral-secondary;
+  &::placeholder{
+    color: $neutral-primary;
+  }
+  &:required {
+    box-shadow: none;
+  }
+  &:focus {
+    border-bottom: 2px solid $neutral-regular;
+  }
+  &:focus::placeholder {
+    color: $neutral-secondary;
+  }
+
+  &--mod {
+    color: $neutral-secondary;
+    border: 1px solid $neutral-primary;
+    padding: 15px;
+    border-radius: 3px;
+    height: auto;
+    max-height: 45px;
+    transition: border 0.3s cubic-bezier(0.3, 0, 0, 1);
+    &:focus {
+      border: 1px solid $neutral-regular;
+    }
+    &.invalid {
+      border: 1px solid $action-color;
+      &::placeholder{
+        color: $action-color;
+      }
+    }
+  }
+}
+
+.input-field-m {
+  width: 100%;
+  font-size: 20px;
+  color: $main-color;
+  background: none;
+  height: 80px;
+  &::placeholder {
+    text-transform: uppercase;
+    color: $neutral-secondary;
+    letter-spacing: $customLetterSpacing;
+  }
+}
+
+.input-field-col {
+  width: 100%;
+  font-size: 18px;
+  color: $default-color;
+  background: none;
+  height: 40px;
+  border-bottom: 2px solid $main-color;
+  &::placeholder {
+    color: $main-color;
+  }
+  &:required {
+    box-shadow: none;
+  }
+  &:focus {
+    border-bottom: 2px solid $default-color;
+  }
+  &:focus::placeholder {
+    color: $default-color;
+  }
+}
+
+.inp-col {
+  color: $main-color;
+}
+
+// ==== ICONS ==== //
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  &--col {
+    color: #fff;
+  }
+}
+
+.ico-wrapper {
+  width: 30px;
+  display: inline-block;
+}
+
+.ico-m {
+  margin-right: 25px;
+  font-size: 20px;
+  color: $neutral-regular;
+}
+
+.ico-pl {
+  padding-left: 10px;
+}
+
+.ico-pr {
+  padding-right: 10px;
+}
+
+.ico-fnt {
+  font-size: 14px;
+}
+
+.ico-spin {
+  animation: spin 1s;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+// ==== TOOLTIP ==== //
+
+.tooltip {
+  position: absolute;
+  width: 120px;
+  height: 40px;
+  background-color: $default-color;
+  border-radius: 4px;
+  color: $main-color;
+  font-size: 10px;
+  top: -25px;
+  left: -25px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  transform: rotateX(20deg) scale(0.8);
+  transform-origin: center 120%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.3, 0, 0, 1);
+
+  &--fortable {
+    width: 100px;
+    top: -50px;
+    left: -35px;
+    justify-content: center;
+    font-size: 11px;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    border: 6px solid transparent;
+    border-top-color: rgba(255, 255, 255, 1);
+  }
+}
+
+.tooltip-disabled {
+  display: none;
+}
+
+.placeholder {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  &__item {
+    margin-bottom: 15px;
+  }
+}
+
+.placeholder-small {
+  padding-top: 40px;
 }

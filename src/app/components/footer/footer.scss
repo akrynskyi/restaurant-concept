@@ -1,0 +1,48 @@
+.footer {
+  position: relative;
+  padding: 20px 0px;
+  box-shadow:
+    0 0px 5px rgba(0, 0, 0, 0.026),
+    0 0px 10.7px rgba(0, 0, 0, 0.044),
+    0 0px 17.1px rgba(0, 0, 0, 0.059),
+    0 0px 24.3px rgba(0, 0, 0, 0.073),
+    0 0px 32.2px rgba(0, 0, 0, 0.086),
+    0 0px 40px rgba(0, 0, 0, 0.1)
+  ;
+  z-index: 18;
+  &-items-wrapper {
+    justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
+    }
+  }
+  &-logo {
+    color: $main-color;
+    transition: color .1s linear;
+    text-transform: uppercase;
+    letter-spacing: $customLetterSpacing;
+    &:hover {
+      color: $action-color;
+    }
+  }
+}
+
+.social {
+  display: flex;
+  &__item {
+    margin-right: 40px;
+    &:last-child {
+      margin-right: 0;
+    }
+    &-link {
+      color: $main-color;
+      transition: color .1s linear;
+      &:hover {
+        color: $action-color;
+      }
+    }
+  }
+  @include mobile {
+    margin-top: 20px;   
+  }
+}

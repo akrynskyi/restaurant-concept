@@ -1,0 +1,38 @@
+extends ../../../pug/layouts/main
+
+block variables
+    - var title = "Products"
+
+block content
+    // MAIN SECTION
+    main#products.products
+        section.section-products
+            include ../../components/sidebar/sidebar
+            .section-inner
+                #productsWrapper.section-products__wrapper
+                    #loaderProducts.loader
+                        .loader-box
+                            .loader-ico
+                                i.fas.fa-mug-hot
+                            .ball-beat
+                                div
+                                div
+                                div
+                    .section-products__header
+                        h1.page-title Our menu
+                        #productsSort.sort-group
+                            .sort.sort--mod.column
+                                span.sort__suptitle Sort by:
+                                button#btnProductsSort.btn-default.btn-sort(data-trigger="sort") Popularity
+                            .sort.sort--mod.column
+                                button.btn-default.btn-reset
+                                    span(data-trigger="reset") Reset
+                                    i#redoIco.fas.fa-redo-alt
+                    #productsContainer.section-products__container
+                    // close .section-products__container
+                    #productsPagination.pagination.pagination--products
+                        #prodPagWrapper.pagination__wrapper
+                    // close .pagination--products
+            // close .section-products__wrapper
+        // close .section-products
+    // close .products

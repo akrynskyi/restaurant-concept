@@ -1,0 +1,42 @@
+mixin userpage
+    .profile__body(data-page="#user")
+        .userpage
+            .userpage__cart
+                .userpage__cart-photo
+                    img#userPicture.user-photo
+                    span#userLetter.user-letter
+                .userpage__cart-fullname
+                    span#userName Mykola Braveman
+                .userpage__cart-uploadph
+                    button#uploadPhBtn.btn.btn--secondary Update photo
+                    input#fileInput(type="file", hidden="hidden")
+            // close .userpage__cart
+            .userpage__meta
+                .userpage__meta-coltitle
+                    h4 Age:
+                    h4 Email:
+                .userpage__meta-colbody
+                    p#userAge Unknown
+                    p#userEmail email@restaurant.com
+            // close .userpage__meta
+        // close .userpage
+        .userpage-update
+            form
+                h4.suptitle Change name
+                .form__item
+                    input.input-field.input-field--mod(
+                            type="text"
+                            name="name"
+                            placeholder="Update fullname"
+                        )
+                h4.suptitle Change age
+                .form__item
+                    input.input-field.input-field--mod(
+                            type="date"
+                            name="age"
+                            placeholder="Update age"
+                        )
+                .form__item
+                    button.btn.btn--secondary Update
+        // close .userpage-update
+    // close .profile__body

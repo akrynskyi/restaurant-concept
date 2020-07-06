@@ -1,0 +1,12 @@
+extends ../../../pug/layouts/user
+include ./user-pages/userpage/userpage
+include ./user-pages/favourite/favourite
+include ./user-pages/reservation/reservation
+
+block variables
+    - var title = "Profile"
+
+block content
+    + userpage
+    + reservation
+    + favourite

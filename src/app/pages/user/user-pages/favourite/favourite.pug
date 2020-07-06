@@ -1,0 +1,28 @@
+mixin favourite
+    .profile__body(data-page="#favourite")
+        .favourite
+            #favouriteScrollable.favourite__scrollable
+                template
+                    .favourite__item
+                        .favourite__item-picture
+                            img.fav-picture(src="./assets/img/aboutus/pic-promo-03.jpg", alt="favourite")
+                        .favourite__item-content
+                            .favourite__item-info
+                                .favourite__item-info-title
+                                    span Pizza
+                                .favourite__item-info-description
+                                    p Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi eveniet explicabo voluptate ducimus! Aliquid exercitationem recusandae incidunt expedita consequatur et enim praesentium magnam dolorem nemo dignissimos maiores, at a minus.
+                            .favourite__item-meta
+                                .favourite__item-meta-tag
+                                    i.ico-heart.red.fas.fa-heart
+                                    span.like-count 20
+                                .favourite__item-meta-tag
+                                    span 150g
+                                .favourite__item-meta-tag
+                                    span $5
+                                .favourite__item-remove
+                                    button.btn.btn--hov Remove
+                    // close .favourite__item
+            // close .favourite__scrollable
+        // close .favourite
+    // close .profile__body
